@@ -32,7 +32,7 @@
 <div id="out"></div>
  <form id="form">
     <div class="form-group">
-      <input type="number" max="99999" placeholder="Enter US Zip Code" id="zip-entry">
+      <input type="number" min="00601" max="99929" placeholder="Enter US Zip Code" id="zip-entry">
       <button type="submit" id="submit-btn">Submit</button>
     </div>
   </form>
@@ -153,7 +153,9 @@ function getUserInput () {
 			url: queryUrl,
 			method: "GET"
 		}).done(function(response){
+			//send latitude and longitude data to getMaps
 			getMaps(response.location.lat, response.location.lon);
+
 		}).fail(function(error){
 			console.log(error);
 		});
@@ -176,14 +178,10 @@ function geoFindMe() {
     
     getMaps(latitude, longitude);
 
-//     var img = new Image();
-//     img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-//     output.appendChild(img);
   }
 
   function error() {
-    output.innerHTML = "Unable to retrieve your location at this time.";
+    output.innerHTML = "<p>Unable to retrieve your location at this time.</p>";
     getUserInput();
     return;
   }
