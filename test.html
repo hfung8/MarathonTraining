@@ -4,12 +4,20 @@
 	<title></title>
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="assets/javascript/routes.js"></script>
+	<style type="text/css">
+		.map {
+			height: 400px;
+			width: 30%;
+			margin: 1.5%;
+		}
+	</style>
 </head>
 <body>
 
-<iframe id="mapmyfitness_route" src="//snippets.mapmycdn.com/routes/view/embedded/245846895?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP" height="200px" frameborder="0"></iframe>
-<iframe id="mapmyfitness_route" src="//snippets.mapmycdn.com/routes/view/embedded/245846895?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP" height="200px" frameborder="0"></iframe>
-<iframe id="mapmyfitness_route" src="//snippets.mapmycdn.com/routes/view/embedded/245846895?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP" height="200px" frameborder="0"></iframe>
+<div id = "maps">
+</div>
+
+
 
 <!-- https://oauth2-api.mapmyapi.com/v7.1/route/?close_to_location=40.730518%2C-74.065860&maximum_distance=5000&minimum_distance=1 -->
 
@@ -17,7 +25,7 @@
 	
 	var token;
 	var api_key = "uj7d2fg236gukdznvrzs5bc4fqrfscda";
-	var tokenReceived = false;
+
 	
 	$.ajax({
 		url: "https://oauth2-api.mapmyapi.com/v7.1/oauth2/access_token/",
@@ -34,9 +42,64 @@
 	}).done(function(response){
 		console.log(response);
 		token = response.access_token;
-		console.log(token);
-		tokenReceived = true;
-		console.log(tokenReceived);
+
+			var lat = 40.730518;
+			var long = -74.065860;
+			var endPoint= "https://oauth2-api.mapmyapi.com/v7.1/route/?";
+			var close_to_location =  lat + "," + long;
+			var maximum_distance = 7500; //convert miles to meters
+			var minimum_distance = 5000;
+
+			// var queryUrl = endPoint + close_to_location + maximum_distance + minimum_distance;
+			
+
+			$.ajax({
+				url: endPoint,
+				method: 'GET',
+				headers: {
+					"api-key": api_key,
+					Authorization: "Bearer " + token,
+					"Content-Type": "application/json"
+				},
+				data: {
+					close_to_location: lat + "," + long,
+					maximum_distance: maximum_distance,
+					minimum_distance: minimum_distance,
+					text_search: "run",
+					order_by: "+distance_from_point"
+				}
+			}).done(function(response){
+				console.log(response);
+
+				var namesArray = [], filteredResults = [];
+
+				//remove duplicate named items from results
+
+				for (let i = 0; i < response._embedded.routes.length; i++) {
+					if (namesArray.indexOf(response._embedded.routes[i].name) == -1) {
+						namesArray.push(response._embedded.routes[i].name);
+						filteredResults.push(response._embedded.routes[i]);
+					}
+				}
+
+				console.log(namesArray);
+
+
+				console.log(filteredResults);
+
+				var mapsForDisplay = filteredResults.slice(0,3);
+
+				mapsForDisplay.forEach(function(e, i) {
+					var mapID = e._links.self[0].id;
+					console.log(mapID);
+					var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", "//snippets.mapmycdn.com/routes/view/embedded/" + mapID + "?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP").appendTo("#maps");
+				})
+
+			}).fail(function(error){
+				console.log(error);
+			});
+
+
 	}).fail(function(error) {
 		console.log(error);
 
@@ -44,32 +107,8 @@
 
 
 
-	var lat = 40.730518;
-	var long = -74.065860;
-	var endPoint= "https://oauth2-api.mapmyapi.com/v7.1/route/?";
-	var close_to_location = "close_to_location" + lat + "%2C" + long;
-	var maximum_distance = "&maximum_distance=7500"; //convert miles to meters
-	var minimum_distance = "&minimum_distance=5000";
 
-	var queryUrl = endPoint + close_to_location + maximum_distance + minimum_distance;
-	
-	if (tokenReceived) {
-		console.log("waiting");
-		$.ajax({
-			url: queryUrl,
-			method: 'GET',
-			headers: {
-				"api-key": api_key,
-				Authorization: "Bearer " + token,
-				"Content-Type": "application/json"
-			}
-		}).done(function(response){
-			console.log(response);
 
-		}).fail(function(error){
-			console.log(error);
-		});
-	}
 
 </script>
 </body>
