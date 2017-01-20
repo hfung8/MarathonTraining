@@ -5,14 +5,37 @@
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="assets/javascript/routes.js"></script>
 	<style type="text/css">
-		.map {
-			height: 400px;
-			width: 30%;
-			margin: 1.5%;
+		
+		#form {
+			position: absolute;
+			top: 20%;
+			left: 0;
+			display: none;
 		}
+
+		#maps {
+			margin: auto;
+		}
+
+		.map {
+			height: 350px;
+			width: 350px;
+			margin: 1em;
+		}
+
+
+
 	</style>
 </head>
 <body>
+
+<div id="out"></div>
+ <form id="form">
+    <div class="form-group">
+      <input type="number" max="99999" placeholder="Enter US Zip Code" id="zip-entry">
+      <button type="submit" id="submit-btn">Submit</button>
+    </div>
+  </form>
 
 <div id = "maps">
 </div>
@@ -22,11 +45,13 @@
 <!-- https://oauth2-api.mapmyapi.com/v7.1/route/?close_to_location=40.730518%2C-74.065860&maximum_distance=5000&minimum_distance=1 -->
 
 <script type="text/javascript">
+
+function getMaps(lat, long){
 	
 	var token;
 	var api_key = "uj7d2fg236gukdznvrzs5bc4fqrfscda";
 
-	
+
 	$.ajax({
 		url: "https://oauth2-api.mapmyapi.com/v7.1/oauth2/access_token/",
 		method: 'POST',
@@ -43,10 +68,10 @@
 		console.log(response);
 		token = response.access_token;
 
-			var lat = 40.730518;
-			var long = -74.065860;
+			// var lat = 40.730518;
+			// var long = -74.065860;
 			var endPoint= "https://oauth2-api.mapmyapi.com/v7.1/route/?";
-			var close_to_location =  lat + "," + long;
+			// var close_to_location =  lat + "," + long;
 			var maximum_distance = 7500; //convert miles to meters
 			var minimum_distance = 5000;
 
@@ -105,8 +130,72 @@
 
 	});
 
+}
+
+function getUserInput () {
+  
+  	$("form").show("fast");
+  	$(document).on("click", "#submit-btn", function(event) {
+	    event.preventDefault();
+	    zip = $("#zip-entry").val();
+	    $("#zip-entry").empty();
+	    $("form").hide("fast");
+	    $("#out").empty();
+
+	    //use Wunderground to get geolocation data
+	    //Wunderground API  
+		var keyId="2145db27285d6fbd";
+		var api= "https://api.wunderground.com/api/" + keyId;
+		var geolookup = api + '/geolookup/q/'; 
+		var queryUrl = geolookup + zip + ".json";
+
+		$.ajax({
+			url: queryUrl,
+			method: "GET"
+		}).done(function(response){
+			getMaps(response.location.lat, response.location.lon);
+		}).fail(function(error){
+			console.log(error);
+		});
+	});
+}
 
 
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    getUserInput();
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    
+    getMaps(latitude, longitude);
+
+//     var img = new Image();
+//     img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+//     output.appendChild(img);
+  }
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location at this time.";
+    getUserInput();
+    return;
+  }
+
+  //output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
+$(document).ready(function(){
+	geoFindMe();
+})
 
 
 
