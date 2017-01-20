@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="assets/javascript/routes.js"></script>
+</head>
+<body>
+
+<iframe id="mapmyfitness_route" src="//snippets.mapmycdn.com/routes/view/embedded/245846895?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP" height="200px" frameborder="0"></iframe>
+<iframe id="mapmyfitness_route" src="//snippets.mapmycdn.com/routes/view/embedded/245846895?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP" height="200px" frameborder="0"></iframe>
+<iframe id="mapmyfitness_route" src="//snippets.mapmycdn.com/routes/view/embedded/245846895?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP" height="200px" frameborder="0"></iframe>
+
+<!-- https://oauth2-api.mapmyapi.com/v7.1/route/?close_to_location=40.730518%2C-74.065860&maximum_distance=5000&minimum_distance=1 -->
+
+<script type="text/javascript">
+	
+	var token;
+	var api_key = "uj7d2fg236gukdznvrzs5bc4fqrfscda";
+	var tokenReceived = false;
+	
+	$.ajax({
+		url: "https://oauth2-api.mapmyapi.com/v7.1/oauth2/access_token/",
+		method: 'POST',
+		contentType: 'application/x-www-form-urlencoded',
+		data: {
+			grant_type: 'client_credentials',
+			client_id: 'uj7d2fg236gukdznvrzs5bc4fqrfscda',
+			client_secret: 'ZZRCuq9cxbF34RydE7JjSpHsNpeSCytRF5kjyA27DaU'
+		},
+		headers: {
+			'api-key': api_key
+		}
+	}).done(function(response){
+		console.log(response);
+		token = response.access_token;
+		console.log(token);
+		tokenReceived = true;
+		console.log(tokenReceived);
+	}).fail(function(error) {
+		console.log(error);
+
+	});
+
+
+
+	var lat = 40.730518;
+	var long = -74.065860;
+	var endPoint= "https://oauth2-api.mapmyapi.com/v7.1/route/?";
+	var close_to_location = "close_to_location" + lat + "%2C" + long;
+	var maximum_distance = "&maximum_distance=7500"; //convert miles to meters
+	var minimum_distance = "&minimum_distance=5000";
+
+	var queryUrl = endPoint + close_to_location + maximum_distance + minimum_distance;
+	
+	if (tokenReceived) {
+		console.log("waiting");
+		$.ajax({
+			url: queryUrl,
+			method: 'GET',
+			headers: {
+				"api-key": api_key,
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json"
+			}
+		}).done(function(response){
+			console.log(response);
+
+		}).fail(function(error){
+			console.log(error);
+		});
+	}
+
+</script>
+</body>
+
+</html>
