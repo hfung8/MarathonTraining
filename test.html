@@ -29,14 +29,18 @@
 </head>
 <body>
 
+<!-- displayed only if geolocation not available -->
 <div id="out"></div>
- <form id="form">
-    <div class="form-group">
-      <input type="number" min="00601" max="99929" placeholder="Enter US Zip Code" id="zip-entry">
-      <button type="submit" id="submit-btn">Submit</button>
-    </div>
-  </form>
 
+	<form id="form">
+	    <div class="form-group">
+	      <input type="number" min="00601" max="99929" placeholder="Enter US Zip Code" id="zip-entry">
+	      <button type="submit" id="submit-btn">Submit</button>
+	    </div>
+	</form>
+
+
+<!-- where maps will display after successful ajax calls -->
 <div id = "maps">
 </div>
 
@@ -51,7 +55,7 @@ function getMaps(lat, long){
 	var token;
 	var api_key = "uj7d2fg236gukdznvrzs5bc4fqrfscda";
 
-
+	//client side call of api to receive access token
 	$.ajax({
 		url: "https://oauth2-api.mapmyapi.com/v7.1/oauth2/access_token/",
 		method: 'POST',
@@ -68,10 +72,11 @@ function getMaps(lat, long){
 		console.log(response);
 		token = response.access_token;
 
-			// var lat = 40.730518;
-			// var long = -74.065860;
+			//token received, now to call api to get route information
+
 			var endPoint= "https://oauth2-api.mapmyapi.com/v7.1/route/?";
-			// var close_to_location =  lat + "," + long;
+			
+			// the following will need to be changed to allow for user input as well
 			var maximum_distance = 7500; //convert miles to meters
 			var minimum_distance = 5000;
 
@@ -95,6 +100,7 @@ function getMaps(lat, long){
 				}
 			}).done(function(response){
 				console.log(response);
+				//api successfully called
 
 				var namesArray = [], filteredResults = [];
 
@@ -112,10 +118,15 @@ function getMaps(lat, long){
 
 				console.log(filteredResults);
 
+				//select the first three maps to display
+				//TODO: Optional -
+					//don't filter results but have a scroll option
+
 				var mapsForDisplay = filteredResults.slice(0,3);
 
-				mapsForDisplay.forEach(function(e, i) {
-					var mapID = e._links.self[0].id;
+				//create an iframe for each map, required by mapmyrun cdn
+				mapsForDisplay.forEach(function(element) {
+					var mapID = element._links.self[0].id;
 					console.log(mapID);
 					var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", "//snippets.mapmycdn.com/routes/view/embedded/" + mapID + "?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP").appendTo("#maps");
 				})
@@ -132,6 +143,7 @@ function getMaps(lat, long){
 
 }
 
+//get user ZIP code if geolocation not available
 function getUserInput () {
   
   	$("form").show("fast");
@@ -144,6 +156,8 @@ function getUserInput () {
 
 	    //use Wunderground to get geolocation data
 	    //Wunderground API  
+
+	    	//note, there is a limit of calls to Wunderground API per minute
 		var keyId="2145db27285d6fbd";
 		var api= "https://api.wunderground.com/api/" + keyId;
 		var geolookup = api + '/geolookup/q/'; 
@@ -153,6 +167,7 @@ function getUserInput () {
 			url: queryUrl,
 			method: "GET"
 		}).done(function(response){
+
 			//send latitude and longitude data to getMaps
 			getMaps(response.location.lat, response.location.lon);
 
@@ -162,7 +177,7 @@ function getUserInput () {
 	});
 }
 
-
+//check for browser geolocation data
 function geoFindMe() {
   var output = document.getElementById("out");
 
