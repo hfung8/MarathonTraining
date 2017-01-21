@@ -57,7 +57,7 @@ const database = firebase.database();
 
             profile_picture: userImage,
 
-            lastLogin: firebase.database.ServerValue.TIMESTAMP
+            date_created: firebase.database.ServerValue.TIMESTAMP
           });
         }
 
@@ -143,10 +143,10 @@ const database = firebase.database();
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button> -->
 
-
+<button scope="public_profile,email" onlogin="checkLoginState();">Login</button>
 
 </body>
 </html>
