@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 $(document).ready(function(){
   $('.carousel.carousel-slider').carousel({full_width: true});
   $('#textarea1').val();
@@ -21,7 +21,7 @@ $('#return2').click(function() {      // When arrow is clicked
 });
         
 });
-=======
+
 //initialize date
 var d = new Date();
 var year = d.getFullYear();
@@ -127,4 +127,4 @@ function emailSignOut() {
     // An error happened.
   });
 }
->>>>>>> wes
+
