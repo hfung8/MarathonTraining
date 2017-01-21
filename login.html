@@ -7,6 +7,20 @@
 </head>
 <body>
 <script>
+
+// Initialize Firebase
+const config = {
+    apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
+    authDomain: "marathontrainer-c4507.firebaseapp.com",
+    databaseURL: "https://marathontrainer-c4507.firebaseio.com",
+    storageBucket: "marathontrainer-c4507.appspot.com",
+    messagingSenderId: "89102549201"
+};
+
+firebase.initializeApp(config);
+
+const database = firebase.database();
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -22,9 +36,25 @@
 
       $.ajax({
         method: "GET",
-        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture"
+        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture,email,location"
       }).done(function(resp) {
         console.log(resp);
+
+        var userId = resp.id;
+        var userName = resp.name;
+        var userImage = resp.picture.data.url;
+        var email = resp.email;
+        var location = resp.location;
+
+        function writeUserData() {
+          firebase.database().ref('users/' + userId).set({
+            username: userName,
+            email: email,
+            profile_picture: userImage,
+            location: location,
+            lastLogin: firebase.database.ServerValue.TIMESTAMP
+          });
+        }
 
       }).fail(function(err){
         console.log(err);
