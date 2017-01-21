@@ -48,6 +48,8 @@ const database = firebase.database();
 
         function writeUserData() {
           firebase.database().ref('users/' + userId).set({
+            loginAuth: "facebook",
+
             username: userName,
 
             profile_picture: userImage,
