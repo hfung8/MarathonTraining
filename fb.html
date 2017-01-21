@@ -113,6 +113,12 @@ const database = firebase.database();
     statusChangeCallback(response);
   });
 
+    //logout function
+  FB.logout(function(response) {
+    // user is now logged out
+    console.log(response);
+  });
+
   };
 
   // Load the SDK asynchronously
@@ -125,11 +131,7 @@ const database = firebase.database();
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-  //logout function
-  FB.logout(function(response) {
-    // user is now logged out
-    console.log(response);
-  });
+
 
 </script>
 
