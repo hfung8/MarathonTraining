@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Marathon Training</title>
+<<<<<<< HEAD:register.html
+=======
+  
+>>>>>>> wes:email.html
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
+          
+<<<<<<< HEAD:register.html
+      <script type="text/javascript" src="./assets/javascript/logic.js"></script>
+=======
+      <script type="text/javascript" src="assets/javascript/cleanse.js"></script>
+>>>>>>> wes:email.html
+    
+    
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+ <div class="row">
+  <div class="col s12">
+    <nav>
+      <div class="nav-wrapper blue">
+          <a href="index.html" class="brand-logo">Marathon Training</a>
+          <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        
+          <ul class="right hide-on-med-and-down">
+            <li><a href="about.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class = "container">
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        
+        <div class="input-field col s6">
+<<<<<<< HEAD:register.html
+          <input id="first_name" type="text" class="validate">
+=======
+          <input placeholder="Placeholder" id="first_name" type="text" class="names">
+>>>>>>> wes:email.html
+          <label for="first_name">First Name</label>
+        </div>
+        
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="names">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+<<<<<<< HEAD:register.html
+      
+=======
+      <!-- <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled">Disabled</label>
+        </div>
+      </div> -->
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+>>>>>>> wes:email.html
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+<<<<<<< HEAD:register.html
+=======
+      <div class ="row">
+        <div class="col s12">
+          <div class = "btn btn-default" id="submit">Submit</div>
+        </div>
+      </div>
+>>>>>>> wes:email.html
+    </form>
+  </div>
+</div>
+
+
+<footer class="page-footer black-text transparent">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="black-text">Footer Content</h5>
+       <!--  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="black-text">Links</h5>
+        <ul>
+         <li><a class="red-text" href="#!">Instagram</a></li>
+          <li><a class="red-text" href="#!">YouTube</a></li>
+          <li><a class="red-text" href="#!">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+ <div class="footer-copyright transparent">
+    <div class="container center">
+    © 2017 Marathon Training 
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+  
+// Initialize Firebase
+  const config = {
+    apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
+    authDomain: "marathontrainer-c4507.firebaseapp.com",
+    databaseURL: "https://marathontrainer-c4507.firebaseio.com",
+    storageBucket: "marathontrainer-c4507.appspot.com",
+    messagingSenderId: "89102549201"
+  };
+
+  firebase.initializeApp(config);
+
+  const database = firebase.database();
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var user = firebase.auth().currentUser;
+    var name, email, photoUrl, uid, emailVerified;
+
+  if (user != null) {
+    name = user.displayName;
+    email = user.email;
+    photoUrl = user.photoURL;
+    emailVerified = user.emailVerified;
+    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                     // this value to authenticate with your backend server, if
+                     // you have one. Use User.getToken() instead.
+    user.providerData.forEach(function (profile) {
+      console.log("Sign-in provider: "+profile.providerId);
+      console.log("  Provider-specific UID: "+profile.uid);
+      console.log("  Name: "+profile.displayName);
+      console.log("  Email: "+profile.email);
+      console.log("  Photo URL: "+profile.photoURL);
+    });
+
+      
+}
+  } else {
+    // No user is signed in.
+  }
+});
+
+function createUser(email, password) {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+    console.log("Code: " + errorCode + " Message: " + errorMessage);
+
+    if (errorCode === "auth/email-already-in-use") {
+      emailSignIn(email, password);
+    }
+  });
+}
+
+function emailSignIn(email, password) {
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+
+    console.log("Code: " + errorCode + " Message: " + errorMessage);
+    // ...
+  });
+}
+
+function emailSignOut() {
+
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }, function(error) {
+    // An error happened.
+  });
+}
+
+$("#submit").on('click', function(event){
+    event.preventDefault();
+    var email = $("#email").val().trim();
+    console.log(email);
+    var pass = $("#password").val().trim();
+    var first_name = $("#first_name").val().trim();
+    var last_name = $("#last_name").val().trim();
+
+
+  createUser(email, pass);
+
+
+
+
+});
+
+</script>
+
+
+</body>
+</html>
