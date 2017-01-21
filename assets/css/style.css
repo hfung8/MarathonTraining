@@ -1,11 +1,30 @@
 html, 
 
 body{
-	font-family: 'Cabin Condensed', sans-serif;
-	background: url(../images/RCBlogo.jpg);
+	font-family: 'Fjalla One', sans-serif;
+/*	background: url(../images/RCBlogo.jpg);*/
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-size: 100%;
+	background-position: center center;
+	background-attachment: fixed;
+	font-size: 14px;
 
 
 }
+
+.nav-wrapper .brand-logo #logo {
+    height: 55px;
+
+}
+
+.nav-wrapper > ul > li > a {
+	color:black;
+}
+
+nav {
+	line-height: px;
+}
+
+
+
