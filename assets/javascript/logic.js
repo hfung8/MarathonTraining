@@ -17,13 +17,13 @@ var year = d.getFullYear();
 
 //   •	marathon training
 // o	Group
-// o	Create training routes
-// o	Maps api
-// o	Meetup api
-// o	Weather api
+// o	Create training routes - not for now
+// o	Maps api - DONE
+// o	Meetup api ???
+// o	Weather api - DONE, but needs to be integrated
 // o	http://www.icreon.us/nyrr.html
-// o	Countdown to marathon
-// o	Training guide
+// o	Countdown to marathon - DONE
+// o	Training guide - DONE, but not integrated
 
 
 //TODO: 
@@ -53,7 +53,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
     var user = firebase.auth().currentUser;
-	var name, email, photoUrl, uid, emailVerified;
+    var name, email, photoUrl, uid, emailVerified;
 
 	if (user != null) {
 		name = user.displayName;
@@ -76,22 +76,30 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
+function createUser() {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+}
 
-firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
+function emailSignIn() {
 
-firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}, function(error) {
-  // An error happened.
-});
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+}
+
+function emailSignOut() {
+
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }, function(error) {
+    // An error happened.
+  });
+}

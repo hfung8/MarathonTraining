@@ -8,9 +8,6 @@
   
   <title>Marathon Training</title>
   
-    <!DOCTYPE html>
-  <html>
-    <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -24,10 +21,10 @@
       <!-- Compiled and minified JavaScript -->
       <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
           
-      <script type="text/javascript" src="./assets/javascript/cleanse.js"></script>
+      <script type="text/javascript" src="assets/javascript/cleanse.js"></script>
     
     
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 
@@ -60,18 +57,25 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          <input placeholder="Placeholder" id="first_name" type="text" class="names">
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" type="text" class="names">
           <label for="last_name">Last Name</label>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="input-field col s12">
           <input disabled value="I am not editable" id="disabled" type="text" class="validate">
           <label for="disabled">Disabled</label>
+        </div>
+      </div> -->
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
@@ -80,19 +84,9 @@
           <label for="password">Password</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
+      <div class ="row">
         <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
-          </div>
+          <div class = "btn btn-default" id="submit">Submit</div>
         </div>
       </div>
     </form>
@@ -124,6 +118,99 @@
     </div>
   </div>
 </footer>
+
+<script type="text/javascript">
+  
+// Initialize Firebase
+  const config = {
+    apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
+    authDomain: "marathontrainer-c4507.firebaseapp.com",
+    databaseURL: "https://marathontrainer-c4507.firebaseio.com",
+    storageBucket: "marathontrainer-c4507.appspot.com",
+    messagingSenderId: "89102549201"
+  };
+
+  firebase.initializeApp(config);
+
+  const database = firebase.database();
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var user = firebase.auth().currentUser;
+    var name, email, photoUrl, uid, emailVerified;
+
+  if (user != null) {
+    name = user.displayName;
+    email = user.email;
+    photoUrl = user.photoURL;
+    emailVerified = user.emailVerified;
+    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                     // this value to authenticate with your backend server, if
+                     // you have one. Use User.getToken() instead.
+      user.providerData.forEach(function (profile) {
+        console.log("Sign-in provider: "+profile.providerId);
+        console.log("  Provider-specific UID: "+profile.uid);
+        console.log("  Name: "+profile.displayName);
+        console.log("  Email: "+profile.email);
+        console.log("  Photo URL: "+profile.photoURL);
+      });
+}
+  } else {
+    // No user is signed in.
+  }
+});
+
+function createUser(email, password) {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+    console.log("Code: " + errorCode + " Message: " + errorMessage);
+
+  });
+}
+
+function emailSignIn() {
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+
+    console.log("Code: " + errorCode + " Message: " + errorMessage);
+    // ...
+  });
+}
+
+function emailSignOut() {
+
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }, function(error) {
+    // An error happened.
+  });
+}
+
+$("#submit").on('click', function(event){
+    event.preventDefault();
+    var email = $("#email").val().trim();
+    console.log(email);
+    var pass = $("#password").val().trim();
+    var first_name = $("#first_name").val().trim();
+    var last_name = $("#last_name").val().trim();
+
+
+  createUser(email, pass);
+
+
+
+
+});
+
+</script>
 
 
 </body>

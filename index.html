@@ -46,9 +46,10 @@
           <a href="index.html" class="brand-logo">Marathon Training</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
+            
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Email Login</a></li>
+            <li><a href="login.html">Facebook Login</a></li>
             <li><a target="_blank" href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2283WS&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Findex.html&scope=activity%20heartrate%20location%20profile%20weight&expires_in=604800">Fitbit Login</a></li>
           </ul>
         </div>
@@ -156,7 +157,7 @@
       }
     });
 
-const newYorkMarathon2017 = "11/05/2017 08:30 AM";
+const newYorkMarathon2017 = "11/05/2017 09:20 AM";
 const convMarDate = moment(new Date(newYorkMarathon2017));
 
 // countdown clock
@@ -166,7 +167,7 @@ var countdownClock = {
   time : function() {
     var today = moment(new Date());
       var difference = convMarDate.diff(today, 'seconds');
-      console.log(difference);
+
       return difference;
     },
 

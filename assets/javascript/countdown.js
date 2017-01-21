@@ -1,4 +1,4 @@
-const newYorkMarathon2017 = "11/05/2017 08:30 AM";
+const newYorkMarathon2017 = "11/05/2017 09:20 AM";
 const convMarDate = moment(new Date(newYorkMarathon2017));
 
 // countdown clock
@@ -8,7 +8,7 @@ var countdownClock = {
   time : function() {
     var today = moment(new Date());
       var difference = convMarDate.diff(today, 'seconds');
-      console.log(difference);
+
       return difference;
     },
 
@@ -16,9 +16,9 @@ var countdownClock = {
       tick = setInterval(countdownClock.countdown, 1000);
     },
 
-    stop: function() {
-      clearInterval(tick);
-    },
+  stop: function() {
+    clearInterval(tick);
+  },
 
   countdown: function() {
     if (countdownClock.time() === 0) {

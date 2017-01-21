@@ -37,7 +37,7 @@ const database = firebase.database();
 
       $.ajax({
         method: "GET",
-        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture"
+        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture,email"
       }).done(function(resp) {
         console.log(resp);
 
