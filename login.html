@@ -80,7 +80,7 @@ const database = firebase.database();
   // code below.
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
-      console.log(response);
+
       statusChangeCallback(response);
     });
   }
@@ -140,10 +140,10 @@ const database = firebase.database();
   the FB.login() function when clicked.
 -->
 
-<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button> -->
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
 
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div>
+
 
 </body>
 </html>
