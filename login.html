@@ -18,13 +18,11 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       console.log(response);
+      var token = response.authResponse.accessToken;
 
       $.ajax({
         method: "GET",
-        url: "https://graph.facebook.com/me?fields=id,name,picture",
-        headers: {
-          access_token: response.authResponse.accessToken
-        }
+        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture"
       }).done(function(resp) {
         console.log(resp);
 
