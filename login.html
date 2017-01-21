@@ -125,16 +125,12 @@ const database = firebase.database();
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
+  //logout function
+  FB.logout(function(response) {
+    // user is now logged out
+    console.log(response);
+  });
+
 </script>
 
 <!--
@@ -147,6 +143,7 @@ const database = firebase.database();
 </fb:login-button> -->
 
 <button scope="public_profile,email" onlogin="checkLoginState();">Login</button>
+<button onclick="FB.logout();">Logout</button>
 
 </body>
 </html>
