@@ -41,17 +41,17 @@ const database = firebase.database();
       }).done(function(resp) {
         console.log(resp);
 
-        var userId = resp.email;
+        var userEmail = resp.email;
+        var userId = resp.id;
         var userName = resp.name;
         var userImage = resp.picture.data.url;
-        var fbId = resp.id;
 
 
         function writeUserData() {
           firebase.database().ref('users/' + userId).set({
             loginAuth: "facebook",
 
-            id: fbId,
+            email: userEmail,
 
             username: userName,
 
