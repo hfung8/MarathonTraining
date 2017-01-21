@@ -56,7 +56,7 @@
   </div>
 </div>
 
-
+<button id="facebook">Facebook</button>
  <footer class="page-footer black-text transparent">
   <div class="container">
     <div class="row">
@@ -86,8 +86,49 @@
 </footer>
 
 <script type="text/javascript">
-  
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
+    authDomain: "marathontrainer-c4507.firebaseapp.com",
+    databaseURL: "https://marathontrainer-c4507.firebaseio.com",
+    storageBucket: "marathontrainer-c4507.appspot.com",
+    messagingSenderId: "89102549201"
+  };
+
+  firebase.initializeApp(config);
+  function facebookLogin(){
+var provider = new firebase.auth.FacebookAuthProvider();
+provider.addScope('user_birthday');
+provider.setCustomParameters({
+  'display': 'popup'
+});
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  console.log(result);
+  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}, function(error) {
+  // An error happened.
+});
+}
   $(document).ready(function(){
+$("#facebook").on("click", function(){
+  facebookLogin();
+});
 
 
   var params = {}, queryString = location.hash.substring(1),
