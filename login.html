@@ -37,25 +37,26 @@ const database = firebase.database();
 
       $.ajax({
         method: "GET",
-        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture,email,location"
+        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture"
       }).done(function(resp) {
         console.log(resp);
 
         var userId = resp.id;
         var userName = resp.name;
         var userImage = resp.picture.data.url;
-        var email = resp.email;
-        var location = resp.location;
+
 
         function writeUserData() {
           firebase.database().ref('users/' + userId).set({
             username: userName,
-            email: email,
+
             profile_picture: userImage,
-            location: location,
+
             lastLogin: firebase.database.ServerValue.TIMESTAMP
           });
         }
+
+        writeUserData();
 
       }).fail(function(err){
         console.log(err);
