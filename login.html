@@ -3,9 +3,25 @@
 <head>
 <title>Facebook Login JavaScript Example</title>
 <meta charset="UTF-8">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 </head>
 <body>
 <script>
+
+// Initialize Firebase
+const config = {
+    apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
+    authDomain: "marathontrainer-c4507.firebaseapp.com",
+    databaseURL: "https://marathontrainer-c4507.firebaseio.com",
+    storageBucket: "marathontrainer-c4507.appspot.com",
+    messagingSenderId: "89102549201"
+};
+
+firebase.initializeApp(config);
+
+const database = firebase.database();
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -16,7 +32,37 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+      console.log(response);
+      var token = response.authResponse.accessToken;
+
+      $.ajax({
+        method: "GET",
+        url: "https://graph.facebook.com/me?access_token=" + token + "&fields=id,name,picture"
+      }).done(function(resp) {
+        console.log(resp);
+
+        var userId = resp.id;
+        var userName = resp.name;
+        var userImage = resp.picture.data.url;
+
+
+        function writeUserData() {
+          firebase.database().ref('users/' + userId).set({
+            loginAuth: "facebook",
+
+            username: userName,
+
+            profile_picture: userImage,
+
+            lastLogin: firebase.database.ServerValue.TIMESTAMP
+          });
+        }
+
+        writeUserData();
+
+      }).fail(function(err){
+        console.log(err);
+      });
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -34,6 +80,7 @@
   // code below.
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
+      console.log(response);
       statusChangeCallback(response);
     });
   }

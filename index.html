@@ -21,6 +21,8 @@
 
       <!-- Compiled and minified JavaScript -->
       <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
+
+      <script src="bower_components/moment/moment.js"></script>
           
       <script type="text/javascript" src="assets/javascript/cleanse.js"></script>
     
@@ -56,7 +58,9 @@
   </div>
 </div>
 
+<button id="facebook">Facebook</button>
 
+<div id="timer"></div>
  <footer class="page-footer black-text transparent">
   <div class="container">
     <div class="row">
@@ -86,8 +90,17 @@
 </footer>
 
 <script type="text/javascript">
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
+    authDomain: "marathontrainer-c4507.firebaseapp.com",
+    databaseURL: "https://marathontrainer-c4507.firebaseio.com",
+    storageBucket: "marathontrainer-c4507.appspot.com",
+    messagingSenderId: "89102549201"
+  };
+
+  firebase.initializeApp(config);
   
-  $(document).ready(function(){
 
 
   var params = {}, queryString = location.hash.substring(1),
@@ -105,10 +118,128 @@
       'Authorization': 'Bearer ' + params.access_token
     },
     success: function(data) {
-      console.log('data', data);          
+      console.log('fitbit user data', data);
+
+        var userId = data.user.encodedId;
+        var userName = data.user.displayName;
+        var userImage = data.user.avatar;
+
+
+        function writeUserData() {
+          firebase.database().ref('users/' + userId).set({
+            loginAuth: "fitbit",
+
+            fitbitAccessToken: params.access_token,
+
+            username: userName,
+
+            profile_picture: userImage,
+
+            lastLogin: firebase.database.ServerValue.TIMESTAMP
+          });
+        }
+
+        $.ajax({
+          url: 'https://api.fitbit.com/1/user/-/activities/date/2017-01-20.json',
+          headers: {
+            'Authorization': 'Bearer ' + params.access_token
+          },
+
+          success: function(response) {
+            console.log('activites data', response);
+          },
+          error: function(error) {
+            console.log(error);
+          }
+
+        });
+      }
+    });
+
+const newYorkMarathon2017 = "11/05/2017 08:30 AM";
+const convMarDate = moment(new Date(newYorkMarathon2017));
+
+// countdown clock
+var tick;
+var countdownClock = {
+
+  time : function() {
+    var today = moment(new Date());
+      var difference = convMarDate.diff(today, 'seconds');
+      console.log(difference);
+      return difference;
+    },
+
+  start: function() {
+      tick = setInterval(countdownClock.countdown, 1000);
+    },
+
+    stop: function() {
+      clearInterval(tick);
+    },
+
+  countdown: function() {
+    if (countdownClock.time() === 0) {
+
+          countdownClock.stop();
+
+        } else {
+
+      let currentTime = countdownClock.timeConverter(countdownClock.time());
+          $("#timer").text(currentTime);
     }
-  });
-  })
+  },
+
+  timeConverter: function(t) {
+      //  Takes the current time in seconds and convert it to minutes and seconds (mm:ss).
+      var days = Math.floor(t/86400);
+      var hours = Math.floor((t - (days * 86400))/3600);
+      var minutes = Math.floor((t - (days * 86400) - (hours * 3600))/60);
+      var seconds = t - (days * 86400) - (hours * 3600)- (minutes * 60);
+      // allows game time to be altered in the future to more than one minute
+
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+
+      if (minutes === 0) {
+        minutes = "00";
+      }
+
+      else if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+
+      if (hours === 0) {
+        hours = "00"
+      }
+
+      else if (hours < 10) {
+        hours = "0" + hours;
+      }
+      if (days === 0) {
+        hours = "00"
+      }
+
+      else if (days < 10) {
+        days = "0" + hours;
+      }
+            if (hours === 0) {
+        hours = "00"
+      }
+
+      else if (hours < 10) {
+        hours = "0" + hours;
+      }
+
+      return days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
+    }
+}
+
+$(document).ready(function(){
+  countdownClock.start();
+});
+  
 
 </script>
 
