@@ -6,7 +6,7 @@ while (m = regex.exec(queryString)) {
 }
 console.log('params', params);
 
-if (params.access_token !== '') {
+if (params.access_token) {
   $.ajax({
     url: 'https://api.fitbit.com/1/user/-/profile.json',
     headers: {
