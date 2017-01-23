@@ -8,29 +8,37 @@
   
   <title>Marathon Training</title>
 
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- platform.js -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     
-      <!-- Compiled and minified CSS -->
-      <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
 
-      <!-- Compiled and minified JavaScript -->
-      <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
-          
-      <script type="text/javascript" src="./assets/javascript/logic.js"></script>
-    
+    <!-- Compiled and minified JavaScript -->
+    <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
+         
+
     
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
-    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <!--Firebase JS-->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- slider and firebase initialization     -->
+    <script type="text/javascript" src="assets/javascript/logic.js"></script>
+    
+    <!-- email login script   -->
+    <script type="text/javascript" src="assets/javascript/email-login.js" ></script>
 
 
 </head>
@@ -58,8 +66,9 @@
           <ul class="right hide-on-med-and-down">
             <li><a href="profile.html">MY ACCOUNT</a><li>
             <li><a href="#aboutpg">ABOUT</a></li>
-            <li><a href="#registerpg">REGISTER</a></li>
+            <li id="#register"><a href="#registerpg">REGISTER</a></li>
             <li><a href="#contactpg">CONTACT</a></li>
+            <li class="sign-out"><a>SIGN OUT</a></li>
           </ul>
         
           <ul class="side-nav" id="mobile-demo">
@@ -67,6 +76,7 @@
             <li><a href="#aboutpg">About</a></li>
             <li><a href="#registerpg">Register</a></li>
             <li><a href="#contactpg">Contact</a></li>
+            <li class="sign-out">Sign Out</li>
           </ul>
         </div>
       </nav>
@@ -163,6 +173,29 @@
             <label for="email">Email</label>
           </div>
         </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <div class ="row">
+        <div class="col s6">
+          <div class = "btn btn-default" id="sign-in">Sign In</div>
+        </div>
+
+        <div class="col s6">
+          <div class = "btn btn-default" id="sign-up">Sign Up</div>
+        </div>
+
+        <div class="col s6">
+          <div class = "btn btn-default" id="sign-out">Sign Out</div>
+        </div>
+      </div>
+
+
       </form>
     </div>
   </div>
