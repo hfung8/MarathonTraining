@@ -1,13 +1,29 @@
+// Initialize Firebase
+const config = {
+  apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
+  authDomain: "marathontrainer-c4507.firebaseapp.com",
+  databaseURL: "https://marathontrainer-c4507.firebaseio.com",
+  storageBucket: "marathontrainer-c4507.appspot.com",
+  messagingSenderId: "89102549201"
+};
+
+firebase.initializeApp(config);
+
+const database = firebase.database();
+
 /**
  * Handles the sign in button press.
  */
 function toggleSignIn() {
 
-  if (!firebase.auth().currentUser) { //someone clicked login button
-    
+  if (firebase.auth().currentUser) {
+    // [START signout]
+    firebase.auth().signOut();
+    // [END signout]
+  } else {
     var email = $('#email').val().trim();
+    console.log("user entered " + email);
     var password = $('#password').val().trim();
-    $("input").val('');
     if (email.length < 4) {
       alert('Please enter an email address.');
       return;
@@ -29,14 +45,11 @@ function toggleSignIn() {
         alert(errorMessage);
       }
       console.log(error);
+
       // [END_EXCLUDE]
     });
+    console.log("logged-in");
     // [END authwithemail]
-  } else {
-    //this means someone clicked logout button
-    // [START signout]
-    firebase.auth().signOut();
-    // [END signout]
   }
 }
 
@@ -155,7 +168,7 @@ function initApp() {
   // [END authstatelistener]
 
 
-  $('#email-login').click(toggleSignIn);
+  $('#sign-in').click(toggleSignIn);
   $('#sign-up').click(handleSignUp);
   $('#sign-out').click(toggleSignIn);
 
@@ -176,7 +189,7 @@ $(document).ready(function() {
     $(".login").show('fast');
     $(".register").hide('fast');
   });
-  
+
   $(".register-btn").click(function(){
     $('.register').show('fast');
     $(".login").hide('fast');

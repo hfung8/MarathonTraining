@@ -28,15 +28,3 @@ var year = d.getFullYear();
 
 });
 
-// Initialize Firebase
-const config = {
-  apiKey: "AIzaSyA86KcIckWm_hvCyb8iIqRDB0tkL9q_aZI",
-  authDomain: "marathontrainer-c4507.firebaseapp.com",
-  databaseURL: "https://marathontrainer-c4507.firebaseio.com",
-  storageBucket: "marathontrainer-c4507.appspot.com",
-  messagingSenderId: "89102549201"
-};
-
-firebase.initializeApp(config);
-
-const database = firebase.database();
