@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+var email, displayName;
+
 /**
  * Handles the sign in button press.
  */
@@ -21,7 +23,7 @@ function toggleSignIn() {
     firebase.auth().signOut();
     // [END signout]
   } else {
-    var email = $('#email').val().trim();
+    email = $('#email').val().trim();
     console.log("user entered " + email);
     var password = $('#password').val().trim();
     if (email.length < 4) {
@@ -57,8 +59,12 @@ function toggleSignIn() {
  * Handles the sign up button press on registration page
  */
 function handleSignUp() {
-  var email = $('#email').val().trim();
+  email = $('#email').val().trim();
   var password = $('#password').val().trim();
+  var firstName = $('#first_name').val().trim();
+  var lastName = $('#last_name').val().trim();
+  displayName = firstName + " " + lastName;
+  console.log(displayName);
   if (email.length < 4) {
     alert('Please enter an email address.');
     return;
@@ -71,6 +77,20 @@ function handleSignUp() {
   // [START createwithemail]
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function(data){
     console.log(data);
+
+    userId = data.uid;
+
+    console.log(userId);
+
+    database.ref('users/' + userId).set({
+            
+      email: email,
+
+      displayName: displayName,
+
+      date_created: firebase.database.ServerValue.TIMESTAMP
+    });
+
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -101,7 +121,7 @@ function sendEmailVerification() {
 }
 
 function sendPasswordReset() {
-  var email = $('#email').val().trim();
+  email = $('#email').val().trim();
   // [START sendpasswordemail]
   firebase.auth().sendPasswordResetEmail(email).then(function() {
     // Password Reset Email Sent!
@@ -146,7 +166,7 @@ function initApp() {
       var uid = user.uid;
       var providerData = user.providerData;
 
-      $("#sign-out").show("fast");
+      $(".sign-out").show("fast");
       $("#sign-in").hide("fast");
       $("#sign-up").hide("fast");
 
@@ -157,7 +177,7 @@ function initApp() {
 
     } else {
 
-      $("#sign-out").hide("fast");
+      $(".sign-out").hide("fast");
       $("#sign-in").show("fast");
       $("#sign-up").show("fast");
       // User is signed out.
@@ -167,10 +187,22 @@ function initApp() {
   });
   // [END authstatelistener]
 
+  //navbar buttons 
+  $(".login-btn").click(function(){
+    $(".login").show('fast');
+    $(".register").hide('fast');
+  });
 
+  $(".register-btn").click(function(){
+    $('.register').show('fast');
+    $(".login").hide('fast');
+  });
+
+  //sign-in, sign-out buttons on form
   $('#sign-in').click(toggleSignIn);
-  $('#sign-up').click(handleSignUp);
   $('#sign-out').click(toggleSignIn);
+  $('#sign-up').click(handleSignUp);
+  
 
 
   $("#fitbit-login").click(function(){
@@ -185,21 +217,5 @@ function initApp() {
 $(document).ready(function() {
   initApp();  
 
-  $(".login-btn").click(function(){
-    $(".login").show('fast');
-    $(".register").hide('fast');
-  });
 
-  $(".register-btn").click(function(){
-    $('.register').show('fast');
-    $(".login").hide('fast');
-  });
-    $(".login-btn").click(function(){
-    $(".login").show('fast');
-    $(".register").hide('fast');
-  });
-  $(".register-btn").click(function(){
-    $('.register').show('fast');
-    $(".login").hide('fast');
-  });
 });
