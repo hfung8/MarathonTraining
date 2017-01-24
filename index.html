@@ -40,7 +40,7 @@
     <!-- email login script   -->
     <script type="text/javascript" src="assets/javascript/login-handlers.js" ></script>
     <!-- fitbit token script   -->
-    <script type="text/javascript" src="assets/javascript/fitbit-token-received.js" ></script>
+    <!-- <script type="text/javascript" src="assets/javascript/fitbit-token-received.js" ></script> -->
 
 
 </head>
@@ -65,19 +65,31 @@
           <a href="index.html" class="brand-logo"><img class="responsive-img" id=logo src="assets//images/RCBlogo.jpg"></a>
           <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="material-icons black-text">menu</i></a>
         
-          <ul class="right hide-on-med-and-down">
-            <li><a href="profile.html">MY ACCOUNT</a><li>
-            <li><a href="#aboutpg">ABOUT</a></li>
-            <li id="#register"><a href="#registerpg">REGISTER</a></li>
-            <li><a href="#contactpg">CONTACT</a></li>
+          <!-- Dropdown Structure -->
+          <ul id="dropdown1" class="dropdown-content">
+            <li class="register-btn"><a href="#registerpg">REGISTER</a></li>
+            <li class="login-btn"><a href="#registerpg">LOGIN</a></li>
+            <li class="divider"></li>
             <li class="sign-out"><a>SIGN OUT</a></li>
           </ul>
+
+          <ul class="right hide-on-med-and-down">
+            <li id="profile-link"><a href="profile.html">MY ACCOUNT</a><li>
+            <li><a href="#aboutpg">ABOUT</a></li>
+            <li><a href="#contactpg">CONTACT</a></li>
+            <!-- Dropdown Trigger -->
+            <li id='login-status'><a class="dropdown-button" href="#!" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+            
+            
         
           <ul class="side-nav" id="mobile-demo">
             <li><a href="index.html">Home</a></li>
             <li><a href="#aboutpg">About</a></li>
-            <li><a href="#registerpg">Register</a></li>
+            
             <li><a href="#contactpg">Contact</a></li>
+            <li class="register-btn"><a href="#registerpg">Register</a></li>
+            <li class="login-btn"><a href="#registerpg">Login</a></li>
             <li class="sign-out">Sign Out</li>
           </ul>
         </div>
@@ -152,18 +164,18 @@
 
   <img class="center responsive-img" src="assets/images/mainSocialrunning.JPG">
 
-  <h3><center>Register</center></h3>
+  <h3><center><span class = "register">Register</span><span class = "login">Login</span></center></h3>
 
       <div class="row">
       <form class="col s12">
         <div class="row">
           
-          <div class="input-field col s6">
+          <div class="input-field col s6 register">
             <input id="first_name" type="text" class="validate">
             <label for="first_name">First Name</label>
           </div>
           
-          <div class="input-field col s6">
+          <div class="input-field col s6 register">
             <input id="last_name" type="text" class="validate">
             <label for="last_name">Last Name</label>
           </div>
@@ -184,16 +196,16 @@
       </div>
 
       <div class ="row">
-        <div class="col s6">
+        <div class="col s6 login">
           <div class = "btn btn-default" id="sign-in">Sign In</div>
         </div>
 
-        <div class="col s6">
+        <div class="col s6 register">
           <div class = "btn btn-default" id="sign-up">Sign Up</div>
         </div>
 
         <div class="col s6">
-          <div class = "btn btn-default" id="sign-out">Sign Out</div>
+          <div class = "btn btn-default sign-out">Sign Out</div>
         </div>
       </div>
 

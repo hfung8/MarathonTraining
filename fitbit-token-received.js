@@ -1,12 +1,16 @@
-var params = {}, queryString = location.hash.substring(1),
-    regex = /([^&=]+)=([^&]*)/g, m;
+var fbClick = false;
 
-while (m = regex.exec(queryString)) {
-  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-}
-console.log('params', params);
+if (fbClick === true) {
 
-if (params.access_token) {
+  var params = {}, queryString = location.hash.substring(1),
+      regex = /([^&=]+)=([^&]*)/g, m;
+
+  while (m = regex.exec(queryString)) {
+    params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+  }
+
+  console.log('params', params);
+
   $.ajax({
     url: 'https://api.fitbit.com/1/user/-/profile.json',
     headers: {
