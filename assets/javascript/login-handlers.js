@@ -88,7 +88,9 @@ function handleSignUp() {
 
       displayName: displayName,
 
-      date_created: firebase.database.ServerValue.TIMESTAMP
+      date_created: firebase.database.ServerValue.TIMESTAMP,
+
+      training_plan: 
     });
 
   }).catch(function(error) {
