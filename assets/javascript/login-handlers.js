@@ -82,7 +82,7 @@ function handleSignUp() {
 
     console.log(userId);
 
-    database.ref('users/' + userId).push({
+    database.ref('users/' + userId).set({
             
       email: email,
 
@@ -90,7 +90,11 @@ function handleSignUp() {
 
       date_created: firebase.database.ServerValue.TIMESTAMP,
 
-      training_plan: 
+    });
+
+    //add training plan for user
+    database.ref('plans/' + userId).set({
+      training_plan: trainingPlan
     });
 
   }).catch(function(error) {

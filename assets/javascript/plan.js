@@ -1,7 +1,7 @@
-var trainingPlan = {
+const trainingPlan = {
 	startDate: null,
 	week01: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -9,7 +9,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 3,
 			type: 'Regular',
 			fitBitData: null,
@@ -17,7 +17,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -25,7 +25,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 3,
 			type: 'Regular',
 			fitBitData: null,
@@ -33,7 +33,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -41,7 +41,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -49,7 +49,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 6,
 			type: 'Long',
 			fitBitData: null,
@@ -59,7 +59,7 @@ var trainingPlan = {
 		} 
 	},
 	week02: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -67,7 +67,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 3,
 			type: 'Fartlek',
 			fitBitData: null,
@@ -75,7 +75,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -83,7 +83,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 4,
 			type: 'Regular',
 			fitBitData: null,
@@ -91,7 +91,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -99,7 +99,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 3,
 			type: 'AYF',
 			fitBitData: null,
@@ -107,7 +107,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 8,
 			type: 'Long',
 			fitBitData: null,
@@ -117,7 +117,7 @@ var trainingPlan = {
 		} 
 	},
 	week03: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -125,7 +125,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 4,
 			type: 'Tempo',
 			fitBitData: null,
@@ -133,7 +133,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -141,7 +141,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 5,
 			type: 'Regular',
 			fitBitData: null,
@@ -149,7 +149,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -157,7 +157,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 4,
 			type: 'AYF',
 			fitBitData: null,
@@ -165,7 +165,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 10,
 			type: 'Long',
 			fitBitData: null,
@@ -175,7 +175,7 @@ var trainingPlan = {
 		}
 	},
 	week04: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -183,7 +183,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 4,
 			type: 'Intervals',
 			fitBitData: null,
@@ -191,7 +191,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -199,7 +199,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 6,
 			type: 'Regular',
 			fitBitData: null,
@@ -207,7 +207,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -215,7 +215,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 4,
 			type: 'AYF',
 			fitBitData: null,
@@ -223,7 +223,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 12,
 			type: 'Long',
 			fitBitData: null,
@@ -233,7 +233,7 @@ var trainingPlan = {
 		}
 	},
 	week05: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -241,7 +241,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 5,
 			type: 'Hills',
 			fitBitData: null,
@@ -249,7 +249,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -257,7 +257,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 6,
 			type: 'Regular',
 			fitBitData: null,
@@ -265,7 +265,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -273,7 +273,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 5,
 			type: 'AYF',
 			fitBitData: null,
@@ -281,7 +281,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 10,
 			type: 'Long',
 			fitBitData: null,
@@ -291,7 +291,7 @@ var trainingPlan = {
 		}
 	},
 	week06: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -299,7 +299,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 5,
 			type: 'Tempo',
 			fitBitData: null,
@@ -307,7 +307,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -315,7 +315,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 5,
 			type: 'Regular',
 			fitBitData: null,
@@ -323,7 +323,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -331,7 +331,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -339,7 +339,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 14,
 			type: 'Long',
 			fitBitData: null,
@@ -349,7 +349,7 @@ var trainingPlan = {
 		}
 	},
 	week07: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -357,7 +357,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 5,
 			type: 'Intervals',
 			fitBitData: null,
@@ -365,7 +365,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -373,7 +373,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 5,
 			type: 'Regular',
 			fitBitData: null,
@@ -381,7 +381,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -389,7 +389,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 5,
 			type: 'AYF',
 			fitBitData: null,
@@ -397,7 +397,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 10,
 			type: 'Long',
 			fitBitData: null,
@@ -407,7 +407,7 @@ var trainingPlan = {
 		}
 	},
 	week08: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -415,7 +415,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 4,
 			type: 'Hills',
 			fitBitData: null,
@@ -423,7 +423,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -431,7 +431,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 6,
 			type: 'Regular',
 			fitBitData: null,
@@ -439,7 +439,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -447,7 +447,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 5,
 			type: 'AYF',
 			fitBitData: null,
@@ -455,7 +455,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 16,
 			type: 'Long',
 			fitBitData: null,
@@ -465,7 +465,7 @@ var trainingPlan = {
 		}
 	},
 	week09: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -473,7 +473,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 6,
 			type: 'Tempo',
 			fitBitData: null,
@@ -481,7 +481,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -489,7 +489,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 5,
 			type: 'Regular',
 			fitBitData: null,
@@ -497,7 +497,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -505,7 +505,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 5,
 			type: 'AYF',
 			fitBitData: null,
@@ -513,7 +513,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 10,
 			type: 'Long',
 			fitBitData: null,
@@ -523,15 +523,15 @@ var trainingPlan = {
 		}
 	},
 	week10: {
-		monday: ,{
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
 			completed: false,
 			weather: null,
 			map: null
-		}
-		tuesday: {
+		},
+		day02: {
 			distance: 5,
 			type: 'Intervals',
 			fitBitData: null,
@@ -539,7 +539,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -547,7 +547,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 6,
 			type: 'Regular',
 			fitBitData: null,
@@ -555,7 +555,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -563,7 +563,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 4,
 			type: 'AYF',
 			fitBitData: null,
@@ -571,7 +571,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 18,
 			type: 'Long',
 			fitBitData: null,
@@ -581,7 +581,7 @@ var trainingPlan = {
 		}
 	},
 	week11: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -589,7 +589,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 5,
 			type: 'Hills',
 			fitBitData: null,
@@ -597,7 +597,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -605,7 +605,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 8,
 			type: 'Regular',
 			fitBitData: null,
@@ -613,7 +613,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -621,7 +621,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 5,
 			type: 'AYF',
 			fitBitData: null,
@@ -629,7 +629,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 10,
 			type: 'Long',
 			fitBitData: null,
@@ -639,7 +639,7 @@ var trainingPlan = {
 		}
 	},
 	week12: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -647,7 +647,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 8,
 			type: 'Tempo',
 			fitBitData: null,
@@ -655,7 +655,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -663,7 +663,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 6,
 			type: 'Regular',
 			fitBitData: null,
@@ -671,7 +671,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -679,7 +679,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -687,7 +687,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 20,
 			type: 'Long',
 			fitBitData: null,
@@ -697,15 +697,15 @@ var trainingPlan = {
 		}
 	},
 	week13: {
-		monday: ,{
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
 			completed: false,
 			weather: null,
 			map: null
-		}
-		tuesday: {
+		},
+		day02: {
 			distance: 4,
 			type: 'Intervals',
 			fitBitData: null,
@@ -713,7 +713,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -721,7 +721,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 8,
 			type: 'Regular',
 			fitBitData: null,
@@ -729,7 +729,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -737,7 +737,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 5,
 			type: 'AYF',
 			fitBitData: null,
@@ -745,7 +745,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 10,
 			type: 'Long',
 			fitBitData: null,
@@ -755,7 +755,7 @@ var trainingPlan = {
 		}
 	},
 	week14: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -763,7 +763,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 4,
 			type: 'Hills',
 			fitBitData: null,
@@ -771,7 +771,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -779,7 +779,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 6,
 			type: 'Regular',
 			fitBitData: null,
@@ -787,15 +787,15 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
 			completed: false,
 			weather: null,
 			map: null
-		}
-		saturday: {
+		},
+		day06: {
 			distance: 4,
 			type: 'AYF',
 			fitBitData: null,
@@ -803,7 +803,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 12,
 			type: 'Long',
 			fitBitData: null,
@@ -813,7 +813,7 @@ var trainingPlan = {
 		} 
 	},
 	week15: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -821,7 +821,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 3,
 			type: 'Tempo',
 			fitBitData: null,
@@ -829,7 +829,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -837,7 +837,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 5,
 			type: 'Regular',
 			fitBitData: null,
@@ -845,7 +845,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -853,7 +853,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 4,
 			type: 'AYF',
 			fitBitData: null,
@@ -861,7 +861,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 7,
 			type: 'Long',
 			fitBitData: null,
@@ -871,7 +871,7 @@ var trainingPlan = {
 		}
 	},
 	week16: {
-		monday: {
+		day01: {
 			distance: 3,
 			type: 'flex',
 			fitBitData: null,
@@ -879,7 +879,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		tuesday: {
+		day02: {
 			distance: 3,
 			type: 'Regular',
 			fitBitData: null,
@@ -887,7 +887,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		wednesday: {
+		day03: {
 			distance: 0,
 			type: 'off',
 			fitBitData: null,
@@ -895,7 +895,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		thursday: {
+		day04: {
 			distance: 3,
 			type: 'Regular',
 			fitBitData: null,
@@ -903,7 +903,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		friday: {
+		day05: {
 			distance: 0,
 			type: '0ff',
 			fitBitData: null,
@@ -911,7 +911,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		saturday: {
+		day06: {
 			distance: 2,
 			type: 'AYF',
 			fitBitData: null,
@@ -919,7 +919,7 @@ var trainingPlan = {
 			weather: null,
 			map: null
 		},
-		sunday: {
+		day07: {
 			distance: 26.2,
 			type: 'race',
 			fitBitData: null,
@@ -929,3 +929,5 @@ var trainingPlan = {
 		}
 	} 
 }
+
+console.log(trainingPlan);

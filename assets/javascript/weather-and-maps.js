@@ -195,7 +195,7 @@ function getMaps(lat, long){
         //TODO: Optional -
           //don't filter results but have a scroll option
 
-        var mapsForDisplay = filteredResults.slice(0,3);
+        var mapsForDisplay = filteredResults.slice(0,6);
 
         //create an iframe for each map, required by mapmyrun cdn
         mapsForDisplay.forEach(function(element) {
