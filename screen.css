@@ -75,7 +75,6 @@ p.intro strong {
 .type-interior .content-secondary {
   border-right: 0;
   border-left: 0;
-  margin: 10px -15px 0;
   background: #EEE !important;
   border-top: 1px solid #ccc;
   height: 100%;
@@ -123,12 +122,13 @@ p.intro strong {
 
 .type-interior .content-primary ul:first-child {
   margin: 0;
-  margin-bottom: 109px;
+  margin-bottom: 120px;
 }
 
 .type-interior .content-secondary {
   display: none;
 }
+
 
 /* docs site layout */
 

@@ -189,7 +189,6 @@ $(document).ready(function () {
       message: self.handleMessage,
       presence   : function( message, env, channel ) {
         if (message.action == "join") {
-          $(".content-secondary").css('display', 'inherit');
           users.push(message.uuid);
           console.log(users);
           userList.append("<li data-username='" + message.uuid + "'>" + message.uuid + "</li>");

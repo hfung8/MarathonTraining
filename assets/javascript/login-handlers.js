@@ -167,19 +167,22 @@ function initApp() {
       var providerData = user.providerData;
 
       $(".sign-out").show("fast");
-      $("#sign-in").hide("fast");
-      $("#sign-up").hide("fast");
+      $(".login-btn").hide("fast");
+      $(".register-btn").hide("fast");
+      $("#page2").hide('fast');
 
-      
+      console.log("Signed-in");
       // if (!emailVerified) {
       //   document.getElementById('quickstart-verify-email').disabled = false;
       // }
 
     } else {
 
+      console.log("Signed-out");
       $(".sign-out").hide("fast");
-      $("#sign-in").show("fast");
-      $("#sign-up").show("fast");
+      $(".login-btn").show("fast");
+      $(".register-btn").show("fast");
+      $('#page2').show("fast");
       // User is signed out.
       
     }
@@ -200,7 +203,7 @@ function initApp() {
 
   //sign-in, sign-out buttons on form
   $('#sign-in').click(toggleSignIn);
-  $('#sign-out').click(toggleSignIn);
+  $('.sign-out').click(toggleSignIn);
   $('#sign-up').click(handleSignUp);
   
 
