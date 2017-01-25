@@ -56,9 +56,6 @@ var countdownClock = {
         hours = "00"
       }
 
-      else if (hours < 10) {
-        hours = "0" + hours;
-      }
       if (days === 0) {
         hours = "00"
       }

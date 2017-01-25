@@ -72,7 +72,12 @@ nav {
 }
 
 .map {
-	height: 350px;
-	width: 350px;
+	height: 400px;
+	width: 400px;
+	margin: 0 auto;
+	display: block;
+}
+
+.map-wrapper {
 	margin: 1em;
 }
