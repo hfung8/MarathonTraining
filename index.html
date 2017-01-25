@@ -29,7 +29,7 @@
          
 
     
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!--Firebase JS-->
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
@@ -39,6 +39,9 @@
     
     <!-- email login script   -->
     <script type="text/javascript" src="assets/javascript/login-handlers.js" ></script>
+
+    <!-- countdown clock script -->
+    <script type="text/javascript" src="assets/javascript/countdown.js" ></script>
     <!-- fitbit token script   -->
     <!-- <script type="text/javascript" src="assets/javascript/fitbit-token-received.js" ></script> -->
 
@@ -47,15 +50,8 @@
 
 <body>
 
-      
-
-<!-- <div class= "container">
-  <div class= "row">
-    <div class="col s12">
-     <div class="g-signin2" data-onsuccess="onSignIn"></div> 
-    </div>
-  </div>
-</div> -->
+<!-- countdown clock -->
+<div id = "countdown"></div>
 
 <!-- NAVBAR -->
 
@@ -212,10 +208,21 @@
   </div>
 </div>
 
+<!-- user profile -->
+
+<div class = "container col s12">
+  <div id="page3">
+    <a id="profilepg" class="smooth"></a>
+  
+      <h3><center>Welcome&nbsp;<span id="name"></span></center></h3>
+
+  </div>
+</div>
+
 <!-- CONTACT -->
 
 <div class = "container col s12">
-<div id="page3">
+<div id="page4">
   <a id="contactpg" class="smooth"></a>
 
   <img class="center responsive-img" src="assets/images/mainEvent1.JPG">

@@ -28,7 +28,7 @@ var countdownClock = {
         } else {
 
       let currentTime = countdownClock.timeConverter(countdownClock.time());
-          $("#timer").text(currentTime);
+          $("#countdown").text(currentTime);
     }
   },
 

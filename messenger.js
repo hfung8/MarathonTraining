@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
   ////
   // PubNub Decorator
   // -------------------
@@ -255,9 +257,12 @@ $(document).ready(function () {
   ChatView.prototype.handleMessage = function (message, animate) {
     if (animate !== false) animate = true;
 
+    var date = moment(new Date());
+    var time = date.format('hh:mm A MMM DD');
+
     var messageEl = $("<li class='message'>"
         + "<span class='username'>" + message.username + "</span>"
-        + ": " + message.text
+        + "<span class='msg-time'> @ " + time + "</span> - " + message.text 
         + "</li>");
     messageList.append(messageEl);
     messageList.listview('refresh');

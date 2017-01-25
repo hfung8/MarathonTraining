@@ -63,7 +63,7 @@ function handleSignUp() {
   var password = $('#password').val().trim();
   var firstName = $('#first_name').val().trim();
   var lastName = $('#last_name').val().trim();
-  displayName = firstName + " " + lastName;
+  displayName = firstName + "+" + lastName;
   console.log(displayName);
   if (email.length < 4) {
     alert('Please enter an email address.');
@@ -172,6 +172,10 @@ function initApp() {
       $("#page2").hide('fast');
 
       console.log("Signed-in");
+
+      $("#name").text(displayName.replace(/[+]/g," "));
+
+      getWeather();
       // if (!emailVerified) {
       //   document.getElementById('quickstart-verify-email').disabled = false;
       // }

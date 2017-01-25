@@ -3,6 +3,7 @@ textarea {
   resize: none;
 }
 
+
 /* Message Styling */
 span.username {
   float: right;
@@ -127,6 +128,10 @@ p.intro strong {
 
 .type-interior .content-secondary {
   display: none;
+}
+
+.msg-time {
+  color: rgba(0,255,0, 1);
 }
 
 
