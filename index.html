@@ -70,11 +70,11 @@
 
           <!-- countdown clock -->
           <span id = "countdown"></span>
-        
+
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content">
-            <li class="register-btn"><a href="#registerpg">REGISTER</a></li>
-            <li class="login-btn"><a href="#registerpg">LOGIN</a></li>
+            <li class="register-btn"><a href="#modal1">REGISTER</a></li>
+            <li class="login-btn"><a href="#modal1">LOGIN</a></li>
             <li class="divider"></li>
             <li class="sign-out"><a>SIGN OUT</a></li>
           </ul>
@@ -94,8 +94,8 @@
             <li><a href="#aboutpg">About</a></li>
             
             <li><a href="#contactpg">Contact</a></li>
-            <li class="register-btn"><a href="#registerpg">Register</a></li>
-            <li class="login-btn"><a href="#registerpg">Login</a></li>
+            <li class="register-btn"><a href="#modal1">Register</a></li>
+            <li class="login-btn"><a href="#modal1">Login</a></li>
             <li class="sign-out"><a>Sign Out</a></li>
           </ul>
         </div>
@@ -158,70 +158,59 @@
         As long as you run to run."</p>
   </div>  
 
-
+  <!-- <img class="center responsive-img" src="assets/images/mainSocialrunning.JPG"> -->
 </div>
 
+  
+<!-- REGISTER / LOGIN MODAL -->
 
-<!-- REGISTER -->
+  
 
-<div class = "container col s12">
-<div id="page2">
-  <a id="registerpg" class="smooth"></a>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <form class="col s12">
+      <div class="modal-content">
 
-  <img class="center responsive-img" src="assets/images/mainSocialrunning.JPG">
-
-  <h3><center><span class = "register">Register</span><span class = "login">Login</span></center></h3>
-
-      <div class="row">
-      <form class="col s12">
-        <div class="row">
-          
-          <div class="input-field col s6 register">
-            <input id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
+          <div class="row">
+            <div class="input-field col s6 register">
+              <input id="first_name" type="text" class="validate">
+              <label for="first_name">First Name</label>
+            </div>
+            
+            <div class="input-field col s6 register">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+            </div>
           </div>
           
-          <div class="input-field col s6 register">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
           </div>
-        </div>
-        
+
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
-            <label for="email">Email</label>
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
           </div>
         </div>
 
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
       </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close btn waves-effect waves-light login" id="sign-in">Sign In<i class="material-icons right">send</i></a>
 
-      <div class ="row">
-        <div class="col s6 login">
-          <div class = "btn btn-default" id="sign-in">Sign In</div>
-        </div>
-
-        <div class="col s6 register">
-          <div class = "btn btn-default" id="sign-up">Sign Up</div>
-        </div>
-
-      </div>
-
-
-      </form>
-    </div>
-  </div>
-</div>
+        <a href="#!" class=" modal-action modal-close btn waves-effect waves-light register" id="sign-up">Sign Up<i class="material-icons right">send</i></a>
+      </div> <!-- end modal footer -->
+    </div> <!-- end modal content -->
+  </form>
+</div> <!-- end modal -->
 
 <!-- user profile -->
 
 <div class = "container col s12">
-  <div id="page3">
+  <div id="page2">
     <a id="profilepg" class="smooth"></a>
   
       <h3><center>Welcome&nbsp;<span id="name"></span></center></h3>

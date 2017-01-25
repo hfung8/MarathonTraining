@@ -180,7 +180,7 @@ function initApp() {
       $(".sign-out").show("fast");
       $(".login-btn").hide("fast");
       $(".register-btn").hide("fast");
-      $("#page2").hide('fast');
+      $("#page2").show('fast');
 
       console.log("Signed-in");
 
@@ -197,7 +197,7 @@ function initApp() {
       $(".sign-out").hide("fast");
       $(".login-btn").show("fast");
       $(".register-btn").show("fast");
-      $('#page2').show("fast");
+      $('#page2').hide("fast");
       // User is signed out.
       
     }
@@ -233,7 +233,6 @@ function initApp() {
 }
 
 $(document).ready(function() {
-  initApp();  
-
-
+  initApp(); 
+  $('.modal').modal();
 });
