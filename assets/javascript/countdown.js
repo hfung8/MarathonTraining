@@ -77,3 +77,7 @@ var countdownClock = {
       return days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
     }
 }
+
+$(document).ready(function(){
+  countdownClock.start();
+});

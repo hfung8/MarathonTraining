@@ -21,13 +21,14 @@
     <!-- platform.js -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
-    <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
-         
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    
+    <!-- moment.js   -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -42,6 +43,12 @@
 
     <!-- countdown clock script -->
     <script type="text/javascript" src="assets/javascript/countdown.js" ></script>
+
+    <!-- current weather script -->
+    <script type="text/javascript" src="assets/javascript/weather.js"></script>
+
+    <!-- get maps script -->
+    <script type="text/javascript" src="assets/javascript/routes.js"></script>
     <!-- fitbit token script   -->
     <!-- <script type="text/javascript" src="assets/javascript/fitbit-token-received.js" ></script> -->
 
@@ -50,8 +57,7 @@
 
 <body>
 
-<!-- countdown clock -->
-<div id = "countdown"></div>
+
 
 <!-- NAVBAR -->
 
@@ -60,6 +66,9 @@
       <div class="nav-wrapper white col s12">
           <a href="index.html" class="brand-logo"><img class="responsive-img" id=logo src="assets/images/RCBlogo.png"></a>
           <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="material-icons black-text">menu</i></a>
+
+          <!-- countdown clock -->
+          <span id = "countdown"></span>
         
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content">
@@ -215,6 +224,57 @@
     <a id="profilepg" class="smooth"></a>
   
       <h3><center>Welcome&nbsp;<span id="name"></span></center></h3>
+
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img id = "weather-img" src="https://static.pexels.com/photos/132687/pexels-photo-132687.jpeg">
+              <span class="card-title">
+                <div class = "weather">
+        
+                  <div class = "tc">
+                    <span class="temp"></span>&nbsp;<span class="conditions"></span>
+                  </div>
+                  
+                  <div class="wind"></div>
+                  
+                  <div class="humidity"></div>
+                  
+                  <div class="time"></div>
+                  
+                </div>
+              </span>
+            </div>
+            <div class="card-content">
+              <div class = "location">
+                <div class="city"></div>
+                <div class="coordinates">
+                  <p><span class="lat"></span>,&nbsp;<span class="lon"></span></p>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-action">
+              <button id="get-maps">Get Maps</button>
+              <div id="out"></div>
+
+              <form id="location-form">
+                  <div class="form-group">
+                    <input type="number" min="00601" max="99929" placeholder="Enter US Zip Code" id="zip-entry">
+                    <button type="submit" id="submit-btn">Submit</button>
+                  </div>
+              </form>
+
+              <div id="maps"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+
 
   </div>
 </div>

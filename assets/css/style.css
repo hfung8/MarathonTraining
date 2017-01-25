@@ -1,3 +1,12 @@
+html {
+	min-height: 100%;
+}
+
+body {
+	height: 100%;
+	
+}
+
 html, 
 
 body{
@@ -11,6 +20,10 @@ body{
 	font-size: 14px;
 
 
+}
+
+.nav-wrapper {
+	position: relative;
 }
 
 .nav-wrapper .brand-logo #logo {
@@ -34,3 +47,32 @@ nav {
 	margin-bottom: 1.5em;
 }
 
+#countdown {
+	box-sizing: border-box;
+	position: absolute;
+
+	right: 40%;
+	width: 300px;
+	text-align: center;
+	color: black;
+	border: 2px solid black;
+	border-radius: 5px;
+
+}
+
+#location-form {
+	position: absolute;
+	top: 20%;
+	left: 0;
+	display: none;
+}
+
+#maps {
+	margin: auto;
+}
+
+.map {
+	height: 350px;
+	width: 350px;
+	margin: 1em;
+}

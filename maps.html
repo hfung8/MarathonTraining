@@ -6,7 +6,7 @@
 	<script src="assets/javascript/routes.js"></script>
 	<style type="text/css">
 		
-		#form {
+		#location-form {
 			position: absolute;
 			top: 20%;
 			left: 0;
@@ -151,7 +151,7 @@ function getUserInput () {
 	    event.preventDefault();
 	    zip = $("#zip-entry").val();
 	    $("#zip-entry").empty();
-	    $("form").hide("fast");
+	    $("#location-form").hide("fast");
 	    $("#out").empty();
 
 	    //use Wunderground to get geolocation data

@@ -92,14 +92,14 @@ function getMaps(lat, long){
 }
 
 //get user ZIP code if geolocation not available
-function getUserInput () {
+function getUserInputM() {
   
-  	$("form").show("fast");
+  	$("#location-form").show("fast");
   	$(document).on("click", "#submit-btn", function(event) {
 	    event.preventDefault();
 	    zip = $("#zip-entry").val();
 	    $("#zip-entry").empty();
-	    $("form").hide("fast");
+	    $("#location-form").hide("fast");
 	    $("#out").empty();
 
 	    //use Wunderground to get geolocation data
@@ -126,12 +126,13 @@ function getUserInput () {
 }
 
 //check for browser geolocation data
-function geoFindMe() {
+function getRoutes() {
   var output = document.getElementById("out");
+  $("#get-maps").hide('fast');
 
   if (!navigator.geolocation){
     output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    getUserInput();
+    getUserInputM();
     return;
   }
 
@@ -145,15 +146,13 @@ function geoFindMe() {
 
   function error() {
     output.innerHTML = "<p>Unable to retrieve your location at this time.</p>";
-    getUserInput();
+    getUserInputM();
     return;
   }
 
   //output.innerHTML = "<p>Locating…</p>";
 
-  navigator.geolocation.getCurrentPosition(success, error);
+  navigator.geolocaton.getCurrentPosition(success, error);
 }
 
-$(document).ready(function(){
-	geoFindMe();
-});
+$("#get-maps").click(getRoutes());

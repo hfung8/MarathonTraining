@@ -1,52 +1,57 @@
-var params = {}, queryString = location.hash.substring(1),
-    regex = /([^&=]+)=([^&]*)/g, m;
+var fbClick = false;
 
-while (m = regex.exec(queryString)) {
-  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-}
-console.log('params', params);
+if (fbClick === true) {
+
+  var params = {}, queryString = location.hash.substring(1),
+      regex = /([^&=]+)=([^&]*)/g, m;
+
+  while (m = regex.exec(queryString)) {
+    params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+  }
+
+  console.log('params', params);
+
+  $.ajax({
+    url: 'https://api.fitbit.com/1/user/-/profile.json',
+    headers: {
+      'Authorization': 'Bearer ' + params.access_token
+    },
+    success: function(data) {
+      console.log('fitbit user data', data);
+
+      var userId = data.user.encodedId;
+      var userName = data.user.displayName;
+      var userImage = data.user.avatar;
 
 
-$.ajax({
-  url: 'https://api.fitbit.com/1/user/-/profile.json',
-  headers: {
-    'Authorization': 'Bearer ' + params.access_token
-  },
-  success: function(data) {
-    console.log('fitbit user data', data);
+      function writeUserData() {
+        firebase.database().ref('users/' + userId).set({
+          loginAuth: "fitbit",
 
-    var userId = data.user.encodedId;
-    var userName = data.user.displayName;
-    var userImage = data.user.avatar;
+          fitbitAccessToken: params.access_token,
 
+          username: userName,
 
-    function writeUserData() {
-      firebase.database().ref('users/' + userId).set({
-        loginAuth: "fitbit",
+          profile_picture: userImage,
 
-        fitbitAccessToken: params.access_token,
-
-        username: userName,
-
-        profile_picture: userImage,
-
-        lastLogin: firebase.database.ServerValue.TIMESTAMP
-      });
-    }
-
-    $.ajax({
-      url: 'https://api.fitbit.com/1/user/-/activities/date/2017-01-20.json',
-      headers: {
-        'Authorization': 'Bearer ' + params.access_token
-      },
-
-      success: function(response) {
-        console.log('activites data', response);
-      },
-      error: function(error) {
-        console.log(error);
+          lastLogin: firebase.database.ServerValue.TIMESTAMP
+        });
       }
 
-    });
-  }
-});
+      $.ajax({
+        url: 'https://api.fitbit.com/1/user/-/activities/date/2017-01-20.json',
+        headers: {
+          'Authorization': 'Bearer ' + params.access_token
+        },
+
+        success: function(response) {
+          console.log('activites data', response);
+        },
+        error: function(error) {
+          console.log(error);
+        }
+
+      });
+    }
+  });
+}

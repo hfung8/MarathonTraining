@@ -82,7 +82,7 @@ function handleSignUp() {
 
     console.log(userId);
 
-    database.ref('users/' + userId).set({
+    database.ref('users/' + userId).push({
             
       email: email,
 
@@ -158,13 +158,18 @@ function initApp() {
     // [END_EXCLUDE]
     if (user) {
       // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
+      
+
       var uid = user.uid;
-      var providerData = user.providerData;
+
+      console.log(uid);
+
+      database.ref('users/' + uid).on('value', function(snapshot){
+        console.log(snapshot.val());
+        var displayName = snapshot.val().displayName;
+        $("#name").text(displayName.replace(/[+]/g," "));
+
+      });
 
       $(".sign-out").show("fast");
       $(".login-btn").hide("fast");
@@ -173,9 +178,9 @@ function initApp() {
 
       console.log("Signed-in");
 
-      $("#name").text(displayName.replace(/[+]/g," "));
+      
 
-      getWeather();
+      geoFindMe();
       // if (!emailVerified) {
       //   document.getElementById('quickstart-verify-email').disabled = false;
       // }
