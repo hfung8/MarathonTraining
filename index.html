@@ -31,6 +31,7 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/screen.css">
 
     <!--Firebase JS-->
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
@@ -49,6 +50,10 @@
 
     <!-- current weather + possible routes script -->
     <script type="text/javascript" src="assets/javascript/weather-and-maps.js"></script>
+
+    <!-- pubnub chatbox -->
+    <script type="text/javascript" src="assets/javascript/messenger.js"></script>
+
 
     <!-- fitbit token script   -->
     <!-- <script type="text/javascript" src="assets/javascript/fitbit-token-received.js" ></script> -->
@@ -261,6 +266,90 @@
         </div>
       </div>
 
+        <div class="card small" style="width:314px; height:652px">
+    <!-- Card Content -->
+    <!-- Home Page -->
+      <div data-role="page" id="homePage" data-theme="c" class="type-home" style="min-height: 300px;width: 300px">
+
+        <div data-role="content">
+          <div class="logo">
+            <h3>PubNub Messenger</h3>
+          </div>
+          <input type="text" name="name" id="username" placeholder="Display Name" />
+          <a href="#" id="startChatButton" data-role="button">Start Chatting!</a>
+        </div><!-- /content -->
+
+      </div><!-- /page -->
+
+      <!-- Chat List Page -->
+      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list" style="min-height: 300px;width: 300px">
+        <div data-role="header">
+          <h1>Current Chats</h1>
+        </div>
+
+        <div data-role="content">
+          <input type="text" name="name" id="chatRoomName" placeholder="Chat Room Name" />
+          <a href="#" id="newChatButton" data-role="button">Join New Chat</a>
+
+          <br />
+
+          <ul data-role="listview" data-split-icon="delete" data-split-theme="c" id="chatList">
+            <!-- <li><span class="username">User123:</span>This is my message.</li> -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Chat Page -->
+      <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="min-height: 300px;width: 300px">
+
+        <div data-role="content" style="width:300px;">
+          <div class="content-primary">
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" style="width:300px;">
+              <h1>Pub Messenger</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+              <ul data-role="listview" id="messageList">
+                <!-- <li><span class="username">User123:</span>This is my message.</li> -->
+              </ul>
+            </div>
+
+            <div data-role="footer" data-theme="c" style="margin: 0;">
+              <textarea id="messageContent"></textarea>
+                <div class="ui-grid-a">
+                  <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
+                  <div class="ui-block-b"><a href="#" id="backButton" data-rel="back" data-role="button">Chat Rooms</a></div>
+                </div>
+            </div>
+          </div>
+
+          <div class="content-secondary">
+            <ul data-role="listview" id="userList" data-theme="c" style="margin-top: 5px">
+          
+            </ul>
+          </div>
+        </div><!-- /content -->
+
+      </div><!-- /page -->
+
+      <div data-role="dialog" id="delete" style="min-height: 300px;width: 300px">
+        <div data-role="content">
+          <h3>Unsubscribe From This Channel?</h3>
+          <a href="#" data-role="button" id="deleteButton">Delete</a>
+          <a href="#" data-role="button" data-rel="back">Cancel</a>
+        </div>
+      </div>
+
+      <div data-role="page" id="userListPage" data-theme="c" style="min-height: 300px;width: 300px">
+        <div data-role="header">
+          <h1>Pub Messenger</h1>
+        </div>
+
+        <div data-role="content">
+
+        </div>
+      </div>
+    </div>
 
       
 
