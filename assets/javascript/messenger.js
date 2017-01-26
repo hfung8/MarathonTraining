@@ -216,7 +216,7 @@ function initChat (username) {
         self.handleMessage(messages[i], false);
       }
 
-      $("#messageList").scrollTop($("#messageList").height());
+      // $("#messageList").scrollTop($("#messageList").height());
     });
 
     // Change the title to the chat channel.
@@ -232,7 +232,7 @@ function initChat (username) {
     sendMessageButton.off('click');
     sendMessageButton.click(function (event) {
       var date = moment(new Date());
-      var time = JSON.stringify(date.format('hh:mm A MMM DD'));
+      var time = date.format('hh:mm A MMM DD');
       var message = messageContent.val();
 
       if(message !== "") {
@@ -264,13 +264,11 @@ function initChat (username) {
         + "<span class='username'>" + message.username + "</span>"
         + message.text 
         + "</li>");
-    messageList.append(messageEl);
+    messageList.prepend(messageEl);
     messageList.listview('refresh');
 
     // Scroll to bottom of page
-    if (animate === true) {
-      $("#messageList").animate({ scrollTop: $("#messageList").height() }, 'slow');
-    }
+    messageEl.scrollTop(messageEl.height());
 
     if (isBlurred) {
       // Flash title if blurred
