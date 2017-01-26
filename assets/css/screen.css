@@ -1,3 +1,8 @@
+#modal2::-webkit-scrollbar { 
+    display: none;  
+}
+
+
 /* Prevent Textarea resizing */
 textarea {
   resize: none;
@@ -19,9 +24,9 @@ li.message {
 }
 
 /* User List Styling */
-.type-interior .content-secondary {
+/*.type-interior .content-secondary {
   position: fixed !important;
-}
+}*/
 
 /* Logo */
 .logo {
@@ -55,14 +60,27 @@ li.message {
 }
 
 .type-home .ui-content {
-  max-width: 300px;
+  /*max-width: 300px;*/
   margin-left: auto;
   margin-right: auto;
+
 }
 
-.type-interior .ui-content {
-  min-height: 100%;
+div.ui-content, div.content-primary {
+  height: 253px;
 }
+
+div.ui-content {
+  width: 100%;
+}
+
+div.content-primary {
+  float:left;
+}
+
+/*.type-interior .ui-content {
+  min-height: 100%;
+}*/
 
 p.intro {
   font-size: .96em;
@@ -117,7 +135,7 @@ p.intro strong {
 }
 
 .content-primary .ui-footer textarea {
-  margin: 5px auto;
+  margin: 10px auto;
   width: 97%;
 }
 

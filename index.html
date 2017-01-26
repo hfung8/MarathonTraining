@@ -277,10 +277,10 @@
 
       <a href="#modal2" class='btn waves-effect waves-light'>Click Here to Chat</a>
 
-  <div id="modal2" class="modal" style="height: 400px">
+  <div id="modal2" class="modal" style="height: 413px;">
     <div class="modal-content" style="height: 100%">
     <!-- Home Page -->
-      <div data-role="page" id="homePage" data-theme="c" class="type-home">
+      <div data-role="page" id="homePage" data-theme="c" class="type-home" style="height: 100%">
 
         <div data-role="content">
           <div class="logo">
@@ -293,7 +293,7 @@
       </div><!-- /page -->
 
       <!-- Chat List Page -->
-      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list">
+      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list" style="height: 100%">
         <div data-role="header">
           <h1>Current Chats</h1>
         </div>
@@ -315,18 +315,18 @@
 
         <div data-role="content" style="position: relative">
           <div class="content-primary">
-            <div data-role="header" data-position="fixed" data-tap-toggle="false" style="position:fixed; top:0; overflow: hide; height:20px">
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" style="position:fixed; top:0; overflow: hidden; height:42px">
               <h1>Pub Messenger</h1>
             </div><!-- /header -->
 
-            <div data-role="content" style="float:left;margin-left: -200px;margin-top: 42px; margin-bottom: 100px; overflow: auto;">
+            <div data-role="content" style="float:left; overflow: auto;">
               <ul data-role="listview" id="messageList">
                 <!-- <li><span class="username">User123:</span>This is my message.</li> -->
               </ul>
             </div>
           </div>
 
-          <div data-role="footer" data-theme="c" style="clear: both; position:fixed; overflow: hide; bottom: 0; width:100%;">
+          <div data-role="footer" data-theme="c" style="clear: both; position:fixed; overflow: hidden; bottom: 0; width:100%; height: 115px">
             <textarea id="messageContent"></textarea>
               <div class="ui-grid-a">
                 <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
@@ -335,9 +335,9 @@
           </div>
           
 
-          <div class="content-secondary" style="border: 1px solid black; border-radius: 1px; position: absolute; top:0; right:0">
-            <h5 style="margin-top: 42px">Users Online</h5>
-            <ul data-role="listview" id="userList" data-theme="c" style="overflow: hidden">
+          <div class="content-secondary" style="border: 1px solid black; border-radius: 1px; position: fixed; top:0; right:0; text-align: center; height: 253px; margin-top: 42px">
+            <h5>Users Online</h5>
+            <ul data-role="listview" id="userList" data-theme="c" style="overflow: auto">
           
             </ul>
           </div>
@@ -345,7 +345,7 @@
 
       </div><!-- /page -->
 
-      <div data-role="dialog" id="delete" style="width: 300px">
+      <div data-role="dialog" id="delete" style="width: 300px" style="height: 100%">
         <div data-role="content">
           <h3>Unsubscribe From This Channel?</h3>
           <a href="#" data-role="button" id="deleteButton">Delete</a>
@@ -353,7 +353,7 @@
         </div>
       </div>
 
-      <div data-role="page" id="userListPage" data-theme="c" style="width: 300px">
+      <div data-role="page" id="userListPage" data-theme="c" style="width: 300px" style="height: 100%">
         <div data-role="header">
           <h1>Pub Messenger</h1>
         </div>

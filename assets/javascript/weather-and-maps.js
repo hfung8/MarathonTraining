@@ -130,7 +130,7 @@ function getMaps(lat, long){
 
   //client side call of api to receive access token
   $.ajax({
-    url: "https://oauth2-api.mapmyapi.com/v7.1/oauth2/access_token/",
+    url: "https://api.ua.com/v7.1/oauth2/access_token/", //"https://oauth2-api.mapmyapi.com/v7.1/oauth2/access_token/",
     method: 'POST',
     contentType: 'application/x-www-form-urlencoded',
     data: {

@@ -61,8 +61,8 @@ $(document).ready(function () {
     this.connection.history.apply(this.connection, arguments);
   };
 
-  var chatChannel = '',
-      username = '',
+  var chatChannel = "Runner's CluB Chat",
+      username = $("#name").text(),
       users = [],
       usernameInput = $('#username'),
       chatRoomName = $("#chatRoomName"),
@@ -215,7 +215,7 @@ $(document).ready(function () {
         self.handleMessage(messages[i], false);
       }
 
-      $(document).scrollTop($(document).height());
+      $("div.ui-content").scrollTop($("div.ui-content").height());
     });
 
     // Change the title to the chat channel.
@@ -296,8 +296,9 @@ $(document).ready(function () {
   };
 
   // Initially start off on the home page.
-  $.mobile.changePage(pages.home);
-  var currentView = new HomeView();
+  pubnub.connect(username);
+  $.mobile.changePage(pages.chat);
+  
 
   // This code essentially does what routing does in Backbone.js.
   // It takes the page destination and creates a view based on what

@@ -172,7 +172,7 @@ function initApp() {
 
       database.ref('users/' + uid).on('value', function(snapshot){
         console.log(snapshot.val());
-        var displayName = snapshot.val().displayName;
+        displayName = snapshot.val().displayName;
         $("#name").text(displayName.replace(/[+]/g," "));
 
       });
