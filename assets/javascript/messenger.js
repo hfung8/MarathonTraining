@@ -230,6 +230,8 @@ $(document).ready(function () {
 
     sendMessageButton.off('click');
     sendMessageButton.click(function (event) {
+      var date = moment(new Date());
+      var time = date.format('hh:mm A MMM DD');
       var message = messageContent.val();
 
       if(message !== "") {
@@ -237,7 +239,7 @@ $(document).ready(function () {
           channel: chatChannel,
           message: {
             username: username,
-            text: message
+            text: "<span class='msg-time'> @ " + time + "</span> - " + message
           }
         });
 
@@ -257,12 +259,9 @@ $(document).ready(function () {
   ChatView.prototype.handleMessage = function (message, animate) {
     if (animate !== false) animate = true;
 
-    var date = moment(new Date());
-    var time = date.format('hh:mm A MMM DD');
-
     var messageEl = $("<li class='message'>"
         + "<span class='username'>" + message.username + "</span>"
-        + "<span class='msg-time'> @ " + time + "</span> - " + message.text 
+        + message.text 
         + "</li>");
     messageList.append(messageEl);
     messageList.listview('refresh');

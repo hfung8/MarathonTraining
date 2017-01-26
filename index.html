@@ -5,33 +5,42 @@
   <meta charset="UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name='viewport' content='user-scalable=no'>
   
   <title>Marathon Training</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic" rel="stylesheet" type="text/css">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
     <!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 
     <!-- platform.js -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     
-      <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <!-- jQuery Mobile css and js -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <!-- pubnub js -->
+    <script src="http://cdn.pubnub.com/pubnub-3.5.1.js"></script>
     
     <!-- moment.js   -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/screen.css">
+
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
     <!--Firebase JS-->
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
@@ -49,7 +58,7 @@
     <script type="text/javascript" src="assets/javascript/countdown.js" ></script>
 
     <!-- current weather + possible routes script -->
-    <script type="text/javascript" src="assets/javascript/weather-and-maps.js"></script>
+    <!-- <script type="text/javascript" src="assets/javascript/weather-and-maps.js"></script> -->
 
     <!-- pubnub chatbox -->
     <script type="text/javascript" src="assets/javascript/messenger.js"></script>
@@ -266,10 +275,12 @@
         </div>
       </div>
 
-        <div class="card small" style="width:314px; height:652px">
-    <!-- Card Content -->
+      <a href="#modal2" class='btn waves-effect waves-light'>Click Here to Chat</a>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content" style="height:400px">
     <!-- Home Page -->
-      <div data-role="page" id="homePage" data-theme="c" class="type-home" style="min-height: 300px;width: 300px">
+      <div data-role="page" id="homePage" data-theme="c" class="type-home" style="min-height: 300px;">
 
         <div data-role="content">
           <div class="logo">
@@ -282,7 +293,7 @@
       </div><!-- /page -->
 
       <!-- Chat List Page -->
-      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list" style="min-height: 300px;width: 300px">
+      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list" style="min-height: 300px;">
         <div data-role="header">
           <h1>Current Chats</h1>
         </div>
@@ -300,31 +311,34 @@
       </div>
 
       <!-- Chat Page -->
-      <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="min-height: 300px;width: 300px">
+      <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="min-height: 400px;">
 
-        <div data-role="content" style="width:300px;">
+        <div data-role="content" style="position: relative">
           <div class="content-primary">
-            <div data-role="header" data-position="fixed" data-tap-toggle="false" style="width:300px;">
+            <div data-role="header" data-position="fixed" data-tap-toggle="false">
               <h1>Pub Messenger</h1>
             </div><!-- /header -->
 
-            <div data-role="content">
+            <div data-role="content" style="float:left;margin-left: -200px;
+    width: 100%;">
               <ul data-role="listview" id="messageList">
                 <!-- <li><span class="username">User123:</span>This is my message.</li> -->
               </ul>
             </div>
-
-            <div data-role="footer" data-theme="c" style="margin: 0;">
-              <textarea id="messageContent"></textarea>
-                <div class="ui-grid-a">
-                  <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
-                  <div class="ui-block-b"><a href="#" id="backButton" data-rel="back" data-role="button">Chat Rooms</a></div>
-                </div>
-            </div>
           </div>
 
-          <div class="content-secondary">
-            <ul data-role="listview" id="userList" data-theme="c" style="margin-top: 5px">
+          <div data-role="footer" data-theme="c" style="clear: both; position:absolute; bottom: 0; width:100%;">
+            <textarea id="messageContent"></textarea>
+              <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
+                <div class="ui-block-b"><a href="#" id="backButton" data-rel="back" data-role="button">Chat Rooms</a></div>
+              </div>
+          </div>
+          
+
+          <div class="content-secondary" style="box-sizing: border-box; border: 1px solid black; border-radius: 1px; position: absolute; top:0; right:0">
+            <h5 style="margin-top: 42px">Users Online</h5>
+            <ul data-role="listview" id="userList" data-theme="c" >
           
             </ul>
           </div>
@@ -332,7 +346,7 @@
 
       </div><!-- /page -->
 
-      <div data-role="dialog" id="delete" style="min-height: 300px;width: 300px">
+      <div data-role="dialog" id="delete" style="width: 300px">
         <div data-role="content">
           <h3>Unsubscribe From This Channel?</h3>
           <a href="#" data-role="button" id="deleteButton">Delete</a>
@@ -340,7 +354,7 @@
         </div>
       </div>
 
-      <div data-role="page" id="userListPage" data-theme="c" style="min-height: 300px;width: 300px">
+      <div data-role="page" id="userListPage" data-theme="c" style="width: 300px">
         <div data-role="header">
           <h1>Pub Messenger</h1>
         </div>
@@ -350,6 +364,7 @@
         </div>
       </div>
     </div>
+  </div>
 
       
 
