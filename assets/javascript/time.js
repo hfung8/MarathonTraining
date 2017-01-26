@@ -101,4 +101,8 @@ var countdownClock = {
 $(document).ready(function(){
   updateTime.start();
   countdownClock.start();
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 2 // Creates a dropdown of 15 years to control year
+  });
 });

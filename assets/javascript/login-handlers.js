@@ -176,8 +176,10 @@ function initApp() {
         displayName = displayName.replace(/[+]/g," ");
         console.log(displayName);
         $("#display-name").text(displayName).attr("data-display_name", displayName);
-
+        initChat(displayName);
       });
+
+
 
       $(".sign-out").show("fast");
       $(".login-btn").hide("fast");

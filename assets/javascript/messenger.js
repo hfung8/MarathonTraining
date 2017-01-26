@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function initChat (username) {
 
 
   ////
@@ -62,7 +62,6 @@ $(document).ready(function () {
   };
 
   var chatChannel = "Runner's CluB Chat",
-      username = $("#display-name").attr("data-display_name"),
       users = [],
       // usernameInput = $('#username'),
       chatRoomName = $("#chatRoomName"),
@@ -317,4 +316,4 @@ $(document).ready(function () {
   $.mobile.changePage(pages.chat);
   
   
-});
+}
