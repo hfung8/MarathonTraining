@@ -62,9 +62,9 @@ $(document).ready(function () {
   };
 
   var chatChannel = "Runner's CluB Chat",
-      username = $("#name").text(),
+      username = $("#display-name").attr("data-display_name"),
       users = [],
-      usernameInput = $('#username'),
+      // usernameInput = $('#username'),
       chatRoomName = $("#chatRoomName"),
       chatButton = $("#startChatButton"),
       newChatButton = $("#newChatButton"),
@@ -83,6 +83,8 @@ $(document).ready(function () {
         chat: $("#chatPage"),
         delete: $("#delete")
       };
+
+  console.log(username);
 
   // Blur tracking
   $(window).on('blur', function () {
@@ -106,7 +108,7 @@ $(document).ready(function () {
   }
 
   ////////
-  // Home View
+  // Home View -- BYPASSED
   /////
   function HomeView() {
     if (localStorage["username"]) {
@@ -128,7 +130,7 @@ $(document).ready(function () {
   };
 
   /////
-  // Chat List View
+  // Chat List View -- BYPASSED
   ///////
   function ChatListView(event, data) {
     chatListEl.empty();
@@ -152,7 +154,7 @@ $(document).ready(function () {
   };
 
   //////
-  // Delete Chat View
+  // Delete Chat View --BYPASSED
   ///////
   function DeleteChatView(event, data) {
     if (data.options && data.options.link) {
@@ -215,7 +217,7 @@ $(document).ready(function () {
         self.handleMessage(messages[i], false);
       }
 
-      $("div.ui-content").scrollTop($("div.ui-content").height());
+      $("#messageList").scrollTop($("#messageList").height());
     });
 
     // Change the title to the chat channel.
@@ -268,7 +270,7 @@ $(document).ready(function () {
 
     // Scroll to bottom of page
     if (animate === true) {
-      $("html, body").animate({ scrollTop: $(document).height() - $(window).height() }, 'slow');
+      $("#messageList").animate({ scrollTop: $("#messageList").height() }, 'slow');
     }
 
     if (isBlurred) {
@@ -295,15 +297,10 @@ $(document).ready(function () {
     }
   };
 
-  // Initially start off on the home page.
-  pubnub.connect(username);
-  $.mobile.changePage(pages.chat);
-  
-
   // This code essentially does what routing does in Backbone.js.
   // It takes the page destination and creates a view based on what
   // page the user is navigating to.
-  $(document).bind("pagechange", function (event, data) {
+  $("#modal-chat").bind("pagechange", function (event, data) {
     if (data.toPage[0] == pages.chatList[0]) {
       currentView = new ChatListView(event, data);
     } else if (data.toPage[0] == pages.delete[0]) {
@@ -312,4 +309,12 @@ $(document).ready(function () {
       currentView = new ChatView(event, data);
     }
   });
+
+  // Initially start off on the home page.
+
+  console.log(username);
+  pubnub.connect(username);
+  $.mobile.changePage(pages.chat);
+  
+  
 });

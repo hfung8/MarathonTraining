@@ -1,12 +1,32 @@
-const newYorkMarathon2017 = "11/05/2017 09:20 AM";
+const newYorkMarathon2017 = "11/05/2017 09:50 AM";
 const convMarDate = moment(new Date(newYorkMarathon2017));
+
+//display current time
+var updateClock; //initialize variable for setInterval call
+var updateTime = {
+
+  time: function() {
+    var currentDate = moment(new Date());
+    var displayDate = currentDate.format("ddd, MMM Do, YYYY");
+    var displayTime = currentDate.format("h:mm A");
+    var year = currentDate.format("YYYY");
+    $("#todays-date").text(displayDate);
+    $("#current-time").text(displayTime);
+    $("#year").text(year);
+  
+  },
+  start: function() {
+    updateClock = setInterval(updateTime.time, 1000);
+  }
+}
+
 
 // countdown clock
 var tick;
 var countdownClock = {
 
   time : function() {
-    var today = moment(new Date());
+      var today = moment(new Date());
       var difference = convMarDate.diff(today, 'seconds');
 
       return difference;
@@ -28,7 +48,7 @@ var countdownClock = {
         } else {
 
       let currentTime = countdownClock.timeConverter(countdownClock.time());
-          $("#countdown").text(currentTime);
+          $("#countdown").html(currentTime);
     }
   },
 
@@ -71,10 +91,14 @@ var countdownClock = {
         hours = "0" + hours;
       }
 
-      return days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
+      return "<div class='clock'>" + days + " Days</div><div class='clock'>" 
+                + hours + " Hours</div><div class='clock'>" 
+                + minutes + " Minutes</div><div class='clock'>" 
+                + seconds + " Seconds</div>";
     }
 }
 
 $(document).ready(function(){
+  updateTime.start();
   countdownClock.start();
 });

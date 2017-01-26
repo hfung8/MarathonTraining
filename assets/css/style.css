@@ -22,10 +22,6 @@ body{
 
 }
 
-.nav-wrapper {
-	position: relative;
-}
-
 .nav-wrapper .brand-logo #logo {
     height: 55px;
 
@@ -47,18 +43,53 @@ nav {
 	margin-bottom: 1.5em;
 }
 
-#countdown {
-	box-sizing: border-box;
-	position: absolute;
-
-	right: 40%;
-	width: 300px;
-	text-align: center;
-	color: black;
-	border: 2px solid black;
-	border-radius: 5px;
-
+#rc-title {
+	margin-top: 0.5em;
 }
+
+#rc-content h5 {
+	margin-top: 0.5em;
+	text-align: center;
+}
+
+#todays-date {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+#current-time {
+	text-align: center;
+	margin-bottom: .5em;
+	font-size: 1.5em;
+}
+
+#countdown {
+	text-align: center;
+	font-size: 1.5em;
+	color: black;
+	padding: 1em;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.clock {
+	text-align: center;
+	padding: .25em;
+}
+
+#rc-action {
+	clear:both;
+	text-align: center;
+}
+
+#rc-action a {
+	width: 80%;
+	margin: 0.5em auto;
+}
+
+
+
+
 
 #location-form {
 	position: absolute;

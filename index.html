@@ -82,19 +82,18 @@
           <a href="index.html" class="brand-logo"><img class="responsive-img" id=logo src="assets/images/RCBlogo.png"></a>
           <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="material-icons black-text">menu</i></a>
 
-          <!-- countdown clock -->
-          <span id = "countdown"></span>
+          
 
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content">
-            <li class="register-btn"><a href="#modal1">REGISTER</a></li>
-            <li class="login-btn"><a href="#modal1">LOGIN</a></li>
+            <li class="register-btn"><a href="#modal-login">REGISTER</a></li>
+            <li class="login-btn"><a href="#modal-login">LOGIN</a></li>
             <li class="divider"></li>
             <li class="sign-out"><a>SIGN OUT</a></li>
           </ul>
 
           <ul class="right hide-on-med-and-down">
-            <li id="profile-link"><a href="profile.html">MY ACCOUNT</a><li>
+            <li id="profile-link"><a href="#profilepg">MY ACCOUNT</a><li>
             <li><a href="#aboutpg">ABOUT</a></li>
             <li><a href="#contactpg">CONTACT</a></li>
             <!-- Dropdown Trigger -->
@@ -105,11 +104,12 @@
         
           <ul class="side-nav" id="mobile-demo">
             <li><a href="index.html">Home</a></li>
+            <li id="profile-link"><a href="#profilepg">MY ACCOUNT</a><li>
             <li><a href="#aboutpg">About</a></li>
             
             <li><a href="#contactpg">Contact</a></li>
-            <li class="register-btn"><a href="#modal1">Register</a></li>
-            <li class="login-btn"><a href="#modal1">Login</a></li>
+            <li class="register-btn"><a href="#modal-login">Register</a></li>
+            <li class="login-btn"><a href="#modal-login">Login</a></li>
             <li class="sign-out"><a>Sign Out</a></li>
           </ul>
         </div>
@@ -181,28 +181,28 @@
   
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+  <div id="modal-login" class="modal">
     <form class="col s12">
       <div class="modal-content">
 
-          <div class="row">
-            <div class="input-field col s6 register">
-              <input id="first_name" type="text" class="validate">
-              <label for="first_name">First Name</label>
-            </div>
-            
-            <div class="input-field col s6 register">
-              <input id="last_name" type="text" class="validate">
-              <label for="last_name">Last Name</label>
-            </div>
+        <div class="row">
+          <div class="input-field col s6 register">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
           </div>
           
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
-            </div>
+          <div class="input-field col s6 register">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
           </div>
+        </div>
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
 
         <div class="row">
           <div class="input-field col s12">
@@ -211,27 +211,27 @@
           </div>
         </div>
 
-      </div>
+      </div> <!-- modal content -->
       <div class="modal-footer">
         <a href="#!" class=" modal-action modal-close btn waves-effect waves-light login" id="sign-in">Sign In<i class="material-icons right">send</i></a>
 
         <a href="#!" class=" modal-action modal-close btn waves-effect waves-light register" id="sign-up">Sign Up<i class="material-icons right">send</i></a>
       </div> <!-- end modal footer -->
-    </div> <!-- end modal content -->
-  </form>
-</div> <!-- end modal -->
+    </form>
+  </div> <!-- end modal -->
 
 <!-- user profile -->
 
 <div class = "container col s12">
   <div id="page2">
     <a id="profilepg" class="smooth"></a>
-  
-      <h3><center>Welcome&nbsp;<span id="name"></span></center></h3>
 
+      <!-- put two cards on one row -->
       <div class="row">
         <div class="col s12 m7">
-          <div class="card">
+
+          <!-- left card -->
+          <div class="card" id="left-card">
             <div class="card-image">
               <img id = "weather-img" src="https://static.pexels.com/photos/132687/pexels-photo-132687.jpeg">
               <span class="card-title">
@@ -245,8 +245,6 @@
                   
                   <div class="humidity"></div>
                   
-                  <div class="time"></div>
-                  
                 </div>
               </span>
             </div>
@@ -257,7 +255,6 @@
                   <p><span class="lat"></span>,&nbsp;<span class="lon"></span></p>
                 </div>
               </div>
-
             </div>
             <div class="card-action">
               <div id="out"></div>
@@ -271,16 +268,50 @@
 
               <div id="maps"></div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <a href="#modal2" class='btn waves-effect waves-light'>Click Here to Chat</a>
+          </div> <!-- close left card -->
+        
+        </div> <!-- close left column -->
+      
+        <!-- right card -->
+        <div class="col s12 m4 offset-m1">
 
-  <div id="modal2" class="modal" style="height: 413px;">
+          <div class="card" id="right-card">
+            
+            <div class="card-title" id="rc-title">
+              <h5><center>Welcome&nbsp;<span id="display-name"></span></center></h5>
+              <div class="divider"></div>
+            </div>
+
+            <div class="card-content" id="rc-content">
+              <div id="todays-date"></div>
+              <div id="current-time"></div>
+              <div class="divider"></div>
+              <h5>2017 NYC Marathon Starts in:</h5>
+              <!-- countdown clock -->
+              <div id = "countdown"></div>
+            </div>
+            
+            <div class="card-action" id="rc-action">
+              <a href="#modal-chat" class='btn waves-effect waves-light'>Chat</a>
+              <a href="#modal-plan" class='btn waves-effect waves-light'>Training Plan</a>
+            </div>
+          
+          </div> <!-- close right card -->
+      
+        </div> <!-- close right column -->
+
+      </div> <!-- close row -->
+
+  <!-- CHAT MODAL -->
+  <!-- This code uses inline styles since the code for this app
+  is built using jQuery mobile with its own sets of classes -->
+
+  <div id="modal-chat" class="modal" style="height: 413px;">
     <div class="modal-content" style="height: 100%">
-    <!-- Home Page -->
-      <div data-role="page" id="homePage" data-theme="c" class="type-home" style="height: 100%">
+
+      <!-- Home Page BYPASSED -->
+      <!-- <div data-role="page" id="homePage" data-theme="c" class="type-home" style="height: 100%">
 
         <div data-role="content">
           <div class="logo">
@@ -288,12 +319,12 @@
           </div>
           <input type="text" name="name" id="username" placeholder="Display Name" />
           <a href="#" id="startChatButton" data-role="button">Start Chatting!</a>
-        </div><!-- /content -->
+        </div>
 
-      </div><!-- /page -->
+      </div>--><!-- /home page -->
 
-      <!-- Chat List Page -->
-      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list" style="height: 100%">
+      <!-- Chat List Page BYPASSED -->
+      <!-- <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list" style="height: 100%">
         <div data-role="header">
           <h1>Current Chats</h1>
         </div>
@@ -305,10 +336,10 @@
           <br />
 
           <ul data-role="listview" data-split-icon="delete" data-split-theme="c" id="chatList">
-            <!-- <li><span class="username">User123:</span>This is my message.</li> -->
+            
           </ul>
         </div>
-      </div>
+      </div>--> <!--/chat list page-->
 
       <!-- Chat Page -->
       <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="height:100%;">
@@ -330,10 +361,9 @@
             <textarea id="messageContent"></textarea>
               <div class="ui-grid-a">
                 <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
-                <div class="ui-block-b"><a href="#" id="backButton" data-rel="back" data-role="button">Chat Rooms</a></div>
+                <div class="ui-block-b"><a href="#" id="deleteButton" class="modal-action modal-close" data-role="button">Exit Chat</a></div>
               </div>
           </div>
-          
 
           <div class="content-secondary" style="border: 1px solid black; border-radius: 1px; position: fixed; top:0; right:0; text-align: center; height: 253px; margin-top: 42px">
             <h5>Users Online</h5>
@@ -343,7 +373,9 @@
           </div>
         </div><!-- /content -->
 
-      </div><!-- /page -->
+      </div><!-- /chatpage -->
+
+      <!-- BYPASSED
 
       <div data-role="dialog" id="delete" style="width: 300px" style="height: 100%">
         <div data-role="content">
@@ -361,15 +393,12 @@
         <div data-role="content">
 
         </div>
-      </div>
-    </div>
-  </div>
+      </div> -->
 
-      
+    </div> <!--/modal content-->
+  </div> <!-- close modal -->
 
-
-  </div>
-</div>
+</div> <!-- close profile page -->
 
 <!-- CONTACT -->
 
@@ -426,7 +455,7 @@
   
   <div class="footer-copyright black-text transparent">
     <div class="container center">
-    © 2017 Marathon Training 
+    © <span id="year">2017</span> Marathon Training 
     </div>
   </div>
 </footer>
