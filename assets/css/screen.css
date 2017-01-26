@@ -15,7 +15,7 @@ li.message:nth-child(even) {
 }
 
 li.message {
-  width: 50%;
+  width: 100%;
 }
 
 /* User List Styling */

@@ -58,7 +58,7 @@
     <script type="text/javascript" src="assets/javascript/countdown.js" ></script>
 
     <!-- current weather + possible routes script -->
-    <!-- <script type="text/javascript" src="assets/javascript/weather-and-maps.js"></script> -->
+    <script type="text/javascript" src="assets/javascript/weather-and-maps.js"></script>
 
     <!-- pubnub chatbox -->
     <script type="text/javascript" src="assets/javascript/messenger.js"></script>
@@ -277,10 +277,10 @@
 
       <a href="#modal2" class='btn waves-effect waves-light'>Click Here to Chat</a>
 
-  <div id="modal2" class="modal">
-    <div class="modal-content" style="height:400px">
+  <div id="modal2" class="modal" style="height: 400px">
+    <div class="modal-content" style="height: 100%">
     <!-- Home Page -->
-      <div data-role="page" id="homePage" data-theme="c" class="type-home" style="min-height: 300px;">
+      <div data-role="page" id="homePage" data-theme="c" class="type-home">
 
         <div data-role="content">
           <div class="logo">
@@ -293,7 +293,7 @@
       </div><!-- /page -->
 
       <!-- Chat List Page -->
-      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list" style="min-height: 300px;">
+      <div data-role="page" id="chatListPage" data-theme="c" class="type-chat-list">
         <div data-role="header">
           <h1>Current Chats</h1>
         </div>
@@ -311,23 +311,22 @@
       </div>
 
       <!-- Chat Page -->
-      <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="min-height: 400px;">
+      <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="height:100%;">
 
         <div data-role="content" style="position: relative">
           <div class="content-primary">
-            <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <div data-role="header" data-position="fixed" data-tap-toggle="false" style="position:fixed; top:0; overflow: hide; height:20px">
               <h1>Pub Messenger</h1>
             </div><!-- /header -->
 
-            <div data-role="content" style="float:left;margin-left: -200px;
-    width: 100%;">
+            <div data-role="content" style="float:left;margin-left: -200px;margin-top: 42px; margin-bottom: 100px; overflow: auto;">
               <ul data-role="listview" id="messageList">
                 <!-- <li><span class="username">User123:</span>This is my message.</li> -->
               </ul>
             </div>
           </div>
 
-          <div data-role="footer" data-theme="c" style="clear: both; position:absolute; bottom: 0; width:100%;">
+          <div data-role="footer" data-theme="c" style="clear: both; position:fixed; overflow: hide; bottom: 0; width:100%;">
             <textarea id="messageContent"></textarea>
               <div class="ui-grid-a">
                 <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
@@ -336,9 +335,9 @@
           </div>
           
 
-          <div class="content-secondary" style="box-sizing: border-box; border: 1px solid black; border-radius: 1px; position: absolute; top:0; right:0">
+          <div class="content-secondary" style="border: 1px solid black; border-radius: 1px; position: absolute; top:0; right:0">
             <h5 style="margin-top: 42px">Users Online</h5>
-            <ul data-role="listview" id="userList" data-theme="c" >
+            <ul data-role="listview" id="userList" data-theme="c" style="overflow: hidden">
           
             </ul>
           </div>

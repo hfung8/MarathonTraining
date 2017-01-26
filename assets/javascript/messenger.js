@@ -231,7 +231,7 @@ $(document).ready(function () {
     sendMessageButton.off('click');
     sendMessageButton.click(function (event) {
       var date = moment(new Date());
-      var time = date.format('hh:mm A MMM DD');
+      var time = JSON.stringify(date.format('hh:mm A MMM DD'));
       var message = messageContent.val();
 
       if(message !== "") {
