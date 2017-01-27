@@ -8,21 +8,22 @@ while (m = regex.exec(queryString)) {
 console.log('params', params);
 
 if(params.access_token) {
+  $("#get-fitbit").hide('fast');
   var userId = localStorage.getItem("currentUserId");
   console.log("User ID = " + userId);
   console.log(params.access_token);
   database.ref("users/" + userId).update({
     fitbit_access_token: params.access_token
   });
-  callFitbit(params);
+  callFitbit(params.access_token);
 }
 
-function callFitbit (params) {
+function callFitbit (access_token) {
 
   $.ajax({
     url: 'https://api.fitbit.com/1/user/-/profile.json',
     headers: {
-      'Authorization': 'Bearer ' + params.access_token
+      'Authorization': 'Bearer ' + access_token
     },
     success: function(data) {
       console.log('fitbit user data', data);
@@ -30,21 +31,6 @@ function callFitbit (params) {
       var userId = data.user.encodedId;
       var userName = data.user.displayName;
       var userImage = data.user.avatar;
-
-
-      function writeUserData() {
-        firebase.database().ref('users/' + userId).set({
-          loginAuth: "fitbit",
-
-          fitbitAccessToken: params.access_token,
-
-          username: userName,
-
-          profile_picture: userImage,
-
-          lastLogin: firebase.database.ServerValue.TIMESTAMP
-        });
-      }
 
       $.ajax({
         url: 'https://api.fitbit.com/1/user/-/activities/date/2017-01-20.json',
