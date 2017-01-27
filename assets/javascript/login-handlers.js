@@ -167,7 +167,7 @@ function initApp() {
       
 
       var uid = user.uid;
-      localStorage.setItem("currentUserId", JSON.stringify(uid));
+      localStorage.setItem("currentUserId", uid);
 
       console.log(uid);
 
@@ -226,13 +226,10 @@ function initApp() {
   $('#sign-in').click(toggleSignIn);
   $('.sign-out').click(toggleSignIn);
   $('#sign-up').click(handleSignUp);
-  $("#pick-date").click()
+  $("#pick-date").click(updateStartDate);
 
 
-  $("#fitbit-login").click(function(){
-    var win = window.open("https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2283WS&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Findex.html&scope=activity%20heartrate%20location%20profile%20weight&expires_in=604800", '_blank');
-      win.focus();
-  });
+
   // event listeners for email verification and password reset
   // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
   // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);

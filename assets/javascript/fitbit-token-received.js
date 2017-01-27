@@ -8,7 +8,7 @@ while (m = regex.exec(queryString)) {
 console.log('params', params);
 
 if(params) {
-  var userId = JSON.parse(localstorage.getItem("currentUserId");
+  var userId = localstorage.getItem("currentUserId");
   console.log("User ID = " + userId);
   database.ref("users/" + userId).set({
     fitbit_access_token: params.access_token

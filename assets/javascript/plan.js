@@ -930,4 +930,10 @@ const trainingPlan = {
 	} 
 }
 
-console.log(trainingPlan);
+function updateStartDate() {
+	var userId = JSON.parse(localStorage.getItem("currentUserId"));
+	console.log(userId);
+ 	var startDate = $("#datepicker").val();
+ 	console.log(startDate);
+  	database.ref("plans/" + userId).update({'training_plan/startDate', startDate});
+}
