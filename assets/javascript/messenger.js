@@ -91,7 +91,6 @@ function initChat (username) {
   }).on("focus", function () {
     isBlurred = false;
     clearInterval(timerId);
-    document.title = "Pub Messenger";
   });
 
   // Request permission for desktop notifications.
@@ -274,7 +273,7 @@ function initChat (username) {
       // Flash title if blurred
       clearInterval(timerId);
       timerId = setInterval(function () {
-        document.title = document.title == "Pub Messenger" ? "New Message" : "Pub Messenger";
+        
       }, 2000);
 
       // Notification handling
