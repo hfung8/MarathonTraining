@@ -98,6 +98,38 @@ function initChat (username) {
   }
 
   /////
+  // Chat List View -- BYPASSED
+  ///////
+  function ChatListView(event, data) {
+    chatListEl.empty();
+    for(var i = 0; i < pubnub.subscriptions.length; i++) {
+      var chatName = pubnub.subscriptions[i],
+          chatEl = $("<li><a href='#chatPage' data-channel-name='" + chatName + "'>" 
+            + chatName 
+            + "</a><a href='#delete' data-rel='dialog' data-channel-name='" + chatName + "'></a></li>");
+      chatListEl.append(chatEl);
+      chatListEl.listview('refresh');
+    }
+  }
+
+  //////
+  // Delete Chat View --BYPASSED
+  ///////
+  function DeleteChatView(event, data) {
+    if (data.options && data.options.link) {
+      var channelName = data.options.link.attr('data-channel-name'),
+          deleteButton = pages.delete.find("#deleteButton");
+
+      deleteButton.unbind('click');
+      deleteButton.click(function (event) {
+        pubnub.removeSubscription(channelName);
+        console.log(pages.delete.children());
+        pages.delete.find('[data-rel="back"]').click();
+      });
+    }
+  };
+
+  /////
   // Chatting View
   //////
   function ChatView(event, data) {
@@ -226,13 +258,7 @@ function initChat (username) {
   // It takes the page destination and creates a view based on what
   // page the user is navigating to.
   $("#modal-chat").bind("pagechange", function (event, data) {
-    if (data.toPage[0] == pages.chatList[0]) {
-      currentView = new ChatListView(event, data);
-    } else if (data.toPage[0] == pages.delete[0]) {
-      currentView = new DeleteChatView(event, data);
-    } else if (data.toPage[0] == pages.chat[0]) {
       currentView = new ChatView(event, data);
-    }
   });
 
   // Initially start off on the home page.
