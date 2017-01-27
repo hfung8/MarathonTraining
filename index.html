@@ -287,8 +287,7 @@
                   <p><span class="lat"></span>,&nbsp;<span class="lon"></span></p>
                 </div>
               </div>
-            </div>
-            <div class="card-action">
+            
               <div id="out"></div>
 
               <form id="location-form">
@@ -298,7 +297,6 @@
                   </div>
               </form>
 
-              <div id="maps"></div>
             </div>
 
           </div> <!-- close left card -->
@@ -308,23 +306,23 @@
         <!-- right card -->
         <div class="col s12 m4 offset-m1">
 
-          <div class="card" id="right-card">
+          <div class="card" id="right-top-card">
             
-            <div class="card-title" id="rc-title">
+            <div class="card-title" id="rtc-title">
               <h5>2017 NYC Marathon Starts in:</h5>
               <!-- countdown clock -->
               <div id = "countdown"></div>
               <div class="divider"></div>
             </div>
 
-            <div class="card-content" id="rc-content">
+            <div class="card-content" id="rtc-content">
 
 
               <!-- <div class="divider"></div> -->
               
             </div>
             
-            <div class="card-action" id="rc-action">
+            <div class="card-action" id="rtc-action">
               <a href="#modal-chat" class='btn waves-effect waves-light'>Chat</a>
 
               <a href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2283WS&redirect_uri=http%3A%2F%2Frunners-club.herokuapp.com%2Findex.html&scope=activity%20heartrate%20location%20profile%20weight&expires_in=604800" class='btn waves-effect waves-light' id="get-fitbit">Connect Fitbit</a>
@@ -336,6 +334,45 @@
 
       </div> <!-- close row -->
 
+      <div id = "daily-options" class = "row">
+        <div class = "col s12">
+          
+          <div class = "col s5" id="workout-today">
+            <div class="card" id="left-bottom-card">
+            
+              <div class="card-title" id="lbc-title">
+                <h5><center>Your Workout For Today</center></h5>
+                <div id="week-num"></div>
+                <div id="day-num"></div>
+              </div>
+
+              <div class ="card-content" id="lbc-content">
+
+                <div id="miles"></div>
+                <div id="run-type"></div>
+                <div id="instruction"></div>
+
+              </div>
+
+              <div class ="card-action" id="lbc-action">
+              </div>
+            </div>
+          </div>
+
+          <div class = "col s6 offset-s1">
+            <div class="card" id="right-bottom-card">
+            
+              <div class="card-title" id="rbc-title">
+              </div>
+
+              <div class ="card-content" id="rbc-content">
+                <div id="maps"></div>
+              </div>
+          </div>
+
+        </div>
+
+      </div>
   <!-- CHAT MODAL -->
   <!-- This code uses inline styles since the code for this app
   is built using jQuery mobile with its own sets of classes -->

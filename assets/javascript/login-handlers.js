@@ -235,11 +235,26 @@ function initApp() {
         var planWeek = "week-" + week;
         var planDay = "day-" + day;
 
+        var displayWeek = week + 1;
+        var displayDay = day + 1;
+        $("#week-num").text("Week " + displayWeek);
+        $("#day-num").text("Day " + displayDay);
+
         var miles = snapshot.child('training_plan/' + planWeek + '/' + planDay + '/distance').val();
         console.log("Miles to be run today = " + miles);
+        $("#miles").text("Distance - " + miles + " miles.");
+        if (miles !== 0) {
+          getRoutes(miles);
+        }
 
         var type = snapshot.child('training_plan/' + planWeek + '/' + planDay + '/type').val();
         console.log("Today's workout is " + type);
+        $("#run-type").text(type + " run.");
+
+        var instruction = typeKeys[type];
+        $("#instruction").text(instruction);
+
+        console.log(instruction);
       });
 
 

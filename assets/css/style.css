@@ -72,11 +72,11 @@ h5 {
 	margin-bottom: 1.5em;
 }
 
-#rc-title {
+#rtc-title {
 	margin-top: 0.5em;
 }
 
-#rc-content h5 {
+#rtc-content h5 {
 	margin-top: 0.5em;
 	text-align: center;
 }
@@ -100,12 +100,12 @@ h5 {
 	padding: .25em;
 }
 
-#rc-action {
+#rtc-action {
 	clear:both;
 	text-align: center;
 }
 
-#rc-action a {
+#rtc-action a {
 	width: 80%;
 	margin: 0.5em auto;
 }
