@@ -11,15 +11,31 @@ html,
 
 body{
 	font-family: 'Fjalla One', sans-serif;
-/*	background: url(../images/RCBlogo.jpg);*/
+	/*background: url(../images/RCBlogo.jpg);*/
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-position: center center;
 	background-attachment: fixed;
 	font-size: 14px;
+}
 
 
+#titles {
+	color:white;
+	background-color:black;
+	height:32px;
+	text-align: left;
+	padding-left:10px;
+
+
+
+}
+
+h5 {
+	text-align: left;
+	font-size:1.35rem;
+	padding-top:6px;
 }
 
 .nav-wrapper .brand-logo #logo {
@@ -31,9 +47,22 @@ body{
 	color:black;
 }
 
-nav {
-	line-height: px;
+
+.carousel {
+	height:200px;
+	margin-bottom: -170px;
+	font-size:14px;
+	margin-top:5px;
 }
+
+.carousel a {
+	color:black;
+}
+
+.carousel .carousel-item {
+	height:0px;
+}
+
 
 .login, .sign-out {
 	display: none;
@@ -88,7 +117,14 @@ nav {
 }
 
 
+/*#footerpg{
+	background-color: black;
+}*/
 
+#footertalk {
+	background-color: black;
+	font-size: 16px;
+}
 
 
 #location-form {
