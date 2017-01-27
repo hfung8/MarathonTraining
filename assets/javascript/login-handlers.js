@@ -150,6 +150,14 @@ function sendPasswordReset() {
   // [END sendpasswordemail];
 }
 
+function updateStartDate() {
+  var userId = JSON.parse(localStorage.getItem("currentUserId"));
+  console.log(userId);
+  var startDate = $("#datepicker").val();
+  console.log(startDate);
+  database.ref("plans/" + userId).update({'training_plan/startDate': startDate});
+}
+
 /**
  * initApp handles setting up UI event listeners and registering Firebase auth listeners:
  *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
