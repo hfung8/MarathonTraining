@@ -7,10 +7,11 @@ while (m = regex.exec(queryString)) {
 
 console.log('params', params);
 
-if(params) {
+if(params.access_token) {
   var userId = localStorage.getItem("currentUserId");
   console.log("User ID = " + userId);
-  database.ref("users/" + userId).set({
+  console.log(params.access_token);
+  database.ref("users/" + userId).update({
     fitbit_access_token: params.access_token
   });
   callFitbit(params);

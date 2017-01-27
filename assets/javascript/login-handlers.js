@@ -151,7 +151,7 @@ function sendPasswordReset() {
 }
 
 function updateStartDate() {
-  var userId = JSON.parse(localStorage.getItem("currentUserId"));
+  var userId = localStorage.getItem("currentUserId");
   console.log(userId);
   var startDate = $("#datepicker").val();
   console.log(startDate);
