@@ -145,11 +145,10 @@ h5 {
 }
 
 #maps {
-	display: none;
 	margin: auto;
 	overflow: auto;
     white-space: nowrap;
-    height: 430px;
+    height: 400px;
 }
 
 .map {
