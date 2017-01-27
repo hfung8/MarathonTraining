@@ -202,7 +202,7 @@ function getMaps(lat, long){
           var mapID = element._links.self[0].id;
           console.log(mapID);
           var wrapper = $("<div>").addClass("map-wrapper");
-          var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", "//snippets.mapmycdn.com/routes/view/embedded/" + mapID + "?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP").appendTo(wrapper);
+          var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", "https://snippets.mapmycdn.com/routes/view/embedded/" + mapID + "?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP").appendTo(wrapper);
           $("#maps").append(wrapper);  
         });
 
