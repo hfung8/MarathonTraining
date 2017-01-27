@@ -7,11 +7,9 @@ var updateTime = {
 
   time: function() {
     var currentDate = moment(new Date());
-    var displayDate = currentDate.format("ddd, MMM Do, YYYY");
-    var displayTime = currentDate.format("h:mm A");
+    var displayDate = currentDate.format("h:mm A, ddd, MMM Do, YYYY");
     var year = currentDate.format("YYYY");
-    $("#todays-date").text(displayDate);
-    $("#current-time").text(displayTime);
+    $("#current-date").text(displayDate);
     $("#year").text(year);
   
   },

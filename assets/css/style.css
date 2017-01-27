@@ -81,16 +81,11 @@ h5 {
 	text-align: center;
 }
 
-#todays-date {
-	text-align: center;
-	font-size: 1.5em;
+#current-date {
+	float: right;
+	margin-right: 0.5em;
 }
 
-#current-time {
-	text-align: center;
-	margin-bottom: .5em;
-	font-size: 1.5em;
-}
 
 #countdown {
 	text-align: center;
