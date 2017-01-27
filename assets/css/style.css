@@ -89,7 +89,6 @@ h5 {
 
 #countdown {
 	text-align: center;
-	font-size: 1.5em;
 	color: black;
 	padding: 1em;
 	border: 1px solid black;
@@ -130,6 +129,7 @@ h5 {
 }
 
 #maps {
+	display: none;
 	margin: auto;
 	overflow: auto;
     white-space: nowrap;

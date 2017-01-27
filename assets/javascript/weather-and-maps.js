@@ -127,7 +127,7 @@ $(document).on("click", "#fahrenheit", function(){
 });
 
 
-function getMaps(lat, long){
+function getMapToken(){
   
   var token;
   var api_key = "uj7d2fg236gukdznvrzs5bc4fqrfscda";
@@ -149,71 +149,8 @@ function getMaps(lat, long){
     console.log(response);
     token = response.access_token;
 
-      //token received, now to call api to get route information
-
-      var endPoint= "https://oauth2-api.mapmyapi.com/v7.1/route/?";
-      
-      // the following will need to be changed to allow for user input as well
-      var maximum_distance = 10000; //convert miles to meters
-      var minimum_distance = 8000;
-
-      // var queryUrl = endPoint + close_to_location + maximum_distance + minimum_distance;
-      
-
-      jQuery_3_1_1.ajax({
-        url: endPoint,
-        method: 'GET',
-        headers: {
-          "api-key": api_key,
-          Authorization: "Bearer " + token,
-          "Content-Type": "application/json"
-        },
-        data: {
-          close_to_location: lat + "," + long,
-          maximum_distance: maximum_distance,
-          minimum_distance: minimum_distance,
-          text_search: "run",
-          order_by: "+distance_from_point"
-        }
-      }).done(function(response){
-        console.log(response);
-        //api successfully called
-
-        var namesArray = [], filteredResults = [];
-
-        //remove duplicate named items from results
-
-        for (let i = 0; i < response._embedded.routes.length; i++) {
-          if (namesArray.indexOf(response._embedded.routes[i].name) == -1) {
-            namesArray.push(response._embedded.routes[i].name);
-            filteredResults.push(response._embedded.routes[i]);
-          }
-        }
-
-        console.log(namesArray);
-
-
-        console.log(filteredResults);
-
-        //select the first three maps to display
-        //TODO: Optional -
-          //don't filter results but have a scroll option
-
-        var mapsForDisplay = filteredResults.slice(0,6);
-
-        //create an iframe for each map, required by mapmyrun cdn
-        mapsForDisplay.forEach(function(element) {
-          var mapID = element._links.self[0].id;
-          console.log(mapID);
-          var wrapper = $("<div>").addClass("map-wrapper");
-          var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", "https://snippets.mapmycdn.com/routes/view/embedded/" + mapID + "?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP").appendTo(wrapper);
-          $("#maps").append(wrapper);  
-        });
-
-      }).fail(function(error){
-        console.log(error);
-      });
-
+    //store token in local storage
+    localStorage.setItem("mapmyapi_token", token);
 
   }).fail(function(error) {
     console.log(error);
@@ -222,16 +159,79 @@ function getMaps(lat, long){
 
 }
 
+function getRoutes(distance) {
+
+  var endPoint= "https://oauth2-api.mapmyapi.com/v7.1/route/?";
+  var api_key = "uj7d2fg236gukdznvrzs5bc4fqrfscda";
+  
+  var maximum_distance, minimum_distance;
+  
+  function convertMilesToMeters(distance) {
+    var meters = distance * 1600;
+    maximum_distance = meters + 800;
+    minimum_distance = meters - 800;
+  }
+
+  convertMilesToMeters(distance);
+  var token = localStorage.getItem("mapmyapi_token");
+  var lat = localStorage.getItem("lat");
+  var lon = localStorage.getItem("lon");
+  // var queryUrl = endPoint + close_to_location + maximum_distance + minimum_distance;
+  //jQuery_3_1_1 is a placeholder for $ function from v3.1.1 using noConflict()
+  jQuery_3_1_1.ajax({
+    url: endPoint,
+    method: 'GET',
+    headers: {
+      "api-key": api_key,
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json"
+    },
+    data: {
+      close_to_location: lat + "," + lon,
+      maximum_distance: maximum_distance,
+      minimum_distance: minimum_distance,
+      text_search: "run",
+      order_by: "+distance_from_point"
+    }
+  }).done(function(response){
+    console.log(response);
+    //api successfully called
+
+    var namesArray = [], filteredResults = [];
+
+    //remove duplicate named items from results
+
+    for (let i = 0; i < response._embedded.routes.length; i++) {
+      if (namesArray.indexOf(response._embedded.routes[i].name) == -1) {
+        namesArray.push(response._embedded.routes[i].name);
+        filteredResults.push(response._embedded.routes[i]);
+      }
+    }
+
+    //create an iframe for each map, required by mapmyrun cdn
+    filteredResults.forEach(function(element) {
+      var mapID = element._links.self[0].id;
+      console.log(mapID);
+      var wrapper = $("<div>").addClass("map-wrapper");
+      var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", "https://snippets.mapmycdn.com/routes/view/embedded/" + mapID + "?width=600&height=400&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP").appendTo(wrapper);
+      $("#maps").append(wrapper);  
+    });
+
+  }).fail(function(error){
+    console.log(error);
+  });
+}
+
 //get user ZIP code if geolocation not available
 function getUserInput() {
   
-    $("#location-form").show("fast");
-    $(document).on("click", "#submit-btn", function(event) {
-      event.preventDefault();
-      zip = $("#zip-entry").val();
-      $("#zip-entry").empty();
-      $("#location-form").hide("fast");
-      $("#out").empty();
+  $("#location-form").show("fast");
+  $(document).on("click", "#submit-btn", function(event) {
+    event.preventDefault();
+    zip = $("#zip-entry").val();
+    $("#zip-entry").empty();
+    $("#location-form").hide("fast");
+    $("#out").empty();
 
       //use Wunderground to get geolocation data
       //Wunderground API  
@@ -270,10 +270,12 @@ function geoFindMe() {
 
   function success(position) {
     var latitude  = position.coords.latitude;
+    localStorage.setItem("lat", latitude);
     var longitude = position.coords.longitude;
+    localStorage.setItem("lon", longitude);
     var ltln = latitude + "," + longitude;
     getWeather(ltln);
-    getMaps(latitude, longitude);
+    getMapToken();
 
 //     var img = new Image();
 //     img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";

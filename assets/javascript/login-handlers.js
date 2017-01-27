@@ -97,6 +97,13 @@ function handleSignUp() {
       training_plan: trainingPlan
     });
 
+    var startDate = moment(new Date()).format("L");
+
+    //set start date to today
+    database.ref('plans/' + userId).update({
+      'training_plan/startDate': startDate
+    });
+
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -150,13 +157,6 @@ function sendPasswordReset() {
   // [END sendpasswordemail];
 }
 
-function updateStartDate() {
-  var userId = localStorage.getItem("currentUserId");
-  console.log(userId);
-  var startDate = $("#datepicker").val();
-  console.log(startDate);
-  database.ref("plans/" + userId).update({'training_plan/startDate': startDate});
-}
 
 /**
  * initApp handles setting up UI event listeners and registering Firebase auth listeners:
@@ -234,7 +234,7 @@ function initApp() {
   $('#sign-in').click(toggleSignIn);
   $('.sign-out').click(toggleSignIn);
   $('#sign-up').click(handleSignUp);
-  $("#pick-date").click(updateStartDate);
+
 
 
 
