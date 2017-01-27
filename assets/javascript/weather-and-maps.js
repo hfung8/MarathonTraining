@@ -26,6 +26,7 @@ var backgrounds = {
   day: {
     clearCold: "https://static.pexels.com/photos/67749/pexels-photo-67749.jpeg",
     clearHot: "https://static.pexels.com/photos/40976/beach-beautiful-blue-coast-40976.jpeg",
+    partly: "https://static.pexels.com/photos/97906/pexels-photo-97906.jpeg",
     cloudy: "https://static.pexels.com/photos/29859/pexels-photo-29859.jpg",
     snow: "https://static.pexels.com/photos/65911/winter-nature-season-trees-65911.jpeg",
     rain: "https://static.pexels.com/photos/166360/pexels-photo-166360.jpeg",
@@ -40,7 +41,8 @@ var backgrounds = {
     snow: "https://static.pexels.com/photos/29756/pexels-photo-29756.jpg",
     storm: "https://static.pexels.com/photos/28774/pexels-photo-28774.jpg",
     ice: "https://static.pexels.com/photos/28247/pexels-photo-28247.jpg",
-    cloudy: "https://static.pexels.com/photos/239107/pexels-photo-239107.jpeg",
+    partly: "https://static.pexels.com/photos/239107/pexels-photo-239107.jpeg",
+    cloudy: "https://static.pexels.com/photos/30376/pexels-photo-30376.jpg",
     fog: "https://static.pexels.com/photos/42263/foggy-mist-forest-trees-42263.jpeg"
   }
 }
@@ -62,6 +64,8 @@ function changeBackground() {
     w = "ice";
   } else if (weather.includes("fog") || weather.includes("haze") || weather.includes("smoke") || weather.includes("dust")) {
     w ="fog";
+  } else if (weather.includes("partly")) {
+    w ="partly";
   } else if (weather.includes("cloud") || weather.includes("overcast")) {
     w ="cloudy";
   } else if (weather.includes("rain") || weather.includes("mist") || weather.includes("drizzle")) {
