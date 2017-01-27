@@ -1,10 +1,9 @@
 function initChat (username) {
 
-
   ////
   // PubNub Decorator
   // -------------------
-  // This wraps the pubnub libarary so we can handle the uuid and list
+  // This wraps the pubnub library so we can handle the uuid and list
   // of subscribed channels.
   ////
   function PubNub() {
@@ -63,10 +62,6 @@ function initChat (username) {
 
   var chatChannel = "Runner's CluB Chat",
       users = [],
-      // usernameInput = $('#username'),
-      chatRoomName = $("#chatRoomName"),
-      chatButton = $("#startChatButton"),
-      newChatButton = $("#newChatButton"),
       chatListEl = $("#chatList"),
       sendMessageButton = $("#sendMessageButton"),
       backButton = $("#backButton"),
@@ -77,10 +72,7 @@ function initChat (username) {
       isBlurred = false,
       timerId = -1,
       pages = {
-        home: $("#homePage"),
-        chatList: $("#chatListPage"),
         chat: $("#chatPage"),
-        delete: $("#delete")
       };
 
   console.log(username);
@@ -104,69 +96,6 @@ function initChat (username) {
       });
     }
   }
-
-  ////////
-  // Home View -- BYPASSED
-  /////
-  function HomeView() {
-    if (localStorage["username"]) {
-      usernameInput.val(localStorage["username"]);
-    }
-
-    chatButton.off('click');
-    chatButton.click(function (event) {
-      if(usernameInput.val() != '') {
-        username = usernameInput.val();
-
-        localStorage["username"] = username;
-
-        pubnub.connect(username);
-
-        $.mobile.changePage(pages.chatList);
-      }
-    });
-  };
-
-  /////
-  // Chat List View -- BYPASSED
-  ///////
-  function ChatListView(event, data) {
-    chatListEl.empty();
-    for(var i = 0; i < pubnub.subscriptions.length; i++) {
-      var chatName = pubnub.subscriptions[i],
-          chatEl = $("<li><a href='#chatPage' data-channel-name='" + chatName + "'>" 
-            + chatName 
-            + "</a><a href='#delete' data-rel='dialog' data-channel-name='" + chatName + "'></a></li>");
-      chatListEl.append(chatEl);
-      chatListEl.listview('refresh');
-    }
-
-    newChatButton.off('click');
-    newChatButton.click(function (event) {
-      if(chatRoomName.val() !== '') {
-        chatChannel = chatRoomName.val();
-
-        $.mobile.changePage(pages.chat);
-      }
-    });
-  };
-
-  //////
-  // Delete Chat View --BYPASSED
-  ///////
-  function DeleteChatView(event, data) {
-    if (data.options && data.options.link) {
-      var channelName = data.options.link.attr('data-channel-name'),
-          deleteButton = pages.delete.find("#deleteButton");
-
-      deleteButton.unbind('click');
-      deleteButton.click(function (event) {
-        pubnub.removeSubscription(channelName);
-        console.log(pages.delete.children());
-        pages.delete.find('[data-rel="back"]').click();
-      });
-    }
-  };
 
   /////
   // Chatting View
@@ -311,6 +240,5 @@ function initChat (username) {
   console.log(username);
   pubnub.connect(username);
   $.mobile.changePage(pages.chat);
-  
-  
+   
 }
