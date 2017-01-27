@@ -72,7 +72,7 @@ function handleSignUp() {
     return;
   }
   if (!validPass.test(password)) {
-    Materialize.toast('Please enter a valid password at least 8 characters long, that includes at least one uppercase letter, one lowercase letter, one number, and one special character.', 3000, 'rounded');
+    Materialize.toast('Please enter a valid password at least 8 characters long, that includes at least one uppercase letter, one lowercase letter, one number, and one special character.', 6000, 'rounded');
     return;
   }
   // Sign in with email and pass.
@@ -181,9 +181,67 @@ function initApp() {
         var displayName = snapshot.val().displayName;
         displayName = displayName.replace(/[+]/g," ");
         console.log(displayName);
+
+        //adds display name to profile page title
         $("#display-name").text(displayName).attr("data-display_name", displayName);
+        
+        //loads user data into chatroom
         initChat(displayName);
+
+        //checks if user has previously connected to fitbit
+        var hasToken = snapshot.hasChild("fitbit_access_token");
+        if (hasToken) {
+          //will see if user's fitbit session has expired
+          
+          var timestamp = snapshot.val().fitbit_timestamp;
+
+          //convert timestamp into seconds for comparison
+          timestamp = moment(timestamp).unix();
+          console.log("Server Timestamp after conversion= " + timestamp);
+          
+          //get current time in unix seconds
+          var time = moment(new Date()).format("X");
+          console.log("Current Time= " + time);
+
+          //fitbit login expires after 1 week
+          if ((timestamp + 604800) < time) {
+            $("#get-fitbit").text("Reconnect Fitbit").show('fast');
+          } else { 
+            $("#get-fitbit").hide("fast");
+          }
+          
+        }
       });
+        
+      //display current user's plan
+      database.ref('plans/' + uid).on('value', function(snapshot){
+        
+        //check current date against start date of plan
+        var d = moment(new Date());
+        console.log(d);
+
+        var startDate = snapshot.child('training_plan/startDate').val();
+        console.log(startDate);
+
+        var elapsedDays = d.diff(moment(startDate), 'days');
+
+        console.log("The difference between today," + d + ", and start, " + startDate + " = " + elapsedDays);
+
+        //convert days into weeks and remaining days
+
+        var week = Math.floor(elapsedDays/7);
+        var day = elapsedDays - (week * 7);
+
+        var planWeek = "week-" + week;
+        var planDay = "day-" + day;
+
+        var miles = snapshot.child('training_plan/' + planWeek + '/' + planDay + '/distance').val();
+        console.log("Miles to be run today = " + miles);
+
+        var type = snapshot.child('training_plan/' + planWeek + '/' + planDay + '/type').val();
+        console.log("Today's workout is " + type);
+      });
+
 
 
 
