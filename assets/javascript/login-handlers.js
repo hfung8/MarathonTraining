@@ -205,7 +205,7 @@ function initApp() {
 
           //fitbit login expires after 1 week
           if ((timestamp + 604800) < time) {
-            $("#get-fitbit").text("Reconnect Fitbit").show('fast');
+            $("#get-fitbit").show('fast');
           } else { 
             $("#get-fitbit").hide("fast");
           }

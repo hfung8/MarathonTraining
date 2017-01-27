@@ -106,14 +106,15 @@ h5 {
 }
 
 #rtc-action a {
-	width: 80%;
-	margin: 0.5em auto;
+	width: 35%;
+	margin-left: 5%;
+	margin-right: 5%;
+	text-align: center;
 }
 
 #week-num, #day-num {
 	float: left;
 	margin-left: 20%;
-	margin-right: .5em;
 }
 
 #lbc-content {
