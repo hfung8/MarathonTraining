@@ -129,7 +129,7 @@ function getMaps(lat, long){
   var api_key = "uj7d2fg236gukdznvrzs5bc4fqrfscda";
 
   //client side call of api to receive access token
-  $.ajax({
+  jQuery_3_1_1.ajax({
     url: "https://oauth2-api.mapmyapi.com/v7.1/oauth2/access_token/",//"https://api.ua.com/v7.1/oauth2/access_token/",
     method: 'POST',
     contentType: 'application/x-www-form-urlencoded',
@@ -156,7 +156,7 @@ function getMaps(lat, long){
       // var queryUrl = endPoint + close_to_location + maximum_distance + minimum_distance;
       
 
-      $.ajax({
+      jQuery_3_1_1.ajax({
         url: endPoint,
         method: 'GET',
         headers: {
