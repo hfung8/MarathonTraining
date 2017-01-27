@@ -99,7 +99,7 @@ function handleSignUp() {
       training_plan: trainingPlan
     });
 
-    var startDate = moment(new Date()).format("L");
+    var startDate = moment(new Date()).format("X");
 
     //set start date to today
     database.ref('plans/' + userId).update({
@@ -223,7 +223,9 @@ function initApp() {
         var startDate = snapshot.child('training_plan/startDate').val();
         console.log(startDate);
 
-        var elapsedDays = d.diff(moment(startDate), 'days');
+        startDate = moment(new Date(startDate)).format("L");
+
+        var elapsedDays = d.diff(startDate, 'days');
 
         console.log("The difference between today," + d + ", and start, " + startDate + " = " + elapsedDays);
 
