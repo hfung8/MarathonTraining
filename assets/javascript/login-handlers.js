@@ -26,14 +26,15 @@ function toggleSignIn() {
     email = $('#email').val().trim();
     console.log("user entered " + email);
     var password = $('#password').val().trim();
+    // var validPass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
     if (email.length < 4) {
-      alert('Please enter an email address.');
+      Materialize.toast('Please enter a valid email address.', 3000, 'rounded');
       return;
     }
-    if (password.length < 4) {
-      alert('Please enter a password.');
-      return;
-    }
+    // if (!validPass.test(password)) {
+    //   Materialize.toast('Please enter a valid password at least 8 characters long, that includes at least one uppercase letter, one lowercase letter, one number, and one special character.', 3000, 'rounded');
+    //   return;
+    // }
     // Sign in with email and pass.
     // [START authwithemail]
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -42,9 +43,9 @@ function toggleSignIn() {
       var errorMessage = error.message;
       // [START_EXCLUDE]
       if (errorCode === 'auth/wrong-password') {
-        alert('Wrong password.');
+        Materialize.toast('This username/password is not registered with site. Please click on the "Register" button.', 3500);
       } else {
-        alert(errorMessage);
+        Materialize.toast(errorMessage, 4000);
       }
       console.log(error);
 
@@ -65,12 +66,13 @@ function handleSignUp() {
   var lastName = $('#last_name').val().trim();
   displayName = firstName + "+" + lastName;
   console.log(displayName);
+  var validPass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
   if (email.length < 4) {
-    alert('Please enter an email address.');
+    Materialize.toast('Please enter a valid email address.', 3000, 'rounded');
     return;
   }
-  if (password.length < 4) {
-    alert('Please enter a password.');
+  if (!validPass.test(password)) {
+    Materialize.toast('Please enter a valid password at least 8 characters long, that includes at least one uppercase letter, one lowercase letter, one number, and one special character.', 3000, 'rounded');
     return;
   }
   // Sign in with email and pass.
@@ -109,11 +111,7 @@ function handleSignUp() {
     var errorCode = error.code;
     var errorMessage = error.message;
     // [START_EXCLUDE]
-    if (errorCode == 'auth/weak-password') {
-      alert('The password is too weak.');
-    } else {
-      alert(errorMessage);
-    }
+    Materialize.toast(errorMessage, 5000);
     console.log(error);
     // [END_EXCLUDE]
   });
@@ -127,7 +125,7 @@ function sendEmailVerification() {
   firebase.auth().currentUser.sendEmailVerification().then(function() {
     // Email Verification sent!
     // [START_EXCLUDE]
-    alert('Email Verification Sent!');
+    Materialize.toast('Email Verification Sent!', 3000);
     // [END_EXCLUDE]
   });
   // [END sendemailverification]
@@ -139,17 +137,16 @@ function sendPasswordReset() {
   firebase.auth().sendPasswordResetEmail(email).then(function() {
     // Password Reset Email Sent!
     // [START_EXCLUDE]
-    alert('Password Reset Email Sent!');
+    Materialize.toast('Password Reset Email Sent!', 3000);
     // [END_EXCLUDE]
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
     // [START_EXCLUDE]
-    if (errorCode == 'auth/invalid-email') {
-      alert(errorMessage);
-    } else if (errorCode == 'auth/user-not-found') {
-      alert(errorMessage);
+    if (errorCode == 'auth/invalid-email' 
+      || errorCode == 'auth/user-not-found') {
+      Materialize.toast(errorMessage, 4000);
     }
     console.log(error);
     // [END_EXCLUDE]
