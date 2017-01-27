@@ -167,6 +167,7 @@ function initApp() {
       
 
       var uid = user.uid;
+      localStorage.setItem("currentUserId", JSON.stringify(uid));
 
       console.log(uid);
 
@@ -191,6 +192,7 @@ function initApp() {
       
 
       geoFindMe();
+
       // if (!emailVerified) {
       //   document.getElementById('quickstart-verify-email').disabled = false;
       // }
@@ -224,7 +226,7 @@ function initApp() {
   $('#sign-in').click(toggleSignIn);
   $('.sign-out').click(toggleSignIn);
   $('#sign-up').click(handleSignUp);
-  
+  $("#pick-date").click()
 
 
   $("#fitbit-login").click(function(){

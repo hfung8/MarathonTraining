@@ -1,15 +1,22 @@
-var fbClick = false;
+var params = {}, queryString = location.hash.substring(1),
+    regex = /([^&=]+)=([^&]*)/g, m;
 
-if (fbClick === true) {
+while (m = regex.exec(queryString)) {
+  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+}
 
-  var params = {}, queryString = location.hash.substring(1),
-      regex = /([^&=]+)=([^&]*)/g, m;
+console.log('params', params);
 
-  while (m = regex.exec(queryString)) {
-    params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-  }
+if(params) {
+  var userId = JSON.parse(localstorage.getItem("currentUserId");
+  console.log("User ID = " + userId);
+  database.ref("users/" + userId).set({
+    fitbit_access_token: params.access_token
+  });
+  callFitbit(params);
+}
 
-  console.log('params', params);
+function callFitbit (params) {
 
   $.ajax({
     url: 'https://api.fitbit.com/1/user/-/profile.json',

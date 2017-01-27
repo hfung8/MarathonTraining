@@ -65,7 +65,7 @@
 
 
     <!-- fitbit token script   -->
-    <!-- <script type="text/javascript" src="assets/javascript/fitbit-token-received.js" ></script> -->
+    <script type="text/javascript" src="assets/javascript/fitbit-token-received.js" ></script>
 
 
 </head>
@@ -213,9 +213,9 @@
 
       </div> <!-- modal content -->
       <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close btn waves-effect waves-light login" id="sign-in">Sign In<i class="material-icons right">send</i></a>
+        <a href="#profilepg" class=" modal-action modal-close btn waves-effect waves-light login" id="sign-in">Sign In<i class="material-icons right">send</i></a>
 
-        <a href="#!" class=" modal-action modal-close btn waves-effect waves-light register" id="sign-up">Sign Up<i class="material-icons right">send</i></a>
+        <a href="#profilepg" class=" modal-action modal-close btn waves-effect waves-light register" id="sign-up">Sign Up<i class="material-icons right">send</i></a>
       </div> <!-- end modal footer -->
     </form>
   </div> <!-- end modal -->
@@ -295,6 +295,8 @@
             <div class="card-action" id="rc-action">
               <a href="#modal-chat" class='btn waves-effect waves-light'>Chat</a>
               <a href="#modal-plan" class='btn waves-effect waves-light'>Training Plan</a>
+
+              <a href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2283WS&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Findex.html&scope=activity%20heartrate%20location%20profile%20weight&expires_in=604800" class='btn waves-effect waves-light'>Connect Fitbit</a>
             </div>
           
           </div> <!-- close right card -->
@@ -399,14 +401,21 @@
   </div> <!-- close modal -->
 
   <div id="modal-plan" class="modal">
-    <div class="modal-content">
+    <form id = "date-form" class="col s12">
+      <div class="modal-content">
 
-      <form id = "date-form">
+      
         <input type="date" class="datepicker" id="datepicker">
         <label for="datepicker">Choose a Start Date</label>
-      </form>
+      
+      </div> <!-- close modal-content -->
 
-    </div> <!-- close modal-content -->
+      <div class="modal-footer">
+
+        <a href="#profilepg" class=" modal-action modal-close btn waves-effect waves-light" id="pick-date">Submit<i class="material-icons right">send</i></a>
+
+      </div>
+    </form>
   </div> <!-- close modal-plan -->
 
 </div> <!-- close profile page -->

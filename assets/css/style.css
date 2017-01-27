@@ -115,3 +115,7 @@ nav {
 .map-wrapper {
 	margin: 1.25em;
 }
+
+#modal-plan {
+	height: 400px;
+}
