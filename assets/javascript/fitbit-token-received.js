@@ -13,7 +13,8 @@ if(params.access_token) {
   console.log("User ID = " + userId);
   console.log(params.access_token);
   database.ref("users/" + userId).update({
-    fitbit_access_token: params.access_token
+    fitbit_access_token: params.access_token,
+    fitbit_timestamp: firebase.database.ServerValue.TIMESTAMP
   });
   callFitbit(params.access_token);
 }
