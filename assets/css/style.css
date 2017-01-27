@@ -110,6 +110,21 @@ h5 {
 	margin: 0.5em auto;
 }
 
+#week-num, #day-num {
+	float: left;
+	margin-left: 20%;
+	margin-right: .5em;
+}
+
+#lbc-content {
+	clear: both;
+	font-size: 1.25em;
+}
+
+#miles, #run-type, #instruction {
+	padding: .5em;
+}
+
 
 /*#footerpg{
 	background-color: black;
