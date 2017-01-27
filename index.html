@@ -52,7 +52,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
 
     <!-- slider and firebase initialization     -->
-    <script type="text/javascript" src="assets/javascript/logic.js"></script>
+    <script type="text/javascript" src="assets/javascript/page-elements.js"></script>
     
     <!-- training plan stored here -->
     <script type="text/javascript" src="assets/javascript/plan.js" ></script>
@@ -584,15 +584,19 @@
         <div class="input-field col s12">
           <textarea id="textarea1" class="materialize-textarea"></textarea>
           <label for="textarea1">Commment/Suggestion</label>
-        <div class="center">
-        <button id="comment-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i>
-        </button>
-        </div>
-        
-
+          <div class="center">
+            <button id="comment-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+          </div>
         </div>
       </div>
     </form>
+
+    <div id="modal-thanks" class="modal">
+      <div class="modal-content">
+        <p>Thank you for your feedback! We take your comments and suggestions seriously.</p>
+      </div>
+    </div>
+
   </div>
 </div>
 </div>
