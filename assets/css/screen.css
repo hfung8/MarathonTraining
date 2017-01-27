@@ -56,7 +56,7 @@ li.message {
 
 /* Home Page */
 [data-role="page"] {
-  background-image: -webkit-linear-gradient(top, rgba(250,250,250, 0.7) 0%, rgba(250,250,250,0) 100%), url(../img/pw_pattern.png);
+  background-image: -webkit-linear-gradient(top, rgba(250,250,250, 0.7) 0%, rgba(250,250,250,0) 100%);
 }
 
 .type-home .ui-content {
