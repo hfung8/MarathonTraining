@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
   $('.carousel').carousel({dist:0});
@@ -20,9 +21,16 @@ $(document).ready(function(){
 
 
 $('#return2').click(function() {      // When arrow is clicked
-    $('body,html').animate({
-        scrollTop : 0                       // Scroll to top of body
+  $('body,html').animate({
+    scrollTop : 0                       // Scroll to top of body
     }, 800);
 });
         
+
+
+//initialize date
+var d = new Date();
+var year = d.getFullYear();
+
 });
+
