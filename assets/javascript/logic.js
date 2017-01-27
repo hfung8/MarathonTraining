@@ -1,5 +1,9 @@
 $(document).ready(function(){
-  $('.carousel.carousel-slider').carousel({full_width: true});
+
+  $('.carousel').carousel({dist:0});
+   window.setInterval(function(){$('.carousel').carousel('next')},3200);
+
+  
   $('#textarea1').val();
   $('#textarea1').trigger('autoresize');
   $(".button-collapse").sideNav();
@@ -12,6 +16,8 @@ $(document).ready(function(){
 //         $('#return2').fadeOut(200);   // Else fade out the arrow
 //     }
 // });
+
+
 
 $('#return2').click(function() {      // When arrow is clicked
     $('body,html').animate({

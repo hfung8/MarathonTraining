@@ -14,18 +14,21 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
-    
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
-      <!-- Compiled and minified CSS -->
-      <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
 
-      <!-- Compiled and minified JavaScript -->
-      <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
-          
-      <script type="text/javascript" src="./assets/javascript/logic.js"></script>
+      <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+ 
+
+    
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+    <script type="text/javascript" src="./assets/javascript/logic.js"></script>
     
     
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
@@ -52,11 +55,11 @@
  <div class="row">
     <nav>
       <div class="nav-wrapper white col s12">
-          <a href="index.html" class="brand-logo"><img class="responsive-img" id=logo src="assets//images/RCBlogo.jpg"></a>
+          <a href="index.html" class="brand-logo black-text"><img class="responsive-img black-text" id=logo src="assets//images/RCBlogo.jpg">RCB [Runner's CluB]</a>
           <a href="index.html" data-activates="mobile-demo" class="button-collapse"><i class="material-icons black-text">menu</i></a>
         
           <ul class="right hide-on-med-and-down">
-            <li><a href="profile.html">MY ACCOUNT</a><li>
+            <li><a href="#profilepg">MY ACCOUNT</a><li>
             <li><a href="#aboutpg">ABOUT</a></li>
             <li><a href="#registerpg">REGISTER</a></li>
             <li><a href="#contactpg">CONTACT</a></li>
@@ -67,6 +70,7 @@
             <li><a href="#aboutpg">About</a></li>
             <li><a href="#registerpg">Register</a></li>
             <li><a href="#contactpg">Contact</a></li>
+            <li><a href="#profilepg">My Account</a></li>
           </ul>
         </div>
       </nav>
@@ -81,15 +85,27 @@
     </a>
 </div>
 
+<!-- SLIDER -->
+<div class="container col s12">
+  <div class="carousel red-text">
+    <a class="carousel-item" href="http://www.tcsnycmarathon.org/plan-your-race/run-in-2017" target="_blank">New York City Marathon</a>
+    <a class="carousel-item" href="https://www.chicagomarathon.com/" target="_blank">Chicago Marathon</a>
+    <a class="carousel-item" href="http://www.honolulumarathon.org/" target="_blank">Honolulu Marathon</a>
+    <a class="carousel-item" href="http://www.lamarathon.com/participant-info/registration" target="_blank">Los Angeles Marathon</a>
+    <a class="carousel-item" href="http://philadelphiamarathon.com/races" target="_blank">Philadelphia Marathon</a>
+  </div>
+</div>
+
 <!-- ABOUT -->
 
 <div class = "container col s12">
 <div id="page1">
   <a id="aboutpg" class="smooth"></a>
 
+<div id="titles"><h5>About Marathon Training</h5></div>
 <img class="center responsive-img" src="assets/images/mainAbout1.JPG">
 
-  <h3><center>About Marathon Training</center></h3>
+  
           <p>"It doesn't matter where you’re going;
         It doesn't matter how far you go;
         It doesn't’ matter the pace you travel;
@@ -127,12 +143,24 @@
         It doesn't’ matter the pace you travel;
         As long as you run to run."</p>
   </div>  
+</div>
 
+<br>
+<!-- PROFILE -->
+<div class="container col s12">
+  <div id="profilepage">
+  <a id="profilepg" class="smooth"></a>
+  
+  <div id="titles"><h5>My Profile</h5></div>
+    
 
+  </div>
 </div>
 
 
 <!-- REGISTER -->
+
+
 
 <div class = "container col s12">
 <div id="page2">
@@ -140,7 +168,10 @@
 
   <img class="center responsive-img" src="assets/images/mainSocialrunning.JPG">
 
-  <h3><center>Register</center></h3>
+<br>
+<br>
+ 
+  <div id="titles"><h5>Register</h5></div>
 
       <div class="row">
       <form class="col s12">
@@ -170,13 +201,17 @@
 
 <!-- CONTACT -->
 
+
 <div class = "container col s12">
 <div id="page3">
   <a id="contactpg" class="smooth"></a>
 
   <img class="center responsive-img" src="assets/images/mainEvent1.JPG">
 
-  <h3><center>Contact Us!</center></h3>
+<br>
+<br>
+
+  <div id="titles"><h5>Contact Us!</h5></div>
   <!-- <img class="center responsive-img" src="assets/images/mainEvent2.JPG"> -->
 
   <div class="row">
@@ -185,50 +220,69 @@
         <div class="input-field col s12">
           <textarea id="textarea1" class="materialize-textarea"></textarea>
           <label for="textarea1">Commment/Suggestion</label>
+        <div class="center">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i>
+        </button>
+        </div>
+        
+
         </div>
       </div>
     </form>
   </div>
 </div>
+</div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="container center col s12">
     <i class="medium material-icons">phone</i>
     <i class="medium material-icons">email</i>
     <i class="medium material-icons">search</i>
   </div>
-</div>
+</div> -->
 
-
-
+<!-- <div class = "container col s12">
+<img class="center responsive-img" src="assets/images/mainTraining.JPG">
+</div> -->
+<BR>
 
 <!-- FOOTER  -->
+ 
+<div class="container center" id="footerpg">
+<div class="col s12">
  <footer class="page-footer black-text transparent">
   <div class="row">
-  <div class="container">
-      <div class="col l6 s12">
-        <h5 class="black-text">Marathon Training</h5>
-       <!--  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
-      </div>
-      <div class="col l4 offset-l2 s12">
+  
+       <!--  <h5 class="black-text">Rutgers University</h5> -->
+      <a href="http://www.rutgers.edu/" target="_blank"><img class="responsive-img" src="assets/images/rutgerslogo.png" height="6%" width="9%"></a>
+
+      
+      <a href="https://github.com/wesleylhandy/MarathonTraining" target="_blank"><img class="responsive-img" src="assets/images/githublogo.png" height="6%" width="9%"></a>
+
+  </div>
+      <!-- <div class="col l4 offset-l2 s12">
         <h5 class="black-text">Links</h5>
         <ul>
           <li><a class="red-text" href="#!">Instagram</a></li>
           <li><a class="red-text" href="#!">YouTube</a></li>
           <li><a class="red-text" href="#!">Contact</a></li>
         </ul>
-      </div>
-    </div>
-  </div>
-  
-  <div class="footer-copyright black-text transparent">
-    <div class="container center">
-    © 2017 Marathon Training 
-    </div>
-  </div>
+      </div> -->
 </footer>
-
 </div>
+
+
+
+  
+
+  <div class="footer-copyright white-text" id="footertalk">
+    <div class="container center">© 2017 Marathon Training </div>
+  </div>
+
+  <br>
+
+  </div>
+
 
 
 </body>
