@@ -17,11 +17,21 @@ $(document).ready(function(){
 //     }
 // });
 
-	$('#return2').click(function() {      // When arrow is clicked
-	  $('body,html').animate({
+	jQuery_3_1_1('#return2').click(function() {      // When arrow is clicked
+	  jQuery_3_1_1('body,html').animate({
 	    scrollTop : 0                       // Scroll to top of body
 	    }, 800);
 	});
+
+	jQuery_3_1_1('.smooth').click(function() {
+	      // When arrow is clicked
+	    var id = jQuery_3_1_1(this).attr("href");
+	    console.log(id);
+		jQuery_3_1_1('html, body').animate({
+        scrollTop: jQuery_3_1_1(id).offset().top
+    		}, 2000);
+	});
+
 
 	$("#comment-btn").click(function(event){
 		event.preventDefault();
