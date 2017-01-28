@@ -296,7 +296,7 @@ function initApp() {
       $(".sign-out").show("fast");
       $(".login-btn").hide("fast");
       $(".register-btn").hide("fast");
-      $("#page2").show('fast');
+      $("#profilepg").show('fast');
 
       console.log("Signed-in");
 
@@ -314,7 +314,7 @@ function initApp() {
       $(".sign-out").hide("fast");
       $(".login-btn").show("fast");
       $(".register-btn").show("fast");
-      $('#page2').hide("fast");
+      $('#profilepg').hide("fast");
       // User is signed out.
       
     }
