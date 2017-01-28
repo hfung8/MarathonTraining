@@ -21,7 +21,7 @@ if(params.access_token) {
 
 function callFitbit (access_token) {
 
-  $.ajax({
+  jQuery_3_1_1.ajax({
     url: 'https://api.fitbit.com/1/user/-/profile.json',
     headers: {
       'Authorization': 'Bearer ' + access_token
@@ -33,7 +33,7 @@ function callFitbit (access_token) {
       var userName = data.user.displayName;
       var userImage = data.user.avatar;
 
-      $.ajax({
+      jQuery_3_1_1.ajax({
         url: 'https://api.fitbit.com/1/user/-/activities/date/2017-01-20.json',
         headers: {
           'Authorization': 'Bearer ' + params.access_token
