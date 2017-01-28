@@ -244,7 +244,7 @@ function initApp() {
 
         var miles = snapshot.child('training_plan/' + planWeek + '/' + planDay + '/distance').val();
         console.log("Miles to be run today = " + miles);
-        $("#miles").text("Distance - " + miles + " miles.");
+        $("#miles").text(miles + " miles.");
         if (miles !== 0) {
           getRoutes(miles);
         }
@@ -257,6 +257,36 @@ function initApp() {
         $("#instruction").text(instruction);
 
         console.log(instruction);
+
+        var tBody = $("#runs");
+        tBody.empty();
+        for (let i = 0; i<16; i++) {
+          var iWeek = "week-" + i;
+          var highlight;
+          if (iWeek == planWeek) {
+            highlight="lime lighten-5";
+          } else {
+            highlight = "";
+          }
+          var iDisplay = i+1;
+          var iRow = $("<tr>").attr("id", iWeek).addClass(highlight);
+          var iCol = $("<td>").text("Week " + iDisplay).appendTo(iRow);
+          for (let j=0; j<7; j++) {
+            var jDay = "day-" + j;
+            var mark;
+            if (jDay == planDay && iWeek == planWeek) {
+              mark ="white-text deep-orange darken-4";
+            } else {
+              mark = "";
+            }
+            var jDisplay = j+1;
+            var jDistance = snapshot.child('training_plan/' + iWeek + '/' + jDay + '/distance').val();
+            console.log(jDistance);
+            var jCol = $("<td>").text(jDistance + " miles").attr("id", iWeek + "_" + jDay).addClass(mark).appendTo(iRow);
+          }
+          iRow.appendTo(tBody);
+
+        }
       });
 
 
