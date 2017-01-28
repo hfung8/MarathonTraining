@@ -259,345 +259,345 @@
 
     <div id="titles"><h5>Welcome&nbsp;<span id="display-name"></span><span id="current-date"></span></h5></div>
 
-      <!-- put two cards on one row -->
-      <div class="row" style="clear:both">
-        <div class="col s12 m7">
+    <!-- put two cards on one row -->
+    <div class="row" style="clear:both">
+      <div class="col s12 m7">
 
-          <!-- left card -->
-          <div class="card z-depth-5" id="left-card">
-            <div class="card-image">
-              <img id = "weather-img" src="https://static.pexels.com/photos/132687/pexels-photo-132687.jpeg">
-              <span class="card-title">
-                <div class = "weather">
-        
-                  <div class = "tc">
-                    <span class="temp"></span>&nbsp;<span class="conditions"></span>
-                  </div>
-                  
-                  <div class="wind"></div>
-                  
-                  <div class="humidity"></div>
-                  
-                </div>
-              </span>
-            </div>
-            <div class="card-content">
-              <div class = "location">
-                <div class="city"></div>
-                <div class="coordinates">
-                  <p><span class="lat"></span>,&nbsp;<span class="lon"></span></p>
-                </div>
-              </div>
-            
-              <div id="out"></div>
-
-              <form id="location-form">
-                  <div class="form-group">
-                    <input type="number" min="00601" max="99929" placeholder="Enter US Zip Code" id="zip-entry">
-                    <button type="submit" id="submit-btn">Submit</button>
-                  </div>
-              </form>
-
-            </div>
-
-            <div class="card-action" id="rtc-action">
-              <a href="#modal-chat" class='btn waves-effect waves-light'>Chat</a>
-
-              <!-- Causing errors for app on callback -->
-              <!-- <a href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2283WS&redirect_uri=http%3A%2F%2Frunners-club.herokuapp.com%2Findex.html&scope=activity%20heartrate%20location%20profile%20weight&expires_in=604800" class='btn waves-effect waves-light' id="get-fitbit">Fitbit</a> -->
-            </div>
-
-          </div> <!-- close left card -->
-        
-        </div> <!-- close left column -->
+        <!-- left card -->
+        <div class="card z-depth-5" id="left-card">
+          <div class="card-image">
+            <img id = "weather-img" src="https://static.pexels.com/photos/132687/pexels-photo-132687.jpeg">
+            <span class="card-title">
+              <div class = "weather">
       
-        <!-- right card -->
-        <!-- disregard names, cards moved for better screen fit -->
-        <div class = "col s12 m4 offset-m1" id="workout-today">
-          <div class="card z-depth-5" id="left-bottom-card">
+                <div class = "tc">
+                  <span class="temp"></span>&nbsp;<span class="conditions"></span>
+                </div>
+                
+                <div class="wind"></div>
+                
+                <div class="humidity"></div>
+                
+              </div>
+            </span>
+          </div>
+          <div class="card-content">
+            <div class = "location">
+              <div class="city"></div>
+              <div class="coordinates">
+                <p><span class="lat"></span>,&nbsp;<span class="lon"></span></p>
+              </div>
+            </div>
           
-            <div class="card-title" id="lbc-title">
-              <h4><center>Today's Run</center></h4>
-              <div id="week-num"></div>
-              <div id="day-num"></div>
-              <div class="divider" style="clear:both"></div>
-            </div>
+            <div id="out"></div>
 
-            <div class ="card-content" id="lbc-content">
+            <form id="location-form">
+                <div class="form-group">
+                  <input type="number" min="00601" max="99929" placeholder="Enter US Zip Code" id="zip-entry">
+                  <button type="submit" id="submit-btn">Submit</button>
+                </div>
+            </form>
 
-              <div id="miles"></div>
-              <div id="run-type"></div>
-              <div id="instruction"></div>
+          </div>
 
-              <h4><center>2017 NYC Marathon</center></h4>
-              <div class = "divider"></div>
-              <!-- countdown clock -->
-              <div id = "countdown"></div>
+          <div class="card-action" id="rtc-action">
+            <a href="#modal-chat" class='btn waves-effect waves-light'>Chat</a>
 
-            </div>
+            <!-- Causing errors for app on callback -->
+            <!-- <a href="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=2283WS&redirect_uri=http%3A%2F%2Frunners-club.herokuapp.com%2Findex.html&scope=activity%20heartrate%20location%20profile%20weight&expires_in=604800" class='btn waves-effect waves-light' id="get-fitbit">Fitbit</a> -->
+          </div>
 
-            <!-- <div class ="card-action" id="lbc-action">
-            </div> -->
-          </div> <!-- close card -->
-        </div> <!-- close col -->
-
-
-      </div> <!-- close row -->
-
-      <div id = "daily-options" class = "row">
-          
-        <div class = "col s12">
-          <div class="card z-depth-5" id="right-bottom-card">
-          
-            <div class="card-title" id="rbc-title">
-            <h3><center>Running Routes Nearby</center></h3>
-            </div>
-
-            <div class ="card-content" id="rbc-content">
-              <div id="maps"></div>
-            </div>
-
-          </div> <!-- close card -->
+        </div> <!-- close left card -->
+      
+      </div> <!-- close left column -->
+    
+      <!-- right card -->
+      <!-- disregard names, cards moved for better screen fit -->
+      <div class = "col s12 m4 offset-m1" id="workout-today">
+        <div class="card z-depth-5" id="left-bottom-card">
         
-        </div> <!-- close col -->
+          <div class="card-title" id="lbc-title">
+            <h4><center>Today's Run</center></h4>
+            <div id="week-num"></div>
+            <div id="day-num"></div>
+            <div class="divider" style="clear:both"></div>
+          </div>
 
-      </div> <!-- close row -->
+          <div class ="card-content" id="lbc-content">
 
-  <!-- CHAT MODAL -->
-  <!-- This code uses inline styles since the code for this app
-  is built using jQuery mobile with its own sets of classes -->
+            <div id="miles"></div>
+            <div id="run-type"></div>
+            <div id="instruction"></div>
 
-  <div id="modal-chat" class="modal" style="height: 420px;">
-    <div class="modal-content" style="height: 100%">
+            <h4><center>2017 NYC Marathon</center></h4>
+            <div class = "divider"></div>
+            <!-- countdown clock -->
+            <div id = "countdown"></div>
 
-      <!-- Chat Page -->
-      <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="height:100%;">
+          </div>
 
-        <div data-role="content" style="position: relative">
-          <div class="content-primary">
-            <div data-role="header" data-position="fixed" data-tap-toggle="false" style="position:fixed; top:0; overflow: hidden; height:42px">
-              <h1>Pub Messenger</h1>
-            </div><!-- /header -->
+          <!-- <div class ="card-action" id="lbc-action">
+          </div> -->
+        </div> <!-- close card -->
+      </div> <!-- close col -->
 
-            <div data-role="content" style="float:left; overflow: auto;">
-              <ul data-role="listview" id="messageList">
-                <!-- <li><span class="username">User123:</span>This is my message.</li> -->
+
+    </div> <!-- close row -->
+
+    <div id = "daily-options" class = "row">
+        
+      <div class = "col s12">
+        <div class="card z-depth-5" id="right-bottom-card">
+        
+          <div class="card-title" id="rbc-title">
+          <h3><center>Running Routes Nearby</center></h3>
+          </div>
+
+          <div class ="card-content" id="rbc-content">
+            <div id="maps"></div>
+          </div>
+
+        </div> <!-- close card -->
+      
+      </div> <!-- close col -->
+
+    </div> <!-- close row -->
+
+    <!-- CHAT MODAL -->
+    <!-- This code uses inline styles since the code for this app
+    is built using jQuery mobile with its own sets of classes -->
+
+    <div id="modal-chat" class="modal" style="height: 420px;">
+      <div class="modal-content" style="height: 100%">
+
+        <!-- Chat Page -->
+        <div data-role="page" id="chatPage" data-theme="c" class="type-interior" style="height:100%;">
+
+          <div data-role="content" style="position: relative">
+            <div class="content-primary">
+              <div data-role="header" data-position="fixed" data-tap-toggle="false" style="position:fixed; top:0; overflow: hidden; height:42px">
+                <h1>Pub Messenger</h1>
+              </div><!-- /header -->
+
+              <div data-role="content" style="float:left; overflow: auto;">
+                <ul data-role="listview" id="messageList">
+                  <!-- <li><span class="username">User123:</span>This is my message.</li> -->
+                </ul>
+              </div>
+            </div>
+
+            <div data-role="footer" data-theme="c" style="clear: both; position:fixed; overflow: hidden; bottom: 0; width:100%; height: 115px">
+              <textarea id="messageContent"></textarea>
+                <div class="ui-grid-a">
+                  <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
+                  <div class="ui-block-b"><a href="#" id="deleteButton" class="modal-action modal-close" data-role="button">Exit Chat</a></div>
+                </div>
+            </div>
+
+            <div class="content-secondary" style="border: 1px solid black; border-radius: 1px; position: fixed; top:0; right:0; text-align: center; height: 240px; margin-top: 42px">
+              <h5>Users Online</h5>
+              <ul data-role="listview" id="userList" data-theme="c" style="overflow: auto">
+            
               </ul>
             </div>
-          </div>
+          </div><!-- /content -->
 
-          <div data-role="footer" data-theme="c" style="clear: both; position:fixed; overflow: hidden; bottom: 0; width:100%; height: 115px">
-            <textarea id="messageContent"></textarea>
-              <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="#" id="sendMessageButton" data-role="button">Send Message</a></div>
-                <div class="ui-block-b"><a href="#" id="deleteButton" class="modal-action modal-close" data-role="button">Exit Chat</a></div>
-              </div>
-          </div>
+        </div><!-- /chatpage -->
 
-          <div class="content-secondary" style="border: 1px solid black; border-radius: 1px; position: fixed; top:0; right:0; text-align: center; height: 240px; margin-top: 42px">
-            <h5>Users Online</h5>
-            <ul data-role="listview" id="userList" data-theme="c" style="overflow: auto">
-          
-            </ul>
-          </div>
-        </div><!-- /content -->
+      </div> <!--/modal content-->
+    </div> <!-- close modal -->
 
-      </div><!-- /chatpage -->
+    <div class = "row" id="training-plan">
+      <div class="card z-depth-5">
+              
+        <div class="card-title">
 
-    </div> <!--/modal content-->
-  </div> <!-- close modal -->
-
-<div class = "row" id="training-plan">
-  <div class="card z-depth-5">
-          
-    <div class="card-title">
-
-      <h3><center>Marathon Training Plan</center></h3>
-    </div>
-    <div class ="card-content">
-      <table class="bordered">
-        <thead>
-          <tr>
-            <th data-field="week">Week No.</th>
-            <th data-field="day-1">Day 1</th>
-            <th data-field="day-2">Day 2</th>
-            <th data-field="day-3">Day 3</th>
-            <th data-field="day-4">Day 4</th>
-            <th data-field="day-5">Day 5</th>
-            <th data-field="day-6">Day 6</th>
-            <th data-field="day-7">Day 7</th>
-          </tr>
-        </thead>
-
-        <tbody id="runs">
-          <tr>
-            <td>Week 1</td>
-            <td>3 miles</td>
-            <td>3 miles</td>
-            <td>0 miles</td>
-            <td>3 miles</td>
-            <td>0 miles</td>
-            <td>0 miles</td>
-            <td>6 miles</td>
-          </tr>
-          <tr>
-            <td>Week 2</td>
-            <td>3 miles</td>
-            <td>3 miles</td>
-            <td>0 miles</td>
-            <td>4 miles</td>
-            <td>0 miles</td>
-            <td>3 miles</td>
-            <td>8 miles</td>
-          </tr>
-          <tr>
-            <td>Week 3</td>
-            <td>3 miles</td>
-            <td>4 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>4 miles</td>
-            <td>10 miles</td>
-          </tr>
-          <tr>
-            <td>Week 4</td>
-            <td>3 miles</td>
-            <td>4 miles</td>
-            <td>0 miles</td>
-            <td>6 miles</td>
-            <td>0 miles</td>
-            <td>4 miles</td>
-            <td>12 miles</td>
-          </tr>
-          <tr>
-            <td>Week 5</td>
-            <td>3 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>6 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>10 miles</td>
-          </tr>
-          <tr>
-            <td>Week 6</td>
-            <td>3 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>0 miles</td>
-            <td>14 miles</td>
-          </tr>
-          <tr>
-            <td>Week 7</td>
-            <td>3 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>10 miles</td>
-          </tr>
-          <tr>
-            <td>Week 8</td>
-            <td>3 miles</td>
-            <td>4 miles</td>
-            <td>0 miles</td>
-            <td>6 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>16 miles</td>
-          </tr>
-          <tr>
-            <td>Week 9</td>
-            <td>3 miles</td>
-            <td>6 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>10 miles</td>
-          </tr>
-          <tr>
-            <td>Week 10</td>
-            <td>3 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>6 miles</td>
-            <td>0 miles</td>
-            <td>4 miles</td>
-            <td>18 miles</td>
-          </tr>
-          <tr>
-            <td>Week 11</td>
-            <td>3 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>8 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>10 miles</td>
-          </tr>
-          <tr>
-            <td>Week 12</td>
-            <td>3 miles</td>
-            <td>8 miles</td>
-            <td>0 miles</td>
-            <td>6 miles</td>
-            <td>0 miles</td>
-            <td>0 miles</td>
-            <td>20 miles</td>
-          </tr>
-          <tr>
-            <td>Week 13</td>
-            <td>3 miles</td>
-            <td>4 miles</td>
-            <td>0 miles</td>
-            <td>8 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>10 miles</td>
-          </tr>
-          <tr>
-            <td>Week 14</td>
-            <td>3 miles</td>
-            <td>4 miles</td>
-            <td>0 miles</td>
-            <td>6 miles</td>
-            <td>0 miles</td>
-            <td>4 miles</td>
-            <td>12 miles</td>
-          </tr>
-          <tr>
-            <td>Week 15</td>
-            <td>3 miles</td>
-            <td>3 miles</td>
-            <td>0 miles</td>
-            <td>5 miles</td>
-            <td>0 miles</td>
-            <td>4 miles</td>
-            <td>7 miles</td>
-          </tr>
-          <tr>
-            <td>Week 16</td>
-            <td>3 miles</td>
-            <td>3 miles</td>
-            <td>0 miles</td>
-            <td>3 miles</td>
-            <td>0 miles</td>
-            <td>2 miles</td>
-            <td>26.2 miles</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+          <h3><center>Marathon Training Plan</center></h3>
+        </div>
+        <div class ="card-content">
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th data-field="week">Week No.</th>
+                <th data-field="day-1">Day 1</th>
+                <th data-field="day-2">Day 2</th>
+                <th data-field="day-3">Day 3</th>
+                <th data-field="day-4">Day 4</th>
+                <th data-field="day-5">Day 5</th>
+                <th data-field="day-6">Day 6</th>
+                <th data-field="day-7">Day 7</th>
+              </tr>
+            </thead>
+            <!--default fill, repopulated from database-->
+            <tbody id="runs">
+              <tr>
+                <td>Week 1</td>
+                <td>3 miles</td>
+                <td>3 miles</td>
+                <td>0 miles</td>
+                <td>3 miles</td>
+                <td>0 miles</td>
+                <td>0 miles</td>
+                <td>6 miles</td>
+              </tr>
+              <tr>
+                <td>Week 2</td>
+                <td>3 miles</td>
+                <td>3 miles</td>
+                <td>0 miles</td>
+                <td>4 miles</td>
+                <td>0 miles</td>
+                <td>3 miles</td>
+                <td>8 miles</td>
+              </tr>
+              <tr>
+                <td>Week 3</td>
+                <td>3 miles</td>
+                <td>4 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>4 miles</td>
+                <td>10 miles</td>
+              </tr>
+              <tr>
+                <td>Week 4</td>
+                <td>3 miles</td>
+                <td>4 miles</td>
+                <td>0 miles</td>
+                <td>6 miles</td>
+                <td>0 miles</td>
+                <td>4 miles</td>
+                <td>12 miles</td>
+              </tr>
+              <tr>
+                <td>Week 5</td>
+                <td>3 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>6 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>10 miles</td>
+              </tr>
+              <tr>
+                <td>Week 6</td>
+                <td>3 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>0 miles</td>
+                <td>14 miles</td>
+              </tr>
+              <tr>
+                <td>Week 7</td>
+                <td>3 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>10 miles</td>
+              </tr>
+              <tr>
+                <td>Week 8</td>
+                <td>3 miles</td>
+                <td>4 miles</td>
+                <td>0 miles</td>
+                <td>6 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>16 miles</td>
+              </tr>
+              <tr>
+                <td>Week 9</td>
+                <td>3 miles</td>
+                <td>6 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>10 miles</td>
+              </tr>
+              <tr>
+                <td>Week 10</td>
+                <td>3 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>6 miles</td>
+                <td>0 miles</td>
+                <td>4 miles</td>
+                <td>18 miles</td>
+              </tr>
+              <tr>
+                <td>Week 11</td>
+                <td>3 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>8 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>10 miles</td>
+              </tr>
+              <tr>
+                <td>Week 12</td>
+                <td>3 miles</td>
+                <td>8 miles</td>
+                <td>0 miles</td>
+                <td>6 miles</td>
+                <td>0 miles</td>
+                <td>0 miles</td>
+                <td>20 miles</td>
+              </tr>
+              <tr>
+                <td>Week 13</td>
+                <td>3 miles</td>
+                <td>4 miles</td>
+                <td>0 miles</td>
+                <td>8 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>10 miles</td>
+              </tr>
+              <tr>
+                <td>Week 14</td>
+                <td>3 miles</td>
+                <td>4 miles</td>
+                <td>0 miles</td>
+                <td>6 miles</td>
+                <td>0 miles</td>
+                <td>4 miles</td>
+                <td>12 miles</td>
+              </tr>
+              <tr>
+                <td>Week 15</td>
+                <td>3 miles</td>
+                <td>3 miles</td>
+                <td>0 miles</td>
+                <td>5 miles</td>
+                <td>0 miles</td>
+                <td>4 miles</td>
+                <td>7 miles</td>
+              </tr>
+              <tr>
+                <td>Week 16</td>
+                <td>3 miles</td>
+                <td>3 miles</td>
+                <td>0 miles</td>
+                <td>3 miles</td>
+                <td>0 miles</td>
+                <td>2 miles</td>
+                <td>26.2 miles</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> <!-- close card -->
+    </div> <!-- close row -->
 
 
-</div> <!-- close profile page -->
+  </div> <!-- close profile page -->
 </div> <!--container close-->
 
 <!-- CONTACT -->
