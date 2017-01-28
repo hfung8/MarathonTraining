@@ -188,29 +188,30 @@ function initApp() {
         //loads user data into chatroom
         initChat(displayName);
 
+        //// DISABLED FITBIT ////
+ 
         //checks if user has previously connected to fitbit
-        var hasToken = snapshot.hasChild("fitbit_access_token");
-        if (hasToken) {
-          //will see if user's fitbit session has expired
+        // var hasToken = snapshot.hasChild("fitbit_access_token");
+        // if (hasToken) {
+        //   //will see if user's fitbit session has expired
           
-          var timestamp = snapshot.val().fitbit_timestamp;
+        //   var timestamp = snapshot.val().fitbit_timestamp;
 
-          //convert timestamp into seconds for comparison
-          timestamp = moment(timestamp).unix();
-          console.log("Server Timestamp after conversion= " + timestamp);
+        //   //convert timestamp into seconds for comparison
+        //   timestamp = moment(timestamp).unix();
+        //   console.log("Server Timestamp after conversion= " + timestamp);
           
-          //get current time in unix seconds
-          var time = moment(new Date()).format("X");
-          console.log("Current Time= " + time);
+        //   //get current time in unix seconds
+        //   var time = moment(new Date()).format("X");
+        //   console.log("Current Time= " + time);
 
-          //fitbit login expires after 1 week
-          if ((timestamp + 604800) < time) {
-            $("#get-fitbit").show('fast');
-          } else { 
-            $("#get-fitbit").hide("fast");
-          }
-          
-        }
+        //   //fitbit login expires after 1 week
+        //   if ((timestamp + 604800) < time) {
+        //     $("#get-fitbit").show('fast');
+        //   } else { 
+        //     $("#get-fitbit").hide("fast");
+        //   }
+        // }
       });
         
       //display current user's plan
