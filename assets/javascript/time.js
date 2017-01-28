@@ -89,10 +89,10 @@ var countdownClock = {
         hours = "0" + hours;
       }
 
-      return "<div class='clock'>" + days + " Days</div><div class='clock'>" 
-                + hours + " Hours</div><div class='clock'>" 
-                + minutes + " Minutes</div><div class='clock'>" 
-                + seconds + " Seconds</div>";
+      return "<span class='clock'>" + days + " days</span>&nbsp;|&nbsp;<span class='clock'>" 
+                + hours + " hrs</span>&nbsp;|&nbsp;<span class='clock'>" 
+                + minutes + " m</span>&nbsp;|&nbsp;<span class='clock'>" 
+                + seconds + " s</span>";
     }
 }
 

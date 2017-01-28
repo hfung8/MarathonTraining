@@ -99,7 +99,7 @@ function handleSignUp() {
       training_plan: trainingPlan
     });
 
-    var startDate = moment(new Date()).format("X");
+    var startDate = moment(new Date()).format("L");
 
     //set start date to today
     database.ref('plans/' + userId).update({

@@ -90,14 +90,16 @@ h5 {
 #countdown {
 	text-align: center;
 	color: black;
-	padding: 1em;
-	border: 1px solid black;
-	border-radius: 5px;
+	padding-top: 0.5em;
+	height: 3em;
+	/*border: 1px solid black;
+	border-radius: 5px;*/
 }
 
 .clock {
-	text-align: center;
-	padding: .25em;
+	margin: 0 auto;
+	/*float: left;*/
+	/*margin-right: 0.2em;*/
 }
 
 #rtc-action {
@@ -148,12 +150,12 @@ h5 {
 	margin: auto;
 	overflow: auto;
     white-space: nowrap;
-    height: 400px;
+    height: 460px;
 }
 
 .map {
-	height: 400px;
-	width: 400px;
+	height: 440px;
+	width: 100%;
 	margin: 0 auto;
 	display: block;
 }
