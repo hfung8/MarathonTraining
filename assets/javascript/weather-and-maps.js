@@ -7,16 +7,13 @@ var hour = d.getHours();
 
 //Wunderground API  
 var keyId="2145db27285d6fbd";
-var city="NY/New+York",
-  zip="07011",
-  lat="40.867507",
+var lat="40.867507",
   lon="-74.142158",
   api= "https://api.wunderground.com/api/" + keyId;
 var conditions = api + '/conditions/q/';
 var geolookup = api + '/geolookup/q/';
-
       
-var weatherIcon = "https://icons.wxug.com/i/c/i/";
+// var weatherIcon = "https://icons.wxug.com/i/c/i/";
 
 var celsius=0;
 var fahrenheit=0;
@@ -83,10 +80,13 @@ function changeBackground() {
   
 }
 
-function getWeather(index) {
+function getWeather() {
+  var lat = localStorage.getItem("lat");
+  var lon = localStorage.getItem("lon");
+  var ltln = lat + "," + lon;
     // Create an AJAX call to retrieve data Log the data in console
     $.ajax({
-      url: conditions + index + ".json",
+      url: conditions + ltln + ".json",
       method: "GET"
     }).done(function(response) {
       // Log the data in HTML
@@ -117,14 +117,6 @@ function getWeather(index) {
     })
   .fail(function(){});
 }
-
-$(document).on("click", "#celsius", function() {
-  $(".temp").html(celsius);
-});
-
-$(document).on("click", "#fahrenheit", function(){
-  $(".temp").html(fahrenheit);
-});
 
 //underarmour API
 function getMapToken(){
@@ -226,6 +218,19 @@ function getRoutes(distance) {
 
 //Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
 //key=API_KEY
+function pushToGoogleMaps() {
+  var lat = localStorage.getItem("lat");
+  var lon = localStorage.getItem("lon");
+  var mapOptions = {
+    zoom: 13,
+    center: new google.maps.LatLng(lat,lon)
+  }
+
+  var map = new google.maps.Map(document.getElementById("google-map"), mapOptions);
+
+  var transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+}
 
 
 //get user ZIP code if geolocation not available
@@ -254,8 +259,14 @@ function getUserInput() {
     }).done(function(response){
 
       //send latitude and longitude data to getMaps
-      getMaps(response.location.lat, response.location.lon);
-      getWeather(zip);
+      var latitude  = response.location.lat;
+      localStorage.setItem("lat", latitude);
+      var longitude = response.location.lon;
+      localStorage.setItem("lon", longitude);
+
+      getWeather();
+      getMapToken();
+      
 
     }).fail(function(error){
       console.log(error);
@@ -270,7 +281,7 @@ function geoFindMe() {
 
   if (!navigator.geolocation){
     output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    getUserInputW();
+    getUserInput();
     return;
   }
 
@@ -279,8 +290,8 @@ function geoFindMe() {
     localStorage.setItem("lat", latitude);
     var longitude = position.coords.longitude;
     localStorage.setItem("lon", longitude);
-    var ltln = latitude + "," + longitude;
-    getWeather(ltln);
+
+    getWeather();
     getMapToken();
 
 //     var img = new Image();
@@ -291,7 +302,7 @@ function geoFindMe() {
 
   function error() {
     output.innerHTML = "Unable to retrieve your location at this time.";
-    getUserInputW();
+    getUserInput();
     return;
   }
 
