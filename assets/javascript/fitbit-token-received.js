@@ -16,6 +16,7 @@ if(params.access_token) {
     fitbit_access_token: params.access_token,
     fitbit_timestamp: firebase.database.ServerValue.TIMESTAMP
   });
+  Materialize.toast("Your Fitbit account has been registered for 1 week.", 4000)
   callFitbit(params.access_token);
 }
 

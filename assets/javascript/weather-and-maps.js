@@ -126,7 +126,7 @@ $(document).on("click", "#fahrenheit", function(){
   $(".temp").html(fahrenheit);
 });
 
-
+//underarmour API
 function getMapToken(){
   
   var token;
@@ -223,6 +223,10 @@ function getRoutes(distance) {
     console.log(error);
   });
 }
+
+//Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
+//key=API_KEY
+
 
 //get user ZIP code if geolocation not available
 function getUserInput() {
