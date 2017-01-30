@@ -68,7 +68,7 @@ h5 {
 }
 
 
-.login, .sign-out {
+.login, .sign-out, .profile-link {
 	display: none;
 }
 

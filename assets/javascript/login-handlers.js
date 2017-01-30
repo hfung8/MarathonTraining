@@ -172,10 +172,12 @@ function initApp() {
       
 
       var uid = user.uid;
+      //put user id in local storage to be used by other functions
       localStorage.setItem("currentUserId", uid);
 
       // console.log(uid);
 
+      //get user data from database
       database.ref('users/' + uid).on('value', function(snapshot){
         // console.log(snapshot.val());
         var displayName = snapshot.val().displayName;
@@ -293,18 +295,17 @@ function initApp() {
         }
       });
 
-
-
-
+      //toggle display
       $(".sign-out").show("fast");
       $(".login-btn").hide("fast");
       $(".register-btn").hide("fast");
       $("#profilepg").show('fast');
+      $(".profile-link").show('fast');
 
       console.log("Signed-in");
 
       
-
+      //get geolocation for maps and weather
       geoFindMe();
 
       // if (!emailVerified) {
@@ -314,10 +315,13 @@ function initApp() {
     } else {
 
       console.log("Signed-out");
+
+      //toggle display
       $(".sign-out").hide("fast");
       $(".login-btn").show("fast");
       $(".register-btn").show("fast");
       $('#profilepg').hide("fast");
+      $(".profile-link").hide('fast');
       // User is signed out.
       
     }
