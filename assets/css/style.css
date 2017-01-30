@@ -152,6 +152,11 @@ h5 {
     height: 460px;
 }
 
+#google-map {
+	height: 400px;
+    width: 100%;
+}
+
 .map {
 	height: 440px;
 	width: 100%;

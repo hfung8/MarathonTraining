@@ -247,7 +247,10 @@ function initApp() {
         console.log("Miles to be run today = " + miles);
         $("#miles").text(miles + " miles.");
         if (miles !== 0) {
+          $("#right-bottom-card").show("fast");
           getRoutes(miles);
+        } else {
+          $("#right-bottom-card").hide("fast");
         }
 
         var type = snapshot.child('training_plan/' + planWeek + '/' + planDay + '/type').val();

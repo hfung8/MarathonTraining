@@ -219,17 +219,22 @@ function getRoutes(distance) {
 //Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
 //key=API_KEY
 function pushToGoogleMaps() {
-  var lat = localStorage.getItem("lat");
-  var lon = localStorage.getItem("lon");
-  var mapOptions = {
+  var lt = parseFloat(localStorage.getItem("lat"));
+  var ln = parseFloat(localStorage.getItem("lon"));
+  console.log(lt + ',' + ln);
+
+  var map = new google.maps.Map(document.getElementById("google-map"), {
     zoom: 13,
-    center: new google.maps.LatLng(lat,lon)
-  }
+    center: {lat: lt, lng: ln}
+  });
 
-  var map = new google.maps.Map(document.getElementById("google-map"), mapOptions);
+  var kmlLayer = new google.maps.KmlLayer({
+    url: '../css/maps.kml', 
+    suppressInfoWindows: true,
+    preserveViewport: false,
+    map: map
+  });
 
-  var transitLayer = new google.maps.TransitLayer();
-  transitLayer.setMap(map);
 }
 
 
