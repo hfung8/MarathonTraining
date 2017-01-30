@@ -24,7 +24,7 @@ function toggleSignIn() {
     // [END signout]
   } else {
     email = $('#email').val().trim();
-    console.log("user entered " + email);
+    // console.log("user entered " + email);
     var password = $('#password').val().trim();
     // var validPass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
     if (email.length < 4) {
@@ -65,7 +65,7 @@ function handleSignUp() {
   var firstName = $('#first_name').val().trim();
   var lastName = $('#last_name').val().trim();
   displayName = firstName + "+" + lastName;
-  console.log(displayName);
+  // console.log(displayName);
   var validPass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
   if (email.length < 4) {
     Materialize.toast('Please enter a valid email address.', 3000, 'rounded');
@@ -78,11 +78,11 @@ function handleSignUp() {
   // Sign in with email and pass.
   // [START createwithemail]
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function(data){
-    console.log(data);
+    // console.log(data);
 
     userId = data.uid;
 
-    console.log(userId);
+    // console.log(userId);
 
     database.ref('users/' + userId).set({
             
@@ -174,13 +174,13 @@ function initApp() {
       var uid = user.uid;
       localStorage.setItem("currentUserId", uid);
 
-      console.log(uid);
+      // console.log(uid);
 
       database.ref('users/' + uid).on('value', function(snapshot){
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         var displayName = snapshot.val().displayName;
         displayName = displayName.replace(/[+]/g," ");
-        console.log(displayName);
+        // console.log(displayName);
 
         //adds display name to profile page title
         $("#display-name").text(displayName).attr("data-display_name", displayName);
@@ -199,11 +199,11 @@ function initApp() {
 
           //convert timestamp into seconds for comparison
           timestamp = moment(timestamp).unix();
-          console.log("Server Timestamp after conversion= " + timestamp);
+          // console.log("Server Timestamp after conversion= " + timestamp);
           
           //get current time in unix seconds
           var time = moment(new Date()).format("X");
-          console.log("Current Time= " + time);
+          // console.log("Current Time= " + time);
 
           //fitbit login expires after 1 week
           if ((timestamp + 604800) < time) {
@@ -219,16 +219,16 @@ function initApp() {
         
         //check current date against start date of plan
         var d = moment(new Date());
-        console.log(d);
+        // console.log(d);
 
         var startDate = snapshot.child('training_plan/startDate').val();
-        console.log(startDate);
+        // console.log(startDate);
 
         startDate = moment(new Date(startDate)).format("L");
 
         var elapsedDays = d.diff(startDate, 'days');
 
-        console.log("The difference between today," + d + ", and start, " + startDate + " = " + elapsedDays);
+        // console.log("The difference between today," + d + ", and start, " + startDate + " = " + elapsedDays);
 
         //convert days into weeks and remaining days
 
@@ -285,7 +285,7 @@ function initApp() {
             }
             var jDisplay = j+1;
             var jDistance = snapshot.child('training_plan/' + iWeek + '/' + jDay + '/distance').val();
-            console.log(jDistance);
+            // console.log(jDistance);
             var jCol = $("<td>").text(jDistance + " miles").attr("id", iWeek + "_" + jDay).addClass(mark).appendTo(iRow);
           }
           iRow.appendTo(tBody);

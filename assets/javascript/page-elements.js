@@ -1,5 +1,21 @@
 
 $(document).ready(function(){
+	var d = new Date();
+	var year = d.getFullYear();
+
+	console.log("************");
+	console.log("RCB[Runner's CluB] developed by:");
+	console.log("____________");
+	console.log("Franco Sevillano: https://github.com/fasevillano1");
+	console.log("-");
+	console.log("Harrison Fung: https://github.com/hfung8");
+	console.log("-");
+	console.log("Jihyun Gong: https://github.com/JihyunH");
+	console.log("-");
+	console.log("Wesley Handy: https://github.com/wesleylhandy");
+	console.log("************");
+	console.log("Copyright @ " + year);
+	console.log("************");
 
   $('.carousel').carousel({dist:0});
    window.setInterval(function(){$('.carousel').carousel('next')},3200);
@@ -26,7 +42,7 @@ $(document).ready(function(){
 	jQuery_3_1_1('.smooth').click(function() {
 	      // When arrow is clicked
 	    var id = jQuery_3_1_1(this).attr("href");
-	    console.log(id);
+	    // console.log(id);
 		jQuery_3_1_1('html, body').animate({
         scrollTop: jQuery_3_1_1(id).offset().top
     		}, 2000);

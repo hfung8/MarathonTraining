@@ -76,7 +76,7 @@ function initChat (username) {
         chat: $("#chatPage"),
       };
 
-  console.log(username);
+  // console.log(username);
 
   // Blur tracking
   $(window).on('blur', function () {
@@ -124,7 +124,7 @@ function initChat (username) {
       deleteButton.unbind('click');
       deleteButton.click(function (event) {
         pubnub.removeSubscription(channelName);
-        console.log(pages.delete.children());
+        // console.log(pages.delete.children());
         pages.delete.find('[data-rel="back"]').click();
       });
     }
@@ -154,7 +154,7 @@ function initChat (username) {
       presence   : function( message, env, channel ) {
         if (message.action == "join") {
           users.push(message.uuid);
-          console.log(users);
+          // console.log(users);
           userList.append("<li data-username='" + message.uuid + "'>" + message.uuid + "</li>");
         } else {
           users.splice(users.indexOf(message.uuid), 1);
@@ -264,7 +264,7 @@ function initChat (username) {
 
   // Initially start off on the home page.
 
-  console.log(username);
+  // console.log(username);
   pubnub.connect(username);
   $.mobile.changePage(pages.chat);
    

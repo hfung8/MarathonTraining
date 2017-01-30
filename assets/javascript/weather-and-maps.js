@@ -88,7 +88,7 @@ function getWeather() {
       method: "GET"
     }).done(function(response) {
       // Log the data in HTML
-      console.log(response);
+      // console.log(response);
       $("#main").show();
       $(".city").text(response.current_observation.display_location.full);
       lat = response.current_observation.display_location.latitude;
@@ -136,7 +136,7 @@ function getMapToken(){
       'api-key': api_key
     }
   }).done(function(response){
-    console.log(response);
+    // console.log(response);
     token = response.access_token;
 
     //store token in local storage
@@ -184,7 +184,7 @@ function getRoutes(distance) {
       order_by: "+distance_from_point"
     }
   }).done(function(response){
-    console.log(response);
+    // console.log(response);
     //api successfully called
 
     var namesArray = [], filteredResults = [];
@@ -204,14 +204,14 @@ function getRoutes(distance) {
     filteredResults.forEach(function(element) {
       var mapID = element._links.self[0].id;
       var mapName = element.name;
-      console.log("Map ID = " + mapID + "; Map Name = " + mapName);
+      // console.log("Map ID = " + mapID + "; Map Name = " + mapName);
       // var newEndpoint = "https://oauth2-api.mapmyapi.com/v7.1/route/" + mapID + "/?"+ 'api-key=' + api_key + '&Authorization=Bearer%20'+token+'&Content-Type=application%2Fjson&format=kml&field_set=detailed';
       // pushToGoogleMaps(newEndpoint);
 
       //get length of run
       var nameSlice = mapName.slice(0, 7).trim();
       nameSlice+= " run in " + element.city;
-      console.log(nameSlice);
+      // console.log(nameSlice);
 
       //get thumbnail url
       var thumbnailHref = element._links.thumbnail[0].href;
@@ -221,7 +221,7 @@ function getRoutes(distance) {
       thumbnailHref = thumbnailHref.replace("100", "400");
       //make secure
       thumbnailHref = "https:" + thumbnailHref;
-      console.log(thumbnailHref);
+      // console.log(thumbnailHref);
 
       //create title div wrapper
       var thumbnailTitle = $("<div>").html("<h4><center>" + nameSlice + "</center></h4>").addClass("thumb-title map");
@@ -258,8 +258,8 @@ function getRoutes(distance) {
 function pushToGoogleMaps(url) {
   var lt = parseFloat(localStorage.getItem("lat"));
   var ln = parseFloat(localStorage.getItem("lon"));
-  console.log(url);
-  console.log(lt + ',' + ln);
+  // console.log(url);
+  // console.log(lt + ',' + ln);
 
   var map = new google.maps.Map(document.getElementById("google-map"), {
     zoom: 13,
