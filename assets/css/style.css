@@ -153,6 +153,7 @@ h5 {
 }
 
 #google-map {
+	display: none;
 	height: 400px;
     width: 100%;
 }
