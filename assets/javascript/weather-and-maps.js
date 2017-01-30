@@ -203,9 +203,11 @@ function getRoutes(distance) {
       var mapID = element._links.self[0].id;
       console.log(mapID);
       var wrapper = $("<div>").addClass("map-wrapper");
+
+      //major problem here - this returns over http, not https
       var url = "//dynamic-assets.mapmyfitness.com/routes/view/embedded/" + mapID + "?width=400&height=380&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP";
       console.log("Get map @ " + url);
-      var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", url).appendTo(wrapper);
+      var frame = $("<div>").addClass("map").attr("id", mapID).attr("src", url).appendTo(wrapper);
       $("#maps").append(wrapper);  
     });
 
