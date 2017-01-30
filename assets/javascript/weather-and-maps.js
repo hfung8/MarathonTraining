@@ -203,25 +203,39 @@ function getRoutes(distance) {
     //create an iframe for each map, required by mapmyrun cdn
     filteredResults.forEach(function(element) {
       var mapID = element._links.self[0].id;
-      console.log(mapID);
+      var mapName = element.name;
+      console.log("Map ID = " + mapID + "; Map Name = " + mapName);
       // var newEndpoint = "https://oauth2-api.mapmyapi.com/v7.1/route/" + mapID + "/?"+ 'api-key=' + api_key + '&Authorization=Bearer%20'+token+'&Content-Type=application%2Fjson&format=kml&field_set=detailed';
       // pushToGoogleMaps(newEndpoint);
-      var thumbnailHREF = element._links.thumbnail[0].href;
+
+      //get length of run
+      var nameSlice = mapName.slice(0, 7).trim();
+      nameSlice+= " run in " + element.city;
+      console.log(nameSlice);
+
+      //get thumbnail url
+      var thumbnailHref = element._links.thumbnail[0].href;
       //increase width
-      thumbnailHREF = thumbnailHREF.replace("100", "600");
+      thumbnailHref = thumbnailHref.replace("100", "600");
       //increase height
-      thumbnailHREF = thumbnailHREF.replace("100", "400");
+      thumbnailHref = thumbnailHref.replace("100", "400");
       //make secure
-      thumbnailHREF = "https:" + thumbnailHREF;
-      console.log(thumbnailHREF);
-      //create link wrapper
-      var thumbnailLINK = $("<a>").attr("href", "http://www.mapmyfitness.com/routes/view/" + mapID).attr("target", "_blank").addClass("map");
+      thumbnailHref = "https:" + thumbnailHref;
+      console.log(thumbnailHref);
+
+      //create title div wrapper
+      var thumbnailTitle = $("<div>").html("<h4><center>" + nameSlice + "</center></h4>").addClass("thumb-title map");
+      
+      //create link
+      var thumbnailLink = $("<a>").attr("href", "http://www.mapmyfitness.com/routes/view/" + mapID).attr("target", "_blank");
       
       //create image to add to DOM
-      var thumbnailIMG = $("<img>").attr("src", thumbnailHREF).appendTo(thumbnailLINK);
+      var thumbnailImg = $("<img>").attr("src", thumbnailHref).appendTo(thumbnailLink).addClass("responsive-img");
       
-      //append to DOM
-      $("#maps").append(thumbnailLINK);
+      //append link to div
+      thumbnailLink.appendTo(thumbnailTitle)
+      //append div to DOM
+      $("#maps").append(thumbnailTitle);
 
 
       // var wrapper = $("<div>").addClass("map-wrapper");
