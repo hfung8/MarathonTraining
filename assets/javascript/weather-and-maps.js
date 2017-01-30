@@ -12,8 +12,6 @@ var lat="40.867507",
   api= "https://api.wunderground.com/api/" + keyId;
 var conditions = api + '/conditions/q/';
 var geolookup = api + '/geolookup/q/';
-      
-// var weatherIcon = "https://icons.wxug.com/i/c/i/";
 
 var celsius=0;
 var fahrenheit=0;
@@ -229,7 +227,7 @@ function pushToGoogleMaps() {
   });
 
   var kmlLayer = new google.maps.KmlLayer({
-    url: '../css/maps.kml', 
+    url: 'https://wesleylhandy.github.io/assets/css/maps.kml', 
     suppressInfoWindows: true,
     preserveViewport: false,
     map: map
