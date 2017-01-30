@@ -203,6 +203,8 @@ function getRoutes(distance) {
     //create an iframe for each map, required by mapmyrun cdn
     slicedResults.forEach(function(element) {
       var mapID = element._links.self[0].id;
+      var newEndpoint = "https://oauth2-api.mapmyapi.com/v7.1/route/" + mapID + "/?"+ "api-key=" + api_key + "&Authorization=Bearer%20"+token+"&Content-Type=application%2Fjson&format=kml&field_set=detailed";
+      pushToGoogleMaps(newEndpoint);
       console.log(mapID);
       var wrapper = $("<div>").addClass("map-wrapper");
 
@@ -220,7 +222,7 @@ function getRoutes(distance) {
 
 //Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
 //key=API_KEY
-function pushToGoogleMaps() {
+function pushToGoogleMaps(url) {
   var lt = parseFloat(localStorage.getItem("lat"));
   var ln = parseFloat(localStorage.getItem("lon"));
   console.log(lt + ',' + ln);
@@ -231,7 +233,7 @@ function pushToGoogleMaps() {
   });
 
   var kmlLayer = new google.maps.KmlLayer({
-    url: 'https://wesleylhandy.github.io/assets/css/maps.kml', 
+    url: url, 
     suppressInfoWindows: true,
     preserveViewport: false,
     map: map
