@@ -203,8 +203,8 @@ function getRoutes(distance) {
     //create an iframe for each map, required by mapmyrun cdn
     slicedResults.forEach(function(element) {
       var mapID = element._links.self[0].id;
-      var newEndpoint = "https://oauth2-api.mapmyapi.com/v7.1/route/" + mapID + "/?"+ "api-key=" + api_key + "&Authorization=Bearer%20"+token+"&Content-Type=application%2Fjson&format=kml&field_set=detailed";
-      pushToGoogleMaps(newEndpoint);
+      // var newEndpoint = "https://oauth2-api.mapmyapi.com/v7.1/route/" + mapID + "/?"+ 'api-key=' + api_key + '&Authorization=Bearer%20'+token+'&Content-Type=application%2Fjson&format=kml&field_set=detailed';
+      // pushToGoogleMaps(newEndpoint);
       console.log(mapID);
       var wrapper = $("<div>").addClass("map-wrapper");
 
@@ -225,6 +225,7 @@ function getRoutes(distance) {
 function pushToGoogleMaps(url) {
   var lt = parseFloat(localStorage.getItem("lat"));
   var ln = parseFloat(localStorage.getItem("lon"));
+  console.log(url);
   console.log(lt + ',' + ln);
 
   var map = new google.maps.Map(document.getElementById("google-map"), {
