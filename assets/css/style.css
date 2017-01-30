@@ -27,9 +27,12 @@ body{
 	height:32px;
 	text-align: left;
 	padding-left:10px;
+}
 
-
-
+@media screen and (max-width: 468px) {
+	#titles {
+		height: 64px;
+	}
 }
 
 h5 {
