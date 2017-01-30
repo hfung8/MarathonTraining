@@ -149,7 +149,8 @@ h5 {
 	margin: auto;
 	overflow: auto;
     white-space: nowrap;
-    height: 460px;
+    height: 440px;
+    width: 80%;
 }
 
 #google-map {
@@ -159,10 +160,9 @@ h5 {
 }
 
 .map {
-	height: 440px;
-	width: 100%;
-	margin: 0 auto;
-	display: block;
+
+	margin-right: 2em;
+	display: inline-block;
 }
 
 .map-wrapper {

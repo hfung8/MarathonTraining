@@ -201,18 +201,36 @@ function getRoutes(distance) {
     var slicedResults = filteredResults.slice(0,4);
 
     //create an iframe for each map, required by mapmyrun cdn
-    slicedResults.forEach(function(element) {
+    filteredResults.forEach(function(element) {
       var mapID = element._links.self[0].id;
+      console.log(mapID);
       // var newEndpoint = "https://oauth2-api.mapmyapi.com/v7.1/route/" + mapID + "/?"+ 'api-key=' + api_key + '&Authorization=Bearer%20'+token+'&Content-Type=application%2Fjson&format=kml&field_set=detailed';
       // pushToGoogleMaps(newEndpoint);
-      console.log(mapID);
-      var wrapper = $("<div>").addClass("map-wrapper");
+      var thumbnailHREF = element._links.thumbnail[0].href;
+      //increase width
+      thumbnailHREF = thumbnailHREF.replace("100", "600");
+      //increase height
+      thumbnailHREF = thumbnailHREF.replace("100", "400");
+      //make secure
+      thumbnailHREF = "https:" + thumbnailHREF;
+      console.log(thumbnailHREF);
+      //create link wrapper
+      var thumbnailLINK = $("<a>").attr("href", "http://www.mapmyfitness.com/routes/view/" + mapID).attr("target", "_blank").addClass("map");
+      
+      //create image to add to DOM
+      var thumbnailIMG = $("<img>").attr("src", thumbnailHREF).appendTo(thumbnailLINK);
+      
+      //append to DOM
+      $("#maps").append(thumbnailLINK);
 
-      //major problem here - this returns over http, not https
-      var url = "//dynamic-assets.mapmyfitness.com/routes/view/embedded/" + mapID + "?width=400&height=380&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP";
-      console.log("Get map @ " + url);
-      var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", url).appendTo(wrapper);
-      $("#maps").append(wrapper);  
+
+      // var wrapper = $("<div>").addClass("map-wrapper");
+
+      // //major problem here - this returns over http, not https
+      // var url = "//dynamic-assets.mapmyfitness.com/routes/view/embedded/" + mapID + "?width=400&height=380&&line_color=E60f0bdb&rgbhex=DB0B0E&distance_markers=0&unit_type=imperial&map_mode=ROADMAP";
+      // console.log("Get map @ " + url);
+      // var frame = $("<iframe>").addClass("map").attr("id", mapID).attr("src", url).appendTo(wrapper);
+      // $("#maps").append(wrapper);  
     });
 
   }).fail(function(error){
@@ -222,6 +240,7 @@ function getRoutes(distance) {
 
 //Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
 //key=API_KEY
+//this will not function without a publicly accessible kml URL
 function pushToGoogleMaps(url) {
   var lt = parseFloat(localStorage.getItem("lat"));
   var ln = parseFloat(localStorage.getItem("lon"));
