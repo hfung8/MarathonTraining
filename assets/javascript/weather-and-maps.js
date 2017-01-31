@@ -95,8 +95,8 @@ function getWeather() {
       lon = response.current_observation.display_location.longitude;
       $(".lat").text(lat);
       $(".lon").text(lon);
-      var img = new Image();
-      img.src = response.current_observation.icon_url;
+      // var img = new Image();
+      // img.src = response.current_observation.icon_url;
       weather = response.current_observation.weather;
       $(".conditions").text(weather);
       $(".wind").text("Wind " + response.current_observation.wind_string);
@@ -104,7 +104,7 @@ function getWeather() {
       fahrenheit = response.current_observation.temp_f + "&#8457;";
       celsius = response.current_observation.temp_c + "&#8451;";
       $(".temp").html(fahrenheit);
-      $("#temp-toggle").show();
+      // $("#temp-toggle").show();
       var newTime = new Date(response.current_observation.observation_time_rfc822);
       time = newTime.toLocaleTimeString("en-US",{ hour12: false });
       hour = newTime.getHours();
