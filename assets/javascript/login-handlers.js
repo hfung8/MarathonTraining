@@ -226,7 +226,7 @@ function initApp() {
         var startDate = snapshot.child('training_plan/startDate').val();
         // console.log(startDate);
 
-        startDate = moment(new Date(startDate)).format("L");
+        startDate = moment(new Date(startDate));
 
         var elapsedDays = d.diff(startDate, 'days');
 
