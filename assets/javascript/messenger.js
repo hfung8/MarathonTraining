@@ -101,34 +101,34 @@ function initChat (username) {
   /////
   // Chat List View -- BYPASSED
   ///////
-  function ChatListView(event, data) {
-    chatListEl.empty();
-    for(var i = 0; i < pubnub.subscriptions.length; i++) {
-      var chatName = pubnub.subscriptions[i],
-          chatEl = $("<li><a href='#chatPage' data-channel-name='" + chatName + "'>" 
-            + chatName 
-            + "</a><a href='#delete' data-rel='dialog' data-channel-name='" + chatName + "'></a></li>");
-      chatListEl.append(chatEl);
-      chatListEl.listview('refresh');
-    }
-  }
+  // function ChatListView(event, data) {
+  //   chatListEl.empty();
+  //   for(var i = 0; i < pubnub.subscriptions.length; i++) {
+  //     var chatName = pubnub.subscriptions[i],
+  //         chatEl = $("<li><a href='#chatPage' data-channel-name='" + chatName + "'>" 
+  //           + chatName 
+  //           + "</a><a href='#delete' data-rel='dialog' data-channel-name='" + chatName + "'></a></li>");
+  //     chatListEl.append(chatEl);
+  //     chatListEl.listview('refresh');
+  //   }
+  // }
 
   //////
   // Delete Chat View --BYPASSED
   ///////
-  function DeleteChatView(event, data) {
-    if (data.options && data.options.link) {
-      var channelName = data.options.link.attr('data-channel-name'),
-          deleteButton = pages.delete.find("#deleteButton");
+  // function DeleteChatView(event, data) {
+  //   if (data.options && data.options.link) {
+  //     var channelName = data.options.link.attr('data-channel-name'),
+  //         deleteButton = pages.delete.find("#deleteButton");
 
-      deleteButton.unbind('click');
-      deleteButton.click(function (event) {
-        pubnub.removeSubscription(channelName);
-        // console.log(pages.delete.children());
-        pages.delete.find('[data-rel="back"]').click();
-      });
-    }
-  };
+  //     deleteButton.unbind('click');
+  //     deleteButton.click(function (event) {
+  //       pubnub.removeSubscription(channelName);
+  //       // console.log(pages.delete.children());
+  //       pages.delete.find('[data-rel="back"]').click();
+  //     });
+  //   }
+  // };
 
   /////
   // Chatting View
