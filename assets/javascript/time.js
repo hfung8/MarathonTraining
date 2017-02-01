@@ -56,7 +56,6 @@ var countdownClock = {
       var hours = Math.floor((t - (days * 86400))/3600);
       var minutes = Math.floor((t - (days * 86400) - (hours * 3600))/60);
       var seconds = t - (days * 86400) - (hours * 3600)- (minutes * 60);
-      // allows game time to be altered in the future to more than one minute
 
       if (seconds < 10) {
         seconds = "0" + seconds;
@@ -74,17 +73,6 @@ var countdownClock = {
         hours = "00"
       }
 
-      if (days === 0) {
-        hours = "00"
-      }
-
-      else if (days < 10) {
-        days = "0" + hours;
-      }
-            if (hours === 0) {
-        hours = "00"
-      }
-
       else if (hours < 10) {
         hours = "0" + hours;
       }
@@ -99,6 +87,8 @@ var countdownClock = {
 $(document).ready(function(){
   updateTime.start();
   countdownClock.start();
+
+  //not currently in use
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 2 // Creates a dropdown of 15 years to control year
