@@ -12,7 +12,7 @@ function race_info(){
 
     $.ajax({
         type: "GET",
-        url: "https://runsignup.com/Rest/races/?format=json&events=T&race_headings=T&race_links=T&include_waiver=T&include_event_days=T&page=1&results_per_page=50&sort=name+ASC&start_date=" + date + "&only_partner_races=T&search_start_date_only=T&only_races_with_results=T&city=New+York&state=" + state + "&country=" + country + "&event_type=running_race&distance_units=K&zipcode=" + zipcode + "&api_key=90ae1afd7b52cc642862463d12d975b73f6daa5e&api_secret=398fb1b9e21f907be2bb97d6000f1f17e05b2945",
+        url: "https://accept-cors.herokuapp.com/https://runsignup.com/Rest/races/?format=json&events=T&race_headings=T&race_links=T&include_waiver=T&include_event_days=T&page=1&results_per_page=50&sort=name+ASC&start_date=" + date + "&only_partner_races=T&search_start_date_only=T&only_races_with_results=T&city=New+York&state=" + state + "&country=" + country + "&event_type=running_race&distance_units=K&zipcode=" + zipcode + "&api_key=90ae1afd7b52cc642862463d12d975b73f6daa5e&api_secret=398fb1b9e21f907be2bb97d6000f1f17e05b2945",
         contentType: 'text/plain',
         xhrFields: {
             withCredentials: false
